@@ -2,7 +2,7 @@
 
 namespace SchedulingApp.Data.Models.Abstraction
 {
-    internal interface IIdentifier
+    public interface IIdentifier
     {
         [Key]
         /// <summary>
