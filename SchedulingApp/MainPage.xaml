@@ -12,7 +12,7 @@
     <Grid>
         
         <!--Страница навигации-->
-        <xamlUI:NavigationView>
+        <xamlUI:NavigationView OpenPaneLength="240">
             
             <!--Меню навигации-->
             <xamlUI:NavigationView.MenuItems>
@@ -22,9 +22,7 @@
                     <xamlUI:NavigationViewItem.Icon>
                         <SymbolIcon Symbol="CalendarDay"/>
                     </xamlUI:NavigationViewItem.Icon>
-                    <xamlUI:NavigationViewItem.Content>
-                        <TextBlock Text="Календарь"/>
-                    </xamlUI:NavigationViewItem.Content>
+                    <TextBlock Text="Календарь"/>
                 </xamlUI:NavigationViewItem>
                 
                 <!--Список всех задач -->
@@ -32,11 +30,9 @@
                     <xamlUI:NavigationViewItem.Icon>
                         <SymbolIcon Symbol="List"/>
                     </xamlUI:NavigationViewItem.Icon>
-                    <xamlUI:NavigationViewItem.Content>
-                        <TextBlock Text="Списком"/>
-                    </xamlUI:NavigationViewItem.Content>
+                    <TextBlock Text="Списком"/>
 
-                    <!--Подменю списка-->
+                        <!--Подменю списка-->
                     <xamlUI:NavigationViewItem.MenuItems>
 
                         <!--Важные задачи-->
@@ -44,9 +40,7 @@
                             <xamlUI:NavigationViewItem.Icon>
                                 <SymbolIcon Symbol="SolidStar"/>
                             </xamlUI:NavigationViewItem.Icon>
-                            <xamlUI:NavigationViewItem.Content>
-                                <TextBlock Text="Важные"/>
-                            </xamlUI:NavigationViewItem.Content>
+                            <TextBlock Text="Важные"/>
                         </xamlUI:NavigationViewItem>
                         
                         <!--Задачи на сегодня-->
@@ -54,16 +48,14 @@
                             <xamlUI:NavigationViewItem.Icon>
                                 <SymbolIcon Symbol="GoToToday"/>
                             </xamlUI:NavigationViewItem.Icon>
-                            <xamlUI:NavigationViewItem.Content>
-                                <TextBlock Text="Сегодня"/>
-                            </xamlUI:NavigationViewItem.Content>
+                            <TextBlock Text="Сегодня"/>
                         </xamlUI:NavigationViewItem>
                         
                     </xamlUI:NavigationViewItem.MenuItems>
                 </xamlUI:NavigationViewItem>
             </xamlUI:NavigationView.MenuItems>
 
-            <Frame/>
+            <Frame x:Name="MainFrame"/>
         </xamlUI:NavigationView>
     </Grid>
 </Page>

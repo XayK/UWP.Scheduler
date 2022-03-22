@@ -25,7 +25,7 @@
     https://go.microsoft.com/fwlink/?LinkID=391919
 .-->
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
-  <Library Name="SchedulingApp.Core">
+  <Library Name="SchedulingApp.Data">
 
   	<!-- добавьте сюда директивы для своей библиотеки -->
 
