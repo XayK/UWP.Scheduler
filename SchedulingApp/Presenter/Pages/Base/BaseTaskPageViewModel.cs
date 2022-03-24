@@ -8,19 +8,19 @@ namespace SchedulingApp.Presenter.Pages.Base
     /// Базовый класс представления данных для страниц приложения,
     /// которые отображают данные о задач в расписании
     /// </summary>
-    internal abstract class BaseTaskPageViewModel : ObservableObject
+    public abstract class BaseTaskPageViewModel : ObservableObject
     {
         /// <summary>
         /// Предоставляет используемые задачи
         /// </summary>
-        public ObservableCollection<ITask> Missions { get; }
+        public ObservableCollection<IMission> Missions { get; }
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="BaseTaskPageViewModel"/>
         /// </summary>
         protected BaseTaskPageViewModel()
         {
-            Missions = new ObservableCollection<ITask>();
+            Missions = new ObservableCollection<IMission>();
         }
     }
 }

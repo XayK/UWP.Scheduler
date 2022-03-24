@@ -2,7 +2,7 @@
 
 namespace SchedulingApp.Data.Models.Abstraction
 {
-    public interface ITask : IIdentifier
+    public interface IMission : IIdentifier
     {
         /// <summary>
         /// Предоставляет или задает заголовок

@@ -8,7 +8,7 @@ namespace SchedulingApp.Data.Storages.Base
     /// <summary>
     /// Представляет базовый класс для хранилища данных
     /// </summary>
-    internal abstract class BaseStorage
+    public abstract class BaseStorage
     {
         /// <summary>
         /// Получает все элементы коллекции

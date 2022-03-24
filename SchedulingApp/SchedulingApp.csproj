@@ -124,8 +124,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\IPageView.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MissionControl.xaml.cs">
+      <DependentUpon>MissionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MissionThumbControl.xaml.cs">
+      <DependentUpon>MissionThumbControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -137,9 +144,11 @@
       <DependentUpon>ListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presenter\Pages\Base\BaseTaskPageViewModel.cs" />
-    <Compile Include="Presenter\Pages\CalendarViewModel.cs" />
-    <Compile Include="Presenter\Pages\ListViewModel.cs" />
+    <Compile Include="Presenter\Pages\CalendarPageViewModel.cs" />
+    <Compile Include="Presenter\Pages\ListPageViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Context\FrameContext.cs" />
+    <Compile Include="Services\NavigationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -161,6 +170,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\MissionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MissionThumbControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -193,9 +210,7 @@
       <Version>2.7.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\SchedulingApp.Data\SchedulingApp.Data.csproj">
       <Project>{3d82bbce-4873-41c5-9266-f695f3e5e70e}</Project>

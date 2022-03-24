@@ -55,6 +55,7 @@
                 </xamlUI:NavigationViewItem>
             </xamlUI:NavigationView.MenuItems>
 
+            <!--Фрейм активной страницы-->
             <Frame x:Name="MainFrame"/>
         </xamlUI:NavigationView>
     </Grid>

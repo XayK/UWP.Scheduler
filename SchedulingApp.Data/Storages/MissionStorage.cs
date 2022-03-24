@@ -10,7 +10,7 @@ namespace SchedulingApp.Data.Storages
     /// Представляет хранилище данных о задачах,
     /// используемых при состоавлении расписания
     /// </summary>
-    internal class MissionStorage : BaseStorage
+    public class MissionStorage : BaseStorage
     {
         /// <summary>
         /// Получить все задачи из расписания
