@@ -2,61 +2,64 @@
     x:Class="SchedulingApp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:SchedulingApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:SchedulingApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xamlUI="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
     <Grid>
-        
-        <!--Страница навигации-->
-        <xamlUI:NavigationView OpenPaneLength="240">
-            
-            <!--Меню навигации-->
-            <xamlUI:NavigationView.MenuItems>
-                
-                <!--Выбор по календарю-->
-                <xamlUI:NavigationViewItem>
-                    <xamlUI:NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="CalendarDay"/>
-                    </xamlUI:NavigationViewItem.Icon>
-                    <TextBlock Text="Календарь"/>
-                </xamlUI:NavigationViewItem>
-                
-                <!--Список всех задач -->
-                <xamlUI:NavigationViewItem>
-                    <xamlUI:NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="List"/>
-                    </xamlUI:NavigationViewItem.Icon>
-                    <TextBlock Text="Списком"/>
 
-                        <!--Подменю списка-->
+        <!--  Страница навигации  -->
+        <xamlUI:NavigationView
+            IsBackButtonVisible="Collapsed"
+            OpenPaneLength="240"
+            SelectionChanged="NavigationView_SelectionChanged">
+
+            <!--  Меню навигации  -->
+            <xamlUI:NavigationView.MenuItems>
+
+                <!--  Выбор по календарю  -->
+                <xamlUI:NavigationViewItem Tag="0">
+                    <xamlUI:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="CalendarDay" />
+                    </xamlUI:NavigationViewItem.Icon>
+                    <TextBlock Text="Календарь" />
+                </xamlUI:NavigationViewItem>
+
+                <!--  Список всех задач  -->
+                <xamlUI:NavigationViewItem Tag="1">
+                    <xamlUI:NavigationViewItem.Icon>
+                        <SymbolIcon Symbol="List" />
+                    </xamlUI:NavigationViewItem.Icon>
+                    <TextBlock Text="Списком" />
+
+                    <!--  Подменю списка  -->
                     <xamlUI:NavigationViewItem.MenuItems>
 
-                        <!--Важные задачи-->
-                        <xamlUI:NavigationViewItem>
+                        <!--  Важные задачи  -->
+                        <xamlUI:NavigationViewItem Tag="2">
                             <xamlUI:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="SolidStar"/>
+                                <SymbolIcon Symbol="SolidStar" />
                             </xamlUI:NavigationViewItem.Icon>
-                            <TextBlock Text="Важные"/>
+                            <TextBlock Text="Важные" />
                         </xamlUI:NavigationViewItem>
-                        
-                        <!--Задачи на сегодня-->
-                        <xamlUI:NavigationViewItem>
+
+                        <!--  Задачи на сегодня  -->
+                        <xamlUI:NavigationViewItem Tag="3">
                             <xamlUI:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="GoToToday"/>
+                                <SymbolIcon Symbol="GoToToday" />
                             </xamlUI:NavigationViewItem.Icon>
-                            <TextBlock Text="Сегодня"/>
+                            <TextBlock Text="Сегодня" />
                         </xamlUI:NavigationViewItem>
-                        
+
                     </xamlUI:NavigationViewItem.MenuItems>
                 </xamlUI:NavigationViewItem>
             </xamlUI:NavigationView.MenuItems>
 
-            <!--Фрейм активной страницы-->
-            <Frame x:Name="MainFrame"/>
+            <!--  Фрейм активной страницы  -->
+            <Frame x:Name="MainFrame" />
         </xamlUI:NavigationView>
     </Grid>
 </Page>

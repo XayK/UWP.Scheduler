@@ -1,29 +1,27 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--Стиль основных текстовых элементов-->
+    <!--  Стиль основных текстовых элементов  -->
     <Style x:Key="MainTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="#00111C"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semilight"/>
-        <Setter Property="FontWeight" Value="SemiLight"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-        <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#00111C" />
+        <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
     </Style>
-    
-    <!--Стиль заголовок-->
+
+    <!--  Стиль заголовок  -->
     <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="#00111C"/>
-        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-        <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="FontSize" Value="19"/>
-        <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
-        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#00111C" />
+        <Setter Property="FontFamily" Value="Segoe UI Semibold" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
-    
-    <!--Остальные стили-->
-    
+
+    <!--  Остальные стили  -->
+
 </ResourceDictionary>

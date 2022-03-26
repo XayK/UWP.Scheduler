@@ -6,7 +6,7 @@ namespace SchedulingApp.Presenter.Pages
     /// <summary>
     /// Представляет данные для страницы, отображающие элементы списком
     /// </summary>
-    public class ListPageViewModel : BaseTaskPageViewModel
+    public class ListPageViewModel : BaseListPageViewModel
     {
         #region Private Properties
 
@@ -29,7 +29,7 @@ namespace SchedulingApp.Presenter.Pages
         #region Private Constructors
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="CalendarPageViewModel"/>
+        /// Инициализирует экземпляр <see cref="ListPageViewModel"/>
         /// </summary>
         private ListPageViewModel() : base()
         {
@@ -37,6 +37,5 @@ namespace SchedulingApp.Presenter.Pages
         }
 
         #endregion Private Constructors
-
     }
 }

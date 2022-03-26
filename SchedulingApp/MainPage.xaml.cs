@@ -1,30 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x419
+﻿using Microsoft.UI.Xaml.Controls;
+using SchedulingApp.Services;
+using SchedulingApp.Services.Abstraction;
 
 namespace SchedulingApp
 {
     /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
+    /// Основная страница приложения.
+    /// Содержит <see cref="Frame"/> контент и элементы навигации приложения
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPage : Windows.UI.Xaml.Controls.Page
     {
+        /// <summary>
+        /// Предоставляет сервис навигации для контента страницы
+        /// </summary>
+        private readonly INavigationService _navigation;
+
+        #region Public Constructors
+
+        /// <summary>
+        /// Инициализирует экземпляр <see cref="MainPage"/>
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();
+
+            _navigation = new NavigationService(MainFrame);
+            _navigation.NavigateTo(PagesEnum.ListPageType);
+        }
+
+        #endregion Public Constructors
+
+        /// <summary>
+        /// Обработка события изменения текущего элемента
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="args">Аргуементы</param>
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var navigationItem = (NavigationViewItem)sender.SelectedItem;
+            string tag = navigationItem.Tag.ToString();
+            bool isParsed = int.TryParse(tag, out int pageId);
+
+            if (isParsed)
+            {
+                _navigation.NavigateTo((PagesEnum)pageId);
+            }
         }
     }
 }
