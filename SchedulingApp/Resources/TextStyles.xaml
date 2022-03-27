@@ -4,7 +4,8 @@
     <Style x:Key="MainTextBlockStyle" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="#00111C" />
-        <Setter Property="FontFamily" Value="Segoe UI Semilight" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="FontWeight" Value="SemiLight" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
@@ -15,13 +16,37 @@
     <Style x:Key="HeaderTextBlockStyle" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Foreground" Value="#00111C" />
-        <Setter Property="FontFamily" Value="Segoe UI Semibold" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="FontSize" Value="19" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
+    <!--  Стиль текст блока у кнопок  -->
+    <Style x:Key="ButtonTextStyle" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
     <!--  Остальные стили  -->
+
+    <!--  Стиль текст блока при создании элемента  -->
+    <Style x:Key="MissionTimeSetterDescriptionStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#00111C" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="SemiLight" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
 
 </ResourceDictionary>

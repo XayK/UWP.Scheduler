@@ -15,11 +15,11 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента "Пользовательский элемент управления" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace SchedulingApp.Controls
+namespace SchedulingApp.Controls.Elements
 {
-    public sealed partial class MissionControl : UserControl
+    public sealed partial class RowItemControl : UserControl
     {
-        public MissionControl()
+        public RowItemControl()
         {
             this.InitializeComponent();
         }

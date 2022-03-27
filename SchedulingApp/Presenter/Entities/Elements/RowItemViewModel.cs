@@ -1,9 +1,7 @@
-﻿using SchedulingApp.Presenter.Entities.Abstraction;
-using SchedulingApp.Presenter.Entities.RowItems.Base;
-using SchedulingApp.Data.Models.Elements;
-using SchedulingApp.Data.Models.Abstraction;
+﻿using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Presenter.Entities.Elements.Base;
 
-namespace SchedulingApp.Presenter.Entities.RowItems
+namespace SchedulingApp.Presenter.Entities.Elements
 {
     /// <summary>
     /// Представляет данные, для отображения строки описания задачи

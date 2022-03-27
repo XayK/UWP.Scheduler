@@ -2,7 +2,7 @@
 using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Presenter.Entities.Abstraction;
 
-namespace SchedulingApp.Presenter.Entities.RowItems.Base
+namespace SchedulingApp.Presenter.Entities.Elements.Base
 {
     /// <summary>
     /// Базовый класс, для представления данных строки в описании задачи

@@ -127,11 +127,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MissionControl.xaml.cs">
-      <DependentUpon>MissionControl.xaml</DependentUpon>
+    <Compile Include="Controls\Elements\RowItemControl.xaml.cs">
+      <DependentUpon>RowItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MissionCalendarControl.xaml.cs">
+      <DependentUpon>MissionCalendarControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MissionThumbControl.xaml.cs">
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\Base\DialogBase.cs" />
+    <Compile Include="Dialogs\MissionDialog.xaml.cs">
+      <DependentUpon>MissionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\PagesEnum.cs" />
     <Compile Include="MainPage.xaml.cs">
@@ -146,8 +153,8 @@
     <Compile Include="Presenter\Entities\Abstraction\IEntityViewModel.cs" />
     <Compile Include="Presenter\Entities\Base\BaseMissionViewModel.cs" />
     <Compile Include="Presenter\Entities\MissionViewModel.cs" />
-    <Compile Include="Presenter\Entities\RowItems\Base\BaseRowItemViewModel.cs" />
-    <Compile Include="Presenter\Entities\RowItems\RowItemViewModel.cs" />
+    <Compile Include="Presenter\Entities\Elements\Base\BaseRowItemViewModel.cs" />
+    <Compile Include="Presenter\Entities\Elements\RowItemViewModel.cs" />
     <Compile Include="Presenter\Pages\Abstraction\ICalendarPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Abstraction\IListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseListPageViewModel.cs" />
@@ -180,11 +187,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\MissionControl.xaml">
+    <Page Include="Controls\Elements\RowItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MissionCalendarControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MissionThumbControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\MissionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
