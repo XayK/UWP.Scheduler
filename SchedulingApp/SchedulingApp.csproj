@@ -143,6 +143,13 @@
     <Compile Include="Pages\ListPage.xaml.cs">
       <DependentUpon>ListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Presenter\Entities\Abstraction\IEntityViewModel.cs" />
+    <Compile Include="Presenter\Entities\Base\BaseMissionViewModel.cs" />
+    <Compile Include="Presenter\Entities\MissionViewModel.cs" />
+    <Compile Include="Presenter\Entities\RowItems\Base\BaseRowItemViewModel.cs" />
+    <Compile Include="Presenter\Entities\RowItems\RowItemViewModel.cs" />
+    <Compile Include="Presenter\Pages\Abstraction\ICalendarPageViewModel.cs" />
+    <Compile Include="Presenter\Pages\Abstraction\IListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseTaskPageViewModel.cs" />
     <Compile Include="Presenter\Pages\CalendarPageViewModel.cs" />

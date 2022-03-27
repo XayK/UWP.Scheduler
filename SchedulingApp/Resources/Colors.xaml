@@ -1,12 +1,10 @@
-﻿<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--Основные ресурсы приложения-->
-    <SolidColorBrush x:Key="AppMainBorderBrush" Color="#A9A9A9"/>
-    <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5"/>
-    <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}"/>
+    <!--  Основные ресурсы приложения  -->
+    <SolidColorBrush x:Key="AppMainBorderBrush" Color="#A9A9A9" />
+    <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5" />
+    <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}" />
 
-    <!--Остальные ресурсы-->
-    
+    <!--  Остальные ресурсы  -->
+
 </ResourceDictionary>

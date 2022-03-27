@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SchedulingApp.Data.Models.Abstraction
 {
@@ -10,9 +11,10 @@ namespace SchedulingApp.Data.Models.Abstraction
         public string Title { get; set; }
 
         /// <summary>
-        /// Предоставляет или задает краткое описание
+        /// Предоставляет или задает контент, представляющий описание сущности
         /// </summary>
-        public string Description { get; set; }
+        public ICollection<IRowItem> Descriptions { get; set; }
+
 
         /// <summary>
         /// Предоставляет или задает дату и время начала
@@ -25,3 +27,4 @@ namespace SchedulingApp.Data.Models.Abstraction
         public DateTime EndDateTime { get; set; }
     }
 }
+

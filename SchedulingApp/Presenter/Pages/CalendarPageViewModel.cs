@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Presenter.Pages.Base;
+﻿using SchedulingApp.Presenter.Pages.Abstraction;
+using SchedulingApp.Presenter.Pages.Base;
 using System;
 
 namespace SchedulingApp.Presenter.Pages
@@ -6,7 +7,7 @@ namespace SchedulingApp.Presenter.Pages
     /// <summary>
     /// Представляет данные для страницы календаря
     /// </summary>
-    public class CalendarPageViewModel : BaseTaskPageViewModel
+    public class CalendarPageViewModel : BaseTaskPageViewModel, ICalendarPageViewModel
     {
         #region Private Fields
 

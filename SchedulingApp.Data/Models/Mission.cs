@@ -23,28 +23,20 @@ namespace SchedulingApp.Data.Models
         public string Title { get; set; }
 
         /// <summary>
-        /// Предоставляет или задает краткое описание
+        /// Предоставляет или задает контент, представляющий описание задачи
         /// </summary>
-        public string Description { get; set; }
+        public ICollection<IRowItem> Descriptions { get; set; }
 
         /// <summary>
-        /// Предоставляет или задает флаг необходимости отображения списка задач
+        /// Предоставляет или задает дату и время окончания
         /// </summary>
-        public bool IsListNeeded { get; set; }
+        public DateTime EndDateTime { get; set; }
 
-        /// <summary>
-        /// Предоставляет или задает список задач
-        /// </summary>
-        public List<string> ToDoList { get; set; }
 
         /// <summary>
         /// Предоставляет или задает дату и время начала
         /// </summary>
         public DateTime StartDateTime { get; set; }
 
-        /// <summary>
-        /// Предоставляет или задает дату и время окончания
-        /// </summary>
-        public DateTime EndDateTime { get; set; }
     }
 }
