@@ -151,6 +151,8 @@
       <DependentUpon>ListPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Presenter\Entities\Abstraction\IEntityViewModel.cs" />
+    <Compile Include="Presenter\Entities\Abstraction\IMissionVIewModel.cs" />
+    <Compile Include="Presenter\Entities\Abstraction\IRowItemVIewModel.cs" />
     <Compile Include="Presenter\Entities\Base\BaseMissionViewModel.cs" />
     <Compile Include="Presenter\Entities\MissionViewModel.cs" />
     <Compile Include="Presenter\Entities\Elements\Base\BaseRowItemViewModel.cs" />

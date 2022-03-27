@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:SchedulingApp.Controls.Elements"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="using:SchedulingApp.Presenter.Entities.Elements"
-    d:DataContext="{d:DesignInstance viewmodel:RowItemViewModel}"
+    xmlns:viewmodel="using:SchedulingApp.Presenter.Entities.Abstraction"
+    d:DataContext="{d:DesignInstance viewmodel:IRowItemViewModel}"
     d:DesignHeight="40"
     d:DesignWidth="400"
     mc:Ignorable="d">

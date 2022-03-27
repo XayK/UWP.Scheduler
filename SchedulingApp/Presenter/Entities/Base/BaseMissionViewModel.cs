@@ -7,7 +7,7 @@ namespace SchedulingApp.Presenter.Entities.Base
     /// <summary>
     /// Базовый класс, для представления данных о задаче
     /// </summary>
-    internal abstract class BaseMissionViewModel : ObservableObject, IEntityViewModel<IMission>
+    internal abstract class BaseMissionViewModel : ObservableObject, IEntityViewModel<IMission>, IMissionViewModel
     {
         /// <summary>
         /// Инициализирует экземпляр <see cref="BaseMissionViewModel"/>
