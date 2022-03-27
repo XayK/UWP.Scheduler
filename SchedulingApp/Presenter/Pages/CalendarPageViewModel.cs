@@ -14,7 +14,7 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="CalendarPageViewModel"/>
         /// </summary>
-        private readonly static Lazy<CalendarPageViewModel> _instance = new Lazy<CalendarPageViewModel>(() => new CalendarPageViewModel());
+        private static readonly Lazy<CalendarPageViewModel> _instance = new Lazy<CalendarPageViewModel>(() => new CalendarPageViewModel());
 
         #endregion Private Fields
 

@@ -29,13 +29,13 @@ namespace SchedulingApp.Data.Storages
         public IEnumerable<Mission> GetForMonth(DateTime date)
         {
             DateTime firstMonthDate = new DateTime(date.Year, date.Month, 1);
-            DateTime lastMonthDate = new DateTime(date.Year,date.Month,1);
+            DateTime lastMonthDate = new DateTime(date.Year, date.Month, 1);
             lastMonthDate = lastMonthDate.AddMonths(1);
             lastMonthDate = lastMonthDate.AddDays(-1);
-            
+
 
             IEnumerable<Mission> neededCollection = GetAll<Mission>();
-            return neededCollection.Where(x => 
+            return neededCollection.Where(x =>
                 (x.EndDateTime.Date < firstMonthDate == false)
                 &&
                 (x.StartDateTime.Date > firstMonthDate == false)

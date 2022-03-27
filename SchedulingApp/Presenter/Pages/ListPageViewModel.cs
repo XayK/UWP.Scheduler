@@ -13,7 +13,7 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="ListPageViewModel"/>
         /// </summary>
-        private readonly static Lazy<ListPageViewModel> _instance = new Lazy<ListPageViewModel>(() => new ListPageViewModel());
+        private static readonly Lazy<ListPageViewModel> _instance = new Lazy<ListPageViewModel>(() => new ListPageViewModel());
 
         #endregion Private Properties
 

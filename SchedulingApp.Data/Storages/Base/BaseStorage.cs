@@ -1,5 +1,4 @@
-﻿using LiteDB;
-using SchedulingApp.Data.Context;
+﻿using SchedulingApp.Data.Context;
 using SchedulingApp.Data.Models.Abstraction;
 using System.Collections.Generic;
 
@@ -66,5 +65,5 @@ namespace SchedulingApp.Data.Storages.Base
             db.Database.GetCollection<T>().Delete(id);
             db.Database.Commit();
         }
-    } 
+    }
 }

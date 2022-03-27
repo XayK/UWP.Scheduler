@@ -1,5 +1,4 @@
-﻿using SchedulingApp.Presenter.Pages;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 
 
 namespace SchedulingApp.Pages

@@ -15,7 +15,7 @@ namespace SchedulingApp.Data.Services
         /// <summary>
         /// Представляет реализацию синглтона  
         /// </summary>
-        private readonly static Lazy<DatabaseLocatorService> _instance =
+        private static readonly Lazy<DatabaseLocatorService> _instance =
             new Lazy<DatabaseLocatorService>(() => new DatabaseLocatorService());
 
         #endregion Private Fields

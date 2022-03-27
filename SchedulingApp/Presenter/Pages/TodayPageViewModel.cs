@@ -1,9 +1,5 @@
 ﻿using SchedulingApp.Presenter.Pages.Base;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SchedulingApp.Presenter.Pages
 {
@@ -18,7 +14,7 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="TodayPageViewModel"/>
         /// </summary>
-        private readonly static Lazy<TodayPageViewModel> _instance = new Lazy<TodayPageViewModel>(() => new TodayPageViewModel());
+        private static readonly Lazy<TodayPageViewModel> _instance = new Lazy<TodayPageViewModel>(() => new TodayPageViewModel());
 
         #endregion Private Properties
 

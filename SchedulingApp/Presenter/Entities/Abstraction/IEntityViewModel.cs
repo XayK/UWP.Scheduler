@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SchedulingApp.Presenter.Entities.Abstraction
+﻿namespace SchedulingApp.Presenter.Entities.Abstraction
 {
     /// <summary>
     /// Интерфейс, реализующий ViewModel для сущностей, хранимых в БД

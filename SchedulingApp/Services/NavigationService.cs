@@ -108,7 +108,7 @@ namespace SchedulingApp.Services
         /// <param name="page">Открываемая страница</param>
         public void NavigateTo(PagesEnum page)
         {
-            NavigateTo(page,null);
+            NavigateTo(page, null);
         }
 
         /// <summary>

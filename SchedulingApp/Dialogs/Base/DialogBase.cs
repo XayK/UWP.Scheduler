@@ -69,7 +69,7 @@ namespace SchedulingApp.Dialogs.Base
         {
             IAsyncOperation<ContentDialogResult> asyncOperation = base.ShowAsync();
             asyncOperation.AsTask().
-                ContinueWith(task => 
+                ContinueWith(task =>
                 _completionSource.TrySetResult(task.Result));
 
             return _completionSource.Task.AsAsyncOperation();
