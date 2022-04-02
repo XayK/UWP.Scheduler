@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
+﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.Input;
 using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Pages.Abstraction;
 using System.Collections.ObjectModel;
@@ -9,8 +10,10 @@ namespace SchedulingApp.Presenter.Pages.Base
     /// <summary>
     /// Базовый класс представления данных для страницы, отображающие элементы списком
     /// </summary>
-    public abstract class BaseListPageViewModel : BaseTaskPageViewModel, IListPageViewModel
+    public abstract class BaseListPageViewModel : ObservableObject
     {
+        #region Public Properties
+
         /// <summary>
         /// Предосталяет комманду создания миссии
         /// </summary>
@@ -36,6 +39,10 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         public IMissionViewModel SelectedMission { get; set; }
 
+        #endregion Public Properties
+
+        #region Protected Constructors
+
         /// <summary>
         /// Инициализирует наследуемые поля <see cref="BaseListPageViewModel"/>
         /// </summary>
@@ -50,5 +57,7 @@ namespace SchedulingApp.Presenter.Pages.Base
 
             Missions = new ObservableCollection<IMissionViewModel>();
         }
+
+        #endregion Protected Constructors
     }
 }

@@ -15,6 +15,10 @@ namespace SchedulingApp.Data.Models.Abstraction
         /// </summary>
         public ICollection<IRowItem> Descriptions { get; set; }
 
+        /// <summary>
+        /// Предоставляет или задает флаг как важной задачи
+        /// </summary>
+        public bool IsImportant { get; set; }
 
         /// <summary>
         /// Предоставляет или задает дату и время начала

@@ -142,6 +142,7 @@
       <DependentUpon>MissionDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\PagesEnum.cs" />
+    <Compile Include="Helper\DialogExecutor.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -161,7 +162,6 @@
     <Compile Include="Presenter\Pages\Abstraction\ICalendarPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Abstraction\IListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseListPageViewModel.cs" />
-    <Compile Include="Presenter\Pages\Base\BaseTaskPageViewModel.cs" />
     <Compile Include="Presenter\Pages\CalendarPageViewModel.cs" />
     <Compile Include="Presenter\Pages\ImportantPageViewModel.cs" />
     <Compile Include="Presenter\Pages\ListPageViewModel.cs" />
@@ -236,6 +236,9 @@
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />

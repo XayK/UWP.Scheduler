@@ -44,7 +44,7 @@
             Spacing="10">
 
             <!--  Ввод название задачи  -->
-            <TextBox PlaceholderText="Название" Text="{x:Bind Title, Mode=OneTime}" />
+            <TextBox PlaceholderText="Название" Text="{x:Bind MissionTitle, Mode=TwoWay}" />
 
             <!--  Флаг важной задачи  -->
             <CheckBox

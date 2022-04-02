@@ -1,13 +1,20 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
+using SchedulingApp.Data.Models;
+using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Helper;
+using SchedulingApp.Presenter.Entities;
+using SchedulingApp.Presenter.Entities.Abstraction;
+using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Presenter.Pages.Base;
 using System;
+using System.Collections.ObjectModel;
 
 namespace SchedulingApp.Presenter.Pages
 {
     /// <summary>
     /// Представляет данные для страницы, отображающие элементы списком
     /// </summary>
-    public class ListPageViewModel : BaseListPageViewModel
+    public class ListPageViewModel : BaseListPageViewModel, IListPageViewModel
     {
         #region Private Properties
 
@@ -55,9 +62,17 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary>
         /// Создание новой задачи
         /// </summary>
-        private static void CreateMission()
+        private async static void CreateMission()
         {
-            ///TODO: создать задачу
+            IMission model = await DialogExecutor.ShowMissionCreation();
+
+            if(model == null)
+            {
+                return;
+            }
+
+            IMissionViewModel presenter = new MissionViewModel(model as Mission);
+            Instance.Missions.Add(presenter);
         }
 
         #endregion Private Constructors

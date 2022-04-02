@@ -7,7 +7,7 @@ namespace SchedulingApp.Presenter.Pages
     /// <summary>
     /// Представляет данные для страницы календаря
     /// </summary>
-    public class CalendarPageViewModel : BaseTaskPageViewModel, ICalendarPageViewModel
+    public class CalendarPageViewModel : ICalendarPageViewModel
     {
         #region Private Fields
 

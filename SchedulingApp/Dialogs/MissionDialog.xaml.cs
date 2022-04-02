@@ -1,9 +1,13 @@
-﻿using SchedulingApp.Data.Models.Elements;
+﻿using SchedulingApp.Data.Models;
+using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
 using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using Windows.UI.Xaml;
 
 namespace SchedulingApp.Dialogs
@@ -53,7 +57,12 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет заголвок диалога
         /// </summary>
-        public string Title { get; }
+        public string MissionTitle { get; set; }
+
+        /// <summary>
+        /// Предоставляет данные в ввиде модели <see cref="IMission"/>
+        /// </summary>
+        public IMission ModelData => GetModelDate();
 
         #endregion Public Properties
 
@@ -62,10 +71,9 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Инициализирует экземпляр <see cref="MissionDialog"/>
         /// </summary>
-        /// <param name="title">Заголовок диалога</param>
-        public MissionDialog(string title)
+        public MissionDialog()
         {
-            Title = title;
+            Title = string.Empty;
             StartDate = DateTime.Now.Date;
             StartTime = TimeSpan.FromHours(1);
             EndDate = DateTime.Now.Date;
@@ -79,6 +87,32 @@ namespace SchedulingApp.Dialogs
         #endregion Public Constructors
 
         #region Private Methods
+
+        /// <summary>
+        /// Предоставляет данные из диалога в виде модели данных
+        /// </summary>
+        /// <returns>Модель данных <see cref="IMission"/></returns>
+        private IMission GetModelDate()
+        {
+            IMission model = new Mission();
+
+            model.Title = MissionTitle;
+            model.StartDateTime = StartDate + StartTime;
+            model.EndDateTime = EndDate + EndTime;
+
+            IEnumerable<IRowItem> decriptions = Descriptions.Select(x =>
+                new RowItem()
+                {
+                    IsCheckable = x.IsCheckEnabled,
+                    IsChecked = x.IsChecked,
+                    Text = x.Text
+                }
+            );
+
+            model.Descriptions = new Collection<IRowItem>(decriptions.ToList());
+
+            return model;
+        }
 
         /// <summary>
         /// Обработка нажатия кнопки отмены
@@ -110,10 +144,10 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void NewDescription_Click(object sender, RoutedEventArgs e)
         {
-            RowItem model = new RowItem();
-            IRowItemViewModel item = new RowItemViewModel(model);
-            Descriptions.Add(item);
-            SelectedDescription = item;
+            RowItem model = new ();
+            RowItemViewModel presenter = new (model);
+            Descriptions.Add(presenter);
+            SelectedDescription = presenter;
 
             Bindings.Update();
         }
