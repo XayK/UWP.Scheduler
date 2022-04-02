@@ -21,5 +21,10 @@ namespace SchedulingApp.Data.Models.Elements
         /// Предоставляет или задает текст описания
         /// </summary>
         public string Text { get; set; }
+
+        public RowItem()
+        {
+            Text = string.Empty;
+        }
     }
 }

@@ -14,7 +14,10 @@
     <StackPanel Padding="10,0" Orientation="Horizontal">
 
         <!--  CheckBox для выбора задачи  -->
-        <CheckBox MinWidth="20" />
+        <CheckBox
+            MinWidth="20"
+            IsChecked="{Binding IsChecked, Mode=TwoWay}"
+            Visibility="{Binding IsCheckEnabled, Mode=OneWay}" />
 
         <!--  Поле для ввода текста  -->
         <TextBox
@@ -22,6 +25,7 @@
             d:Text="Loren ipsum "
             Background="Transparent"
             BorderBrush="Transparent"
-            BorderThickness="0" />
+            BorderThickness="0"
+            Text="{Binding Text, Mode=TwoWay}" />
     </StackPanel>
 </UserControl>

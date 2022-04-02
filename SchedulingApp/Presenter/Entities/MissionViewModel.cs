@@ -1,4 +1,5 @@
-﻿using SchedulingApp.Data.Models.Abstraction;
+﻿using SchedulingApp.Data.Models;
+using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Presenter.Entities.Base;
 
 namespace SchedulingApp.Presenter.Entities
@@ -11,7 +12,8 @@ namespace SchedulingApp.Presenter.Entities
         /// <summary>
         /// Инициализирует экземлпяр <see cref="MissionViewModel"/>
         /// </summary>
-        public MissionViewModel()
+        /// <param name="mission">Модель данных</param>
+        public MissionViewModel(Mission mission) : base(mission)
         {
         }
 

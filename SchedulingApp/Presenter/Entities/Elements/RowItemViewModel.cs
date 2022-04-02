@@ -1,4 +1,5 @@
 ﻿using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Presenter.Entities.Elements.Base;
 
 namespace SchedulingApp.Presenter.Entities.Elements
@@ -11,9 +12,9 @@ namespace SchedulingApp.Presenter.Entities.Elements
         /// <summary>
         /// Инициализирует экземпляр <see cref="RowItemViewModel"/>
         /// </summary>
-        public RowItemViewModel()
+        /// <param name="rowItem">Модель данных</param>
+        public RowItemViewModel(RowItem rowItem) : base(rowItem)
         {
-
         }
 
         /// <summary> <inheritdoc/> </summary>

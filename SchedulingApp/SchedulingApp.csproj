@@ -136,6 +136,7 @@
     <Compile Include="Controls\MissionThumbControl.xaml.cs">
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
     <Compile Include="Dialogs\MissionDialog.xaml.cs">
       <DependentUpon>MissionDialog.xaml</DependentUpon>

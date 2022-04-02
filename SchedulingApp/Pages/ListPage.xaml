@@ -2,10 +2,12 @@
     x:Class="SchedulingApp.Pages.ListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:SchedulingApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
+    xmlns:viewmodelEntities="using:SchedulingApp.Presenter.Entities.Abstraction"
     d:DataContext="{d:DesignInstance viewmodel:IListPageViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
@@ -28,18 +30,47 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Command="{Binding DeleteCommand}"
                 CornerRadius="20">
                 <SymbolIcon Symbol="Delete" />
             </Button>
 
-            <!--  Кнопка сохранить  -->
+            <!--  Кнопка правки  -->
             <Button
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Command="{Binding EditCommand}"
                 CornerRadius="20">
-                <SymbolIcon Symbol="Save" />
+                <SymbolIcon Symbol="Edit" />
+            </Button>
+
+            <!--  Кнопка добавить  -->
+            <Button
+                Width="45"
+                Height="45"
+                HorizontalAlignment="Center"
+                Command="{Binding CreateCommand}"
+                CornerRadius="20">
+                <SymbolIcon Symbol="Add" />
             </Button>
         </StackPanel>
+
+        <!--  Коллекция всех задач  -->
+        <GridView
+            x:Name="BasicGridView"
+            Grid.Column="0"
+            Padding="20"
+            ItemsSource="{Binding Missions}"
+            SelectedItem="{Binding SelectedMission}"
+            SelectionMode="Single">
+            <GridView.ItemTemplate>
+                <DataTemplate x:DataType="viewmodelEntities:IMissionViewModel">
+                    <controls:MissionThumbControl />
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+
+
     </Grid>
 </Page>

@@ -26,7 +26,7 @@
             Orientation="Horizontal"
             Spacing="20">
             <Button Width="100" Click="Cancel_Click">
-                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Отмены" />
+                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Отменить" />
             </Button>
             <Button
                 Width="100"
@@ -44,10 +44,13 @@
             Spacing="10">
 
             <!--  Ввод название задачи  -->
-            <TextBox PlaceholderText="Название" />
+            <TextBox PlaceholderText="Название" Text="{x:Bind Title, Mode=OneTime}" />
 
             <!--  Флаг важной задачи  -->
-            <CheckBox Margin="100,0,0,0" Content="Важная задача" />
+            <CheckBox
+                Margin="100,0,0,0"
+                Content="Важная задача"
+                IsChecked="{x:Bind IsImportant, Mode=TwoWay}" />
 
             <!--  Ввод даты и времени начала  -->
             <Grid>
@@ -62,8 +65,8 @@
                 <!--  Выбор даты и времени  -->
                 <Viewbox Grid.Column="1">
                     <StackPanel Orientation="Vertical" Spacing="5">
-                        <DatePicker />
-                        <TimePicker />
+                        <DatePicker Date="{x:Bind StartDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
+                        <TimePicker Time="{x:Bind StartTime, Mode=TwoWay}" />
                     </StackPanel>
                 </Viewbox>
             </Grid>
@@ -81,8 +84,8 @@
                 <!--  Выбор даты и времени  -->
                 <Viewbox Grid.Column="1">
                     <StackPanel Orientation="Vertical" Spacing="5">
-                        <DatePicker />
-                        <TimePicker />
+                        <DatePicker Date="{x:Bind EndDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
+                        <TimePicker Time="{x:Bind EndTime, Mode=TwoWay}" />
                     </StackPanel>
                 </Viewbox>
             </Grid>
@@ -94,15 +97,39 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <!--  Текст у ввода даты  -->
-                <TextBlock
-                    Margin="0,5,0,0"
-                    VerticalAlignment="Top"
-                    Style="{StaticResource MissionTimeSetterDescriptionStyle}"
-                    Text="Описание" />
+                <StackPanel Grid.Row="0" Spacing="5">
+                    <!--  Текст у ввода даты  -->
+                    <TextBlock
+                        Margin="0,5,0,0"
+                        VerticalAlignment="Top"
+                        Style="{StaticResource MissionTimeSetterDescriptionStyle}"
+                        Text="Описание" />
+
+                    <!--  Включение возможности отметки прогресса в описании задачи  -->
+                    <ToggleSwitch
+                        MinWidth="40"
+                        HorizontalAlignment="Center"
+                        OffContent="Off"
+                        OnContent="On"
+                        Toggled="DesciptionToggle_Switched" />
+
+                    <!--  Добавление нового описания задачи  -->
+                    <Button
+                        Width="50"
+                        Height="30"
+                        HorizontalAlignment="Center"
+                        Click="NewDescription_Click"
+                        CornerRadius="15">
+                        <SymbolIcon Symbol="Add" />
+                    </Button>
+                </StackPanel>
 
                 <!--  Описание задачи (список задач по строкам)  -->
-                <ListView Grid.Column="1" ScrollViewer.HorizontalScrollMode="Disabled">
+                <ListView
+                    Grid.Column="1"
+                    ItemsSource="{x:Bind Descriptions, Mode=OneTime}"
+                    ScrollViewer.HorizontalScrollMode="Disabled"
+                    SelectedItem="{x:Bind SelectedDescription, Mode=TwoWay}">
 
                     <!--  Элементы для отображения дизайнером  -->
                     <d:ListViewItem>
