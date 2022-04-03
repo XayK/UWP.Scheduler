@@ -47,6 +47,16 @@
                 <SymbolIcon Symbol="Edit" />
             </Button>
 
+            <!--  Кнопка работы с описанием  -->
+            <Button
+                Width="45"
+                Height="45"
+                HorizontalAlignment="Center"
+                Command="{Binding ShowDescriptionsCommand}"
+                CornerRadius="20">
+                <SymbolIcon Symbol="AllApps" />
+            </Button>
+
             <!--  Кнопка добавить  -->
             <Button
                 Width="45"
@@ -67,7 +77,7 @@
             CanDrag="True"
             CanReorderItems="True"
             ItemsSource="{Binding Missions}"
-            SelectedItem="{Binding SelectedMission}"
+            SelectedItem="{Binding SelectedMission, Mode=TwoWay}"
             SelectionMode="Single">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="viewmodelEntities:IMissionViewModel">
@@ -77,7 +87,7 @@
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="DoubleTapped">
                     <core:EventTriggerBehavior.Actions>
-                        <core:InvokeCommandAction Command="{Binding EditCommand}" />
+                        <core:InvokeCommandAction Command="{Binding ShowDescriptionsCommand}" />
                     </core:EventTriggerBehavior.Actions>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>

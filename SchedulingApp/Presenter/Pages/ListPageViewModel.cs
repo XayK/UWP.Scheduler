@@ -39,41 +39,8 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary>
         /// Инициализирует экземпляр <see cref="ListPageViewModel"/>
         /// </summary>
-        private ListPageViewModel() : base(new RelayCommand(CreateMission), new RelayCommand(EditSelectedMission), new RelayCommand(DeleteSelectedMission))
-        {
-        }
-
-        /// <summary>
-        /// Вызод удаления выбранной задачи
-        /// </summary>
-        private static void DeleteSelectedMission()
-        {
-            ///TODO: удалить выбранную задачу
-        }
-
-        /// <summary>
-        /// Вызов правки выбранной задачи
-        /// </summary>
-        private static void EditSelectedMission()
-        {
-            ///TODO: вызвать диалог правки выбранной задачу
-        }
-
-        /// <summary>
-        /// Создание новой задачи
-        /// </summary>
-        private async static void CreateMission()
-        {
-            IMission model = await DialogExecutor.ShowMissionCreation();
-
-            if(model == null)
-            {
-                return;
-            }
-
-            IMissionViewModel presenter = new MissionViewModel(model as Mission);
-            Instance.Missions.Add(presenter);
-        }
+        private ListPageViewModel() : base()
+        { }
 
         #endregion Private Constructors
     }

@@ -1,8 +1,15 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using SchedulingApp.Data.Models;
+using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Data.Models.Elements;
+using SchedulingApp.Helper;
+using SchedulingApp.Presenter.Entities;
 using SchedulingApp.Presenter.Entities.Abstraction;
-using SchedulingApp.Presenter.Pages.Abstraction;
+using SchedulingApp.Presenter.Entities.Elements;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Windows.Input;
 
 namespace SchedulingApp.Presenter.Pages.Base
@@ -39,25 +46,132 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         public IMissionViewModel SelectedMission { get; set; }
 
-        #endregion Public Properties
+        /// <summary>
+        /// Предосталяет комманду работы с описанием выбранной задачи
+        /// </summary>
+        public ICommand ShowDescriptionsCommand { get; }
+
+        #endregion Public Properties 
 
         #region Protected Constructors
 
         /// <summary>
         /// Инициализирует наследуемые поля <see cref="BaseListPageViewModel"/>
         /// </summary>
-        /// <param name="createCommand">Комманада создания задачи</param>
-        /// <param name="editCommand">Комманда правки задачи</param>
-        /// <param name="deleteCommand">Комманда удаления задачи</param>
-        protected BaseListPageViewModel(RelayCommand createCommand, RelayCommand editCommand, RelayCommand deleteCommand)
+        protected BaseListPageViewModel()
         {
-            CreateCommand = createCommand;
-            EditCommand = editCommand;
-            DeleteCommand = deleteCommand;
+            CreateCommand = new RelayCommand(CreateMission);
+            EditCommand = new RelayCommand(EditSelectedMission);
+            DeleteCommand = new RelayCommand(DeleteSelectedMission);
+            ShowDescriptionsCommand = new RelayCommand(ShowDescriptions);
 
             Missions = new ObservableCollection<IMissionViewModel>();
+            Missions.CollectionChanged += Missions_CollectionChanged;
         }
 
         #endregion Protected Constructors
+
+        /// <summary>
+        /// Удаление экземпляра <see cref="BaseListPageViewModel"/>
+        /// </summary>
+        ~BaseListPageViewModel()
+        {
+            Missions.CollectionChanged -= Missions_CollectionChanged;
+        }
+
+        #region Private Methods
+
+        /// <summary>
+        /// Обработка события изменения данных задач,
+        /// для обновления сведений в БД
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="e">Параметр</param>
+        private void Missions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            ///TODO: добавить работу с БД
+        }
+
+        /// <summary>
+        /// Создание новой задачи
+        /// </summary>
+        private async void CreateMission()
+        {
+            IMission model = await DialogExecutor.ShowMissionCreation();
+
+            if (model == null)
+            {
+                return;
+            }
+
+            IMissionViewModel presenter = new MissionViewModel(model as Mission);
+            Missions.Add(presenter);
+        }
+
+        /// <summary>
+        /// Вызод удаления выбранной задачи
+        /// </summary>
+        private void DeleteSelectedMission()
+        {
+            if (SelectedMission == null)
+            {
+                return;
+            }
+
+            Missions.Remove(SelectedMission);
+        }
+
+        /// <summary>
+        /// Вызов правки выбранной задачи
+        /// </summary>
+        private async void EditSelectedMission()
+        {
+            if (SelectedMission == null)
+            {
+                return;
+            }
+
+            IMission model = await DialogExecutor.EditMission(SelectedMission.Model);
+
+            if (model == null)
+            {
+                return;
+            }
+
+            SelectedMission.Title = model.Title;
+            SelectedMission.IsImportant = model.IsImportant;
+            SelectedMission.StartDateTime = model.StartDateTime;
+            SelectedMission.EndDateTime = model.EndDateTime;
+
+            ///Обновить запись в БД?
+        }
+
+        /// <summary>
+        /// Вызов диалога правки описания задачи
+        /// </summary>
+        private async void ShowDescriptions()
+        {
+            if(SelectedMission == null)
+            {
+                return;
+            }
+
+            ICollection<IRowItem> model = await DialogExecutor.EditMissionDescription(SelectedMission.Model);
+
+            if (model == null)
+            {
+                return;
+            }
+            
+            SelectedMission.Descriptions.Clear();
+
+            foreach (IRowItem item in model)
+            {
+                IRowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
+                SelectedMission.Descriptions.Add(rowPresenter);
+            }
+        }
+
+        #endregion Private Methods
     }
 }

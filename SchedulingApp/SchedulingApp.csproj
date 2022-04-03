@@ -138,6 +138,9 @@
     </Compile>
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
+    <Compile Include="Dialogs\MissionDescriptionDialog.xaml.cs">
+      <DependentUpon>MissionDescriptionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MissionDialog.xaml.cs">
       <DependentUpon>MissionDialog.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\MissionDescriptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\MissionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -219,6 +226,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ControlsStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

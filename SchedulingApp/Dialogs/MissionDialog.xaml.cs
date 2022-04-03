@@ -20,14 +20,14 @@ namespace SchedulingApp.Dialogs
         #region Public Properties
 
         /// <summary>
-        /// Предоставляет описание действий в задаче
-        /// </summary>
-        public ICollection<IRowItemViewModel> Descriptions { get; }
-
-        /// <summary>
         /// Предоставляет или задает дату окончания задачи
         /// </summary>
         public DateTime EndDate { get; set; }
+
+        /// <summary>
+        /// Предоставляет заголовок окна диалога
+        /// </summary>
+        public string TitleDialog { get;}
 
         /// <summary>
         /// Представляет или задает временя начала задачи
@@ -38,11 +38,6 @@ namespace SchedulingApp.Dialogs
         /// Предоставляет или задает флаг важной задачи
         /// </summary>
         public bool IsImportant { get; set; }
-
-        /// <summary>
-        /// Предоставляет или задает выбранную строку в описании
-        /// </summary>
-        public IRowItemViewModel SelectedDescription { get; set; }
 
         /// <summary>
         /// Представляет или задает дату начала задачи
@@ -71,15 +66,16 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Инициализирует экземпляр <see cref="MissionDialog"/>
         /// </summary>
-        public MissionDialog()
+        /// <param name="titleDialog">Заголовок диалогового окна</param>
+        public MissionDialog(string titleDialog)
         {
+            TitleDialog = titleDialog;
+
             Title = string.Empty;
             StartDate = DateTime.Now.Date;
             StartTime = TimeSpan.FromHours(1);
             EndDate = DateTime.Now.Date;
             EndTime = TimeSpan.FromHours(23);
-
-            Descriptions = new List<IRowItemViewModel>();
 
             this.InitializeComponent();
         }
@@ -99,17 +95,8 @@ namespace SchedulingApp.Dialogs
             model.Title = MissionTitle;
             model.StartDateTime = StartDate + StartTime;
             model.EndDateTime = EndDate + EndTime;
-
-            IEnumerable<IRowItem> decriptions = Descriptions.Select(x =>
-                new RowItem()
-                {
-                    IsCheckable = x.IsCheckEnabled,
-                    IsChecked = x.IsChecked,
-                    Text = x.Text
-                }
-            );
-
-            model.Descriptions = new Collection<IRowItem>(decriptions.ToList());
+            model.Descriptions = new Collection<IRowItem>();
+            model.IsImportant = IsImportant;
 
             return model;
         }
@@ -122,34 +109,6 @@ namespace SchedulingApp.Dialogs
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             base.SetNoteResult();
-        }
-
-        /// <summary>
-        /// Обработка изменения состояния переключателя описания задачи
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
-        {
-            if (SelectedDescription != null)
-            {
-                SelectedDescription.IsCheckEnabled = !SelectedDescription.IsCheckEnabled;
-            }
-        }
-
-        /// <summary>
-        /// Обработка клика кнопки добавления новой строки описания
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void NewDescription_Click(object sender, RoutedEventArgs e)
-        {
-            RowItem model = new ();
-            RowItemViewModel presenter = new (model);
-            Descriptions.Add(presenter);
-            SelectedDescription = presenter;
-
-            Bindings.Update();
         }
 
         /// <summary>

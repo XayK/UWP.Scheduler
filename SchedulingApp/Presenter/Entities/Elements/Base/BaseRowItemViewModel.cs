@@ -9,21 +9,50 @@ namespace SchedulingApp.Presenter.Entities.Elements.Base
     /// </summary>
     internal abstract class BaseRowItemViewModel : ObservableObject, IEntityViewModel<IRowItem>, IRowItemViewModel
     {
+        #region Private Fields
+
+        /// <summary>
+        /// Предоставляет или задает флаг задачи как выполненнной
+        /// </summary>
+        private bool _isChecked;
+
+        /// <summary>
+        /// Предоставляет или задает флаг возможности отслеживания прогресса строки в задаче
+        /// </summary>
+        private bool _isCheckEnabled;
+
+        /// <summary>
+        /// Предоставляет или задает текст описания строки задачи
+        /// </summary>
+        private string _text;
+
+        #endregion Private Fields
+
         #region Public Properties
 
         /// <summary> <inheritdoc/> </summary>
-        public bool IsChecked { get; set; }
+        public bool IsChecked 
+        {
+            get => _isChecked;
+            set => SetProperty(ref _isChecked, value);
+        }
 
         /// <summary> <inheritdoc/> </summary>
-        public bool IsCheckEnabled { get; set; }
+        public bool IsCheckEnabled
+        {
+            get => _isCheckEnabled;
+            set => SetProperty(ref _isCheckEnabled, value);
+        }
 
-        /// <summary>
-        /// Предоставляет модель данных <see cref="IRowItem"/>, используя представление
-        /// </summary>
+        /// <summary> <inheritdoc/> </summary>
         public abstract IRowItem Model { get; }
 
         /// <summary> <inheritdoc/> </summary>
-        public string Text { get; set; }
+        public string Text
+        {
+            get => _text;
+            set => SetProperty(ref _text, value);
+        }
 
         #endregion Public Properties
 
@@ -41,5 +70,6 @@ namespace SchedulingApp.Presenter.Entities.Elements.Base
         }
 
         #endregion Protected Constructors
+
     }
 }

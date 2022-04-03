@@ -18,6 +18,23 @@ namespace SchedulingApp.Presenter.Entities.Elements
         }
 
         /// <summary> <inheritdoc/> </summary>
-        public override IRowItem Model => throw new System.NotImplementedException();
+        public override IRowItem Model => GetModelData();
+
+
+        /// <summary>
+        /// Возврщает модель данных
+        /// </summary>
+        /// <returns>Возвращает <see cref="IRowItem"/></returns>
+        private IRowItem GetModelData()
+        {
+            IRowItem model = new RowItem()
+            {
+                IsCheckable = IsCheckEnabled,
+                IsChecked = IsChecked,
+                Text = Text
+            };
+
+            return model;
+        }
     }
 }

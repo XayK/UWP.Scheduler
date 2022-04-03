@@ -1,9 +1,11 @@
-﻿namespace SchedulingApp.Presenter.Entities.Abstraction
+﻿using SchedulingApp.Data.Models.Abstraction;
+
+namespace SchedulingApp.Presenter.Entities.Abstraction
 {
     /// <summary>
     /// Представляет интерфейс для ViewModel'и строки в задаче
     /// </summary>
-    internal interface IRowItemViewModel
+    public interface IRowItemViewModel
     {
         /// <summary>
         /// Предоставляет или задает наличие отметки прогресса у задача
@@ -19,5 +21,10 @@
         /// Предоставляет или задает текст описания
         /// </summary>
         public string Text { get; set; }
+
+        /// <summary>
+        /// Предоставляет модель данных <see cref="IRowItem"/>, используя представление
+        /// </summary>
+        public abstract IRowItem Model { get; }
     }
 }

@@ -2,8 +2,11 @@
 using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs;
+using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 
@@ -24,7 +27,38 @@ namespace SchedulingApp.Helper
         public async static Task<IMission> ShowMissionCreation()
         {
             ///TODO: переводы
-            MissionDialog dialog = new();
+            MissionDialog dialog = new("Создание");
+            var result = await dialog.ShowAsync();
+
+            if (result != ContentDialogResult.Primary)
+            {
+                return null;
+            }
+
+            return dialog.ModelData;
+        }
+
+        /// <summary>
+        /// Выполняет действия по запуску диалого окна правки задачи
+        /// </summary>
+        /// <param name="model">Данные модели</param>
+        /// <returns> 
+        /// Возвращает <see cref="IMission"/> если изменено успешно,
+        /// и <see langword="null"/> в случае отмены изменений
+        /// </returns>
+        public async static Task<IMission> EditMission(IMission model)
+        {
+            ///TODO: переводы
+            MissionDialog dialog = new("Правка")
+            {
+                MissionTitle = model.Title,
+                StartDate = model.StartDateTime.Date,
+                StartTime = model.StartDateTime.TimeOfDay,
+                EndDate = model.EndDateTime.Date,
+                EndTime = model.EndDateTime.TimeOfDay,
+                IsImportant = model.IsImportant
+            };
+
             var result = await dialog.ShowAsync();
 
             if (result != ContentDialogResult.Primary)
@@ -42,22 +76,14 @@ namespace SchedulingApp.Helper
         /// <returns> 
         /// Возвращает <see cref="IMission"/>
         /// </returns>
-        public async static Task<IMission> EditMission(IMission model)
+        public async static Task<ICollection<IRowItem>> EditMissionDescription(IMission model)
         {
-            ///TODO: переводы
-            MissionDialog dialog = new()
-            {
-                MissionTitle = model.Title,
-                StartDate = model.StartDateTime.Date,
-                StartTime = model.StartDateTime.TimeOfDay,
-                EndDate = model.EndDateTime.Date,
-                EndTime = model.EndDateTime.TimeOfDay,
-                IsImportant = model.IsImportant
-            };
+            MissionDescriptionDialog dialog = new();
 
             foreach (var item in model.Descriptions)
             {
-                dialog.Descriptions.Add(new RowItemViewModel(item as RowItem));
+                IRowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
+                dialog.Descriptions.Add(rowPresenter);
             }
 
             var result = await dialog.ShowAsync();

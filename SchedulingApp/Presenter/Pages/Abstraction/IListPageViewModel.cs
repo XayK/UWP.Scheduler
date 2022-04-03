@@ -12,19 +12,24 @@ namespace SchedulingApp.Presenter.Pages.Abstraction
         #region Public Properties
 
         /// <summary>
-        /// Предосталяет комманду создания миссии
+        /// Предосталяет комманду создания задачи
         /// </summary>
         public ICommand CreateCommand { get; }
 
         /// <summary>
-        /// Предосталяет комманду удаления выбранной миссии
+        /// Предосталяет комманду удаления выбранной задачи
         /// </summary>
         public ICommand DeleteCommand { get; }
 
         /// <summary>
-        /// Предосталяет комманду правки выбранной миссии
+        /// Предосталяет комманду правки выбранной задачи
         /// </summary>
         public ICommand EditCommand { get; }
+
+        /// <summary>
+        /// Предосталяет комманду работы с описанием выбранной задачи
+        /// </summary>
+        public ICommand ShowDescriptionsCommand { get; }
 
         /// <summary>
         /// Предоставляет коллекцию <see cref="IMissionViewModel"/>, задач для отображения

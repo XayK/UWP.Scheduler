@@ -16,9 +16,14 @@ namespace SchedulingApp.Presenter.Entities.Abstraction
         public string Title { get; set; }
 
         /// <summary>
+        /// Предоставляет или задает флаг задачи как важной
+        /// </summary>
+        public bool IsImportant { get; set; }
+
+        /// <summary>
         /// Предоставляет или задает контент, представляющий описание сущности
         /// </summary>
-        public ObservableCollection<IRowItem> Descriptions { get; }
+        public ObservableCollection<IRowItemViewModel> Descriptions { get; }
 
         /// <summary>
         /// Предоставляет или задает дату и время начала

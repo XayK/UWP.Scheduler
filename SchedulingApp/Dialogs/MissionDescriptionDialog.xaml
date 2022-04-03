@@ -1,0 +1,96 @@
+﻿<base:DialogBase
+    x:Class="SchedulingApp.Dialogs.MissionDescriptionDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="using:SchedulingApp.Dialogs.Base"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:elements="using:SchedulingApp.Controls.Elements"
+    xmlns:elementsPresenter="using:SchedulingApp.Presenter.Entities.Abstraction"
+    xmlns:local="using:SchedulingApp.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <StackPanel Spacing="30">
+
+        <!--  Ввод описания задачи  -->
+        <Grid MinHeight="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition MinWidth="200" />
+            </Grid.ColumnDefinitions>
+
+            <!--  Текст у ввода даты  -->
+            <TextBlock
+                Grid.Column="0"
+                Margin="0,5,0,0"
+                VerticalAlignment="Top"
+                Style="{StaticResource MissionTimeSetterDescriptionStyle}"
+                Text="Описание" />
+
+            <StackPanel Grid.Column="1" Spacing="5">
+
+
+                <!--  Включение возможности отметки прогресса в описании задачи  -->
+                <ToggleSwitch
+                    x:Name="ToggleSwitchButton"
+                    MinWidth="40"
+                    HorizontalAlignment="Center"
+                    IsOn="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}"
+                    OffContent="Off"
+                    OnContent="On"
+                    Toggled="DesciptionToggle_Switched" />
+
+                <!--  Добавление нового описания задачи  -->
+                <Button
+                    Width="50"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    Click="NewDescription_Click"
+                    CornerRadius="15">
+                    <SymbolIcon Symbol="Add" />
+                </Button>
+            </StackPanel>
+
+            <!--  Описание задачи (список задач по строкам)  -->
+            <ListView
+                Grid.Column="2"
+                ItemsSource="{x:Bind Descriptions, Mode=OneTime}"
+                ScrollViewer.HorizontalScrollMode="Disabled"
+                SelectedItem="{x:Bind SelectedDescription, Mode=TwoWay}"
+                SelectionChanged="Rows_SelectionChanged">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="elementsPresenter:IRowItemViewModel">
+                        <elements:RowItemControl />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+                <!--  Элементы для отображения дизайнером  -->
+                <d:ListViewItem>
+                    <elements:RowItemControl />
+                </d:ListViewItem>
+                <d:ListViewItem>
+                    <elements:RowItemControl />
+                </d:ListViewItem>
+            </ListView>
+        </Grid>
+
+        <!--  Кнопки сохранения или отмены диалога  -->
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal"
+            Spacing="20">
+            <Button Width="100" Click="Cancel_Click">
+                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Отменить" />
+            </Button>
+            <Button
+                Width="100"
+                Background="{ThemeResource SystemAccentColor}"
+                Click="Save_Click"
+                Foreground="{ThemeResource SystemAltHighColor}">
+                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Сохранить" />
+            </Button>
+        </StackPanel>
+    </StackPanel>
+</base:DialogBase>
