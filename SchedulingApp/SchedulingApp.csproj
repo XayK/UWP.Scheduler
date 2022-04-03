@@ -254,6 +254,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\SchedulingApp.CalendarVisualizer\SchedulingApp.CalendarVisualizer.csproj">
+      <Project>{f5d47f04-66f8-4cf5-adac-92c88e671127}</Project>
+      <Name>SchedulingApp.CalendarVisualizer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SchedulingApp.Data\SchedulingApp.Data.csproj">
       <Project>{3d82bbce-4873-41c5-9266-f695f3e5e70e}</Project>
       <Name>SchedulingApp.Data</Name>
