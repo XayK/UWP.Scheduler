@@ -37,6 +37,11 @@ namespace SchedulingApp.Presenter.Pages
         {
         }
 
+        protected override void LoadMissions()
+        {
+            //throw new NotImplementedException();
+        }
+
         #endregion Private Constructors
     }
 }

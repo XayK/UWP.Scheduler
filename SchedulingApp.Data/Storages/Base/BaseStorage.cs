@@ -1,6 +1,7 @@
 ﻿using SchedulingApp.Data.Context;
 using SchedulingApp.Data.Models.Abstraction;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SchedulingApp.Data.Storages.Base
 {
@@ -16,7 +17,7 @@ namespace SchedulingApp.Data.Storages.Base
         protected IEnumerable<T> GetAll<T>() where T : IIdentifier
         {
             using var db = new DatabaseContext();
-            return db.Database.GetCollection<T>().FindAll();
+            return db.Database.GetCollection<T>().FindAll().ToList();
         }
 
         /// <summary>

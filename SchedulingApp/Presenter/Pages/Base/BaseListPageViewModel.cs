@@ -3,6 +3,8 @@ using Microsoft.Toolkit.Mvvm.Input;
 using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
+using SchedulingApp.Data.Services;
+using SchedulingApp.Data.Storages;
 using SchedulingApp.Helper;
 using SchedulingApp.Presenter.Entities;
 using SchedulingApp.Presenter.Entities.Abstraction;
@@ -51,7 +53,7 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         public ICommand ShowDescriptionsCommand { get; }
 
-        #endregion Public Properties 
+        #endregion Public Properties
 
         #region Protected Constructors
 
@@ -66,31 +68,12 @@ namespace SchedulingApp.Presenter.Pages.Base
             ShowDescriptionsCommand = new RelayCommand(ShowDescriptions);
 
             Missions = new ObservableCollection<IMissionViewModel>();
-            Missions.CollectionChanged += Missions_CollectionChanged;
+            LoadMissions();
         }
 
         #endregion Protected Constructors
 
-        /// <summary>
-        /// Удаление экземпляра <see cref="BaseListPageViewModel"/>
-        /// </summary>
-        ~BaseListPageViewModel()
-        {
-            Missions.CollectionChanged -= Missions_CollectionChanged;
-        }
-
         #region Private Methods
-
-        /// <summary>
-        /// Обработка события изменения данных задач,
-        /// для обновления сведений в БД
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void Missions_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            ///TODO: добавить работу с БД
-        }
 
         /// <summary>
         /// Создание новой задачи
@@ -106,7 +89,10 @@ namespace SchedulingApp.Presenter.Pages.Base
 
             IMissionViewModel presenter = new MissionViewModel(model as Mission);
             Missions.Add(presenter);
-        }
+
+            MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
+            storage.Insert(presenter.Model as Mission);
+        } 
 
         /// <summary>
         /// Вызод удаления выбранной задачи
@@ -117,6 +103,9 @@ namespace SchedulingApp.Presenter.Pages.Base
             {
                 return;
             }
+                       
+            MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
+            storage.Remove(SelectedMission.Model.Id); 
 
             Missions.Remove(SelectedMission);
         }
@@ -143,7 +132,8 @@ namespace SchedulingApp.Presenter.Pages.Base
             SelectedMission.StartDateTime = model.StartDateTime;
             SelectedMission.EndDateTime = model.EndDateTime;
 
-            ///Обновить запись в БД?
+            MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
+            storage.Update(SelectedMission.Model as Mission);
         }
 
         /// <summary>
@@ -151,7 +141,7 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         private async void ShowDescriptions()
         {
-            if(SelectedMission == null)
+            if (SelectedMission == null)
             {
                 return;
             }
@@ -162,7 +152,7 @@ namespace SchedulingApp.Presenter.Pages.Base
             {
                 return;
             }
-            
+
             SelectedMission.Descriptions.Clear();
 
             foreach (IRowItem item in model)
@@ -170,8 +160,20 @@ namespace SchedulingApp.Presenter.Pages.Base
                 IRowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
                 SelectedMission.Descriptions.Add(rowPresenter);
             }
+
+            MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
+            storage.Update(SelectedMission.Model as Mission);
         }
 
         #endregion Private Methods
+
+        #region Protected Methods
+
+        /// <summary>
+        /// Осущестлвяет загрузку заданий
+        /// </summary>
+        protected abstract void LoadMissions();
+
+        #endregion Protected Methods
     }
 }

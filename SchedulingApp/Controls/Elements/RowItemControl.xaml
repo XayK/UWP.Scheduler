@@ -13,7 +13,7 @@
 
     <Grid>
         <Border
-            Margin="5"
+            Margin="1"
             BorderBrush="{StaticResource AppMainBorderBrush}"
             BorderThickness="0,0,0,1" />
         <StackPanel Padding="10,0" Orientation="Horizontal">

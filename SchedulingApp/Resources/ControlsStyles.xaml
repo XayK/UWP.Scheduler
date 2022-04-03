@@ -28,6 +28,7 @@
                                         <ControlTemplate TargetType="Button">
                                             <Grid
                                                 x:Name="ButtonLayoutGrid"
+                                                VerticalAlignment="Center"
                                                 Background="{ThemeResource TextControlButtonBackground}"
                                                 BorderBrush="{ThemeResource TextControlButtonBorderBrush}"
                                                 BorderThickness="{TemplateBinding BorderThickness}">
@@ -102,7 +103,7 @@
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
                             Margin="{ThemeResource TextBoxTopHeaderMargin}"
-                            VerticalAlignment="Top"
+                            VerticalAlignment="Center"
                             x:DeferLoadStrategy="Lazy"
                             Content="{TemplateBinding Header}"
                             ContentTemplate="{TemplateBinding HeaderTemplate}"
@@ -169,6 +170,7 @@
                             Grid.Row="2"
                             Grid.Column="0"
                             Grid.ColumnSpan="2"
+                            VerticalAlignment="Center"
                             x:Load="False"
                             AutomationProperties.AccessibilityView="Raw"
                             Content="{TemplateBinding Description}"
