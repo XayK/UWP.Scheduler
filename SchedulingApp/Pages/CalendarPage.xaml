@@ -6,9 +6,12 @@
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
+    xmlns:visualizer="using:SchedulingApp.CalendarVisualizer.Visualizers"
     d:DataContext="{d:DesignInstance viewmodel:ICalendarPageViewModel}"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid />
+    <Grid Padding="20">
+        <visualizer:VisualizerControl />
+    </Grid>
 </Page>
