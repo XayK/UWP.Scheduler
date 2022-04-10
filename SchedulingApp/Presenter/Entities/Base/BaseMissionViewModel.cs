@@ -52,7 +52,7 @@ namespace SchedulingApp.Presenter.Entities.Base
         public ObservableCollection<IRowItemViewModel> Descriptions { get; }
 
         /// <summary> <inheritdoc/> </summary>
-        public DateTime EndDateTime 
+        public DateTime EndDateTime
         {
             get => _endDateTime;
             set => SetProperty(ref _endDateTime, value);
@@ -94,7 +94,7 @@ namespace SchedulingApp.Presenter.Entities.Base
         /// <param name="mission">Модель данных</param>
         protected BaseMissionViewModel(IMission mission)
         {
-            if(string.IsNullOrEmpty(mission.Id))
+            if (string.IsNullOrEmpty(mission.Id))
             {
                 _id = Guid.NewGuid().ToString();
             }
@@ -108,7 +108,7 @@ namespace SchedulingApp.Presenter.Entities.Base
             Title = mission.Title;
 
             Descriptions = new ObservableCollection<IRowItemViewModel>();
-            foreach(var rowItem in mission.Descriptions)
+            foreach (var rowItem in mission.Descriptions)
             {
                 IRowItemViewModel rowPresenter = new RowItemViewModel(rowItem as RowItem);
                 Descriptions.Add(rowPresenter);

@@ -15,7 +15,7 @@ namespace SchedulingApp.Converters
         {
             DateTime dateTime = (DateTime)value;
             DateTimeOffset dateTimeOffset = new(dateTime);
-            
+
             return dateTimeOffset;
         }
 

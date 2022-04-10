@@ -89,7 +89,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <param name="e">Параметр</param>
         private void CanvasManipulation_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            foreach(var control in _canvasManipulation.Children)
+            foreach (var control in _canvasManipulation.Children)
             {
                 MissionTimelineControl missionControl = control as MissionTimelineControl;
                 UpdateMissionPosition(missionControl);
@@ -193,7 +193,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             SetVisualizeControl(out MissionTimelineControl visualizeControl);
             SetStartVisualizationTime(out DateTime startVisualize);
             SetEndVisualizationTime(out DateTime endVisualize);
-        
+
             visualizeControl.StartDate = startVisualize;
             visualizeControl.EndDate = endVisualize;
 
@@ -229,7 +229,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     startVisualize = (DateTime)startVisualizeDate;
                 }
             }
-                       
+
 
             void SetEndVisualizationTime(out DateTime endVisualize)
             {

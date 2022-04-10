@@ -3,7 +3,6 @@ using SchedulingApp.Presenter.Pages;
 using SchedulingApp.Services.Abstraction;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 

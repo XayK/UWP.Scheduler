@@ -1,16 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using SchedulingApp.Data.Models;
-using SchedulingApp.Data.Models.Abstraction;
+﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
-using SchedulingApp.Helper;
 using SchedulingApp.Presenter.Entities;
-using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Presenter.Pages.Base;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace SchedulingApp.Presenter.Pages
@@ -51,15 +46,15 @@ namespace SchedulingApp.Presenter.Pages
         /// <summary> <inheritdoc/> </summary>
         protected override void LoadMissions()
         {
-            if(Missions.Any())
+            if (Missions.Any())
             {
                 return;
             }
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             IEnumerable<Mission> missions = storage.GetAll();
-            
-            foreach(var mission in missions)
+
+            foreach (var mission in missions)
             {
                 Missions.Add(new MissionViewModel(mission));
             }

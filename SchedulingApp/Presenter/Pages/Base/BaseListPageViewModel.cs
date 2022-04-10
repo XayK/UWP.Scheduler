@@ -11,7 +11,6 @@ using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Windows.Input;
 
 namespace SchedulingApp.Presenter.Pages.Base
@@ -92,7 +91,7 @@ namespace SchedulingApp.Presenter.Pages.Base
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             storage.Insert(presenter.Model as Mission);
-        } 
+        }
 
         /// <summary>
         /// Вызод удаления выбранной задачи
@@ -103,9 +102,9 @@ namespace SchedulingApp.Presenter.Pages.Base
             {
                 return;
             }
-                       
+
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Remove(SelectedMission.Model.Id); 
+            storage.Remove(SelectedMission.Model.Id);
 
             Missions.Remove(SelectedMission);
         }

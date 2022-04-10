@@ -1,6 +1,5 @@
 ﻿using SchedulingApp.Data.Models.Abstraction;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SchedulingApp.Presenter.Entities.Abstraction

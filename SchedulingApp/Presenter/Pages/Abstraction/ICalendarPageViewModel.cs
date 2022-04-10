@@ -7,11 +7,11 @@ namespace SchedulingApp.Presenter.Pages.Abstraction
     /// Интерфейс, реализующий представление данных задач на странице с помощью календаря
     /// </summary>
     internal interface ICalendarPageViewModel
-    { 
+    {
         /// <summary>
         /// Представляет или задает день месяца
         /// </summary>
-        public DateTime DateMonth { get;}
+        public DateTime DateMonth { get; }
 
         /// <summary>
         /// Представляет день конца месяца

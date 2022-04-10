@@ -1,5 +1,4 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using SchedulingApp.Data.Models;
+﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
 using SchedulingApp.Presenter.Entities;

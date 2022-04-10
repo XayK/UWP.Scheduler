@@ -26,7 +26,7 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет или задает выбранную строку в описании
         /// </summary>
-        public IRowItemViewModel SelectedDescription  { get; set; }
+        public IRowItemViewModel SelectedDescription { get; set; }
 
         /// <summary>
         /// Предоставляет данные модели
@@ -107,7 +107,7 @@ namespace SchedulingApp.Dialogs
         {
             IEnumerable<IRowItem> decriptions = Descriptions.Select(x => x.Model);
 
-            return new Collection<IRowItem> (decriptions.ToList());
+            return new Collection<IRowItem>(decriptions.ToList());
         }
 
         /// <summary>

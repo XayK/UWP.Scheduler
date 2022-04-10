@@ -31,7 +31,7 @@ namespace SchedulingApp.Presenter.Entities.Elements.Base
         #region Public Properties
 
         /// <summary> <inheritdoc/> </summary>
-        public bool IsChecked 
+        public bool IsChecked
         {
             get => _isChecked;
             set => SetProperty(ref _isChecked, value);

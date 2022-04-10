@@ -3,7 +3,6 @@ using Microsoft.Toolkit.Uwp.Helpers;
 using SchedulingApp.CalendarVisualizer.Helpers;
 using System;
 using System.Numerics;
-using Windows.UI.Xaml;
 
 namespace SchedulingApp.CalendarVisualizer.Visualizers
 {
@@ -99,7 +98,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             int weekCounter = 0;
 
-            for(DateTime dayMonth = StartMonth; dayMonth <= EndMonth; dayMonth += TimeSpan.FromDays(1))
+            for (DateTime dayMonth = StartMonth; dayMonth <= EndMonth; dayMonth += TimeSpan.FromDays(1))
             {
                 int dayInWeek = DayOfWeekHelper.GrigorianDayOfWeek(dayMonth);
 
@@ -118,9 +117,9 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                 args.DrawingSession.DrawLine(leftBottomPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
                 args.DrawingSession.DrawLine(rightTopPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
 
-                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(),leftTopPoint, ColorHelper.ToColor(LINE_COLOR));
+                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(), leftTopPoint, ColorHelper.ToColor(LINE_COLOR));
 
-                if(dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
+                if (dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
                 {
                     weekCounter++;
                 }

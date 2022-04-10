@@ -34,7 +34,7 @@ namespace SchedulingApp.Presenter.Pages.Abstraction
         /// <summary>
         /// Предоставляет коллекцию <see cref="IMissionViewModel"/>, задач для отображения
         /// </summary>
-        public ObservableCollection<IMissionViewModel> Missions  { get; }
+        public ObservableCollection<IMissionViewModel> Missions { get; }
 
         /// <summary>
         /// Предоставляет или задает текущий выбранный элемент <see cref="IMissionViewModel"/>

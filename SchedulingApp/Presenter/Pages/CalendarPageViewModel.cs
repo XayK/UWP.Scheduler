@@ -162,7 +162,7 @@ namespace SchedulingApp.Presenter.Pages
         /// </summary>
         public void LoadMonth()
         {
-            if(Missions.Any())
+            if (Missions.Any())
             {
                 Missions.Clear();
             }

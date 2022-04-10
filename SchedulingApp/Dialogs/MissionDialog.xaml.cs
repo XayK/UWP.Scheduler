@@ -1,13 +1,8 @@
 ﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Abstraction;
-using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
-using SchedulingApp.Presenter.Entities.Abstraction;
-using SchedulingApp.Presenter.Entities.Elements;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Windows.UI.Xaml;
 
 namespace SchedulingApp.Dialogs
@@ -27,7 +22,7 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет заголовок окна диалога
         /// </summary>
-        public string TitleDialog { get;}
+        public string TitleDialog { get; }
 
         /// <summary>
         /// Представляет или задает временя начала задачи
