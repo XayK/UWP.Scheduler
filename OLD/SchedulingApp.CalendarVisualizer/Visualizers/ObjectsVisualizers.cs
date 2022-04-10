@@ -47,6 +47,22 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         #region Private Methods
 
         /// <summary>
+        /// Загрузка задачи на визулизацию холста
+        /// </summary>
+        private void InsertMission()
+        {
+
+        }
+
+        /// <summary>
+        /// Удаления задачи с холста
+        /// </summary>
+        private void RemoveMission()
+        {
+
+        }
+
+        /// <summary>
         /// Обработка события изменения размеров холста
         /// </summary>
         /// <param name="sender">Инициатор события</param>

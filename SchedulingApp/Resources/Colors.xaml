@@ -5,6 +5,10 @@
     <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5" />
     <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}" />
 
+    <!--  Ресурсы визуализатора календаря  -->
+    <SolidColorBrush x:Key="MissonDefaultColor" Color="SteelBlue" />
+    <SolidColorBrush x:Key="MissonBackground" Color="White" />
+
     <!--  Остальные ресурсы  -->
 
 </ResourceDictionary>

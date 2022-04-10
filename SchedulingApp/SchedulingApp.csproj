@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SchedulingApp</RootNamespace>
     <AssemblyName>SchedulingApp</AssemblyName>
-    <DefaultLanguage>ru-RU</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.19041.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -127,11 +127,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml.cs">
+      <DependentUpon>MissionTimelineControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CalendarVisualizer\Helpers\DayOfWeekHelper.cs" />
+    <Compile Include="CalendarVisualizer\Visualizers\BackgroundDrawer.cs" />
+    <Compile Include="CalendarVisualizer\Visualizers\DrawData.cs" />
+    <Compile Include="CalendarVisualizer\Visualizers\ObjectsVisualizers.cs" />
+    <Compile Include="CalendarVisualizer\Visualizers\VisualizerControl.xaml.cs">
+      <DependentUpon>VisualizerControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Elements\RowItemControl.xaml.cs">
       <DependentUpon>RowItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MissionCalendarControl.xaml.cs">
-      <DependentUpon>MissionCalendarControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\MissionThumbControl.xaml.cs">
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
@@ -193,11 +200,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Controls\Elements\RowItemControl.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\MissionCalendarControl.xaml">
+    <Page Include="CalendarVisualizer\Visualizers\VisualizerControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Elements\RowItemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -245,19 +256,23 @@
     <PackageReference Include="Microsoft.Toolkit.Mvvm">
       <Version>7.1.2</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.Toolkit.Uwp.UI">
+      <Version>7.1.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.7.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
       <Version>2.0.1</Version>
     </PackageReference>
+    <PackageReference Include="Win2D.uwp">
+      <Version>1.26.0</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\SchedulingApp.CalendarVisualizer\SchedulingApp.CalendarVisualizer.csproj">
-      <Project>{f5d47f04-66f8-4cf5-adac-92c88e671127}</Project>
-      <Name>SchedulingApp.CalendarVisualizer</Name>
-    </ProjectReference>
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\SchedulingApp.Data\SchedulingApp.Data.csproj">
       <Project>{3d82bbce-4873-41c5-9266-f695f3e5e70e}</Project>
       <Name>SchedulingApp.Data</Name>
