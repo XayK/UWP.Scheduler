@@ -27,11 +27,6 @@ namespace SchedulingApp.Presenter.Pages.Abstraction
         public ICommand EditCommand { get; }
 
         /// <summary>
-        /// Предосталяет комманду работы с описанием выбранной задачи
-        /// </summary>
-        public ICommand ShowDescriptionsCommand { get; }
-
-        /// <summary>
         /// Предоставляет коллекцию <see cref="IMissionViewModel"/>, задач для отображения
         /// </summary>
         public ObservableCollection<IMissionViewModel> Missions { get; }
@@ -41,6 +36,20 @@ namespace SchedulingApp.Presenter.Pages.Abstraction
         /// </summary>
         public IMissionViewModel SelectedMission { get; set; }
 
+        /// <summary>
+        /// Предосталяет комманду работы с описанием выбранной задачи
+        /// </summary>
+        public ICommand ShowDescriptionsCommand { get; }
+
         #endregion Public Properties
+
+        #region Public Methods
+
+        /// <summary>
+        /// Осуществляет перезагрузку всех данных
+        /// </summary>
+        public void ReloadMissions();
+
+        #endregion Public Methods
     }
 }

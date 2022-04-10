@@ -178,6 +178,5 @@ namespace SchedulingApp.Presenter.Pages
         }
 
         #endregion Public Methods
-
     }
 }

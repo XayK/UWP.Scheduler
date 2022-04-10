@@ -15,14 +15,14 @@ namespace SchedulingApp.Presenter.Pages
     /// </summary>
     public class ListPageViewModel : BaseListPageViewModel, IListPageViewModel
     {
-        #region Private Properties
+        #region Private Fields
 
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="ListPageViewModel"/>
         /// </summary>
         private static readonly Lazy<ListPageViewModel> _instance = new Lazy<ListPageViewModel>(() => new ListPageViewModel());
 
-        #endregion Private Properties
+        #endregion Private Fields
 
         #region Public Properties
 
@@ -40,8 +40,9 @@ namespace SchedulingApp.Presenter.Pages
         /// </summary>
         private ListPageViewModel() : base()
         { }
-
         #endregion Private Constructors
+
+        #region Protected Methods
 
         /// <summary> <inheritdoc/> </summary>
         protected override void LoadMissions()
@@ -59,5 +60,20 @@ namespace SchedulingApp.Presenter.Pages
                 Missions.Add(new MissionViewModel(mission));
             }
         }
+
+        #endregion Protected Methods
+
+        #region Public Methods
+
+        /// <summary>
+        /// Осуществляет перезагрузку всех данных
+        /// </summary>
+        public void ReloadMissions()
+        {
+            Missions.Clear();
+            LoadMissions();
+        }
+
+        #endregion Public Methods
     }
 }

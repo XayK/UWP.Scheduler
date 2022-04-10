@@ -1,5 +1,6 @@
 ﻿using SchedulingApp.Pages;
 using SchedulingApp.Presenter.Pages;
+using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Services.Abstraction;
 using System;
 using System.Collections.Generic;
@@ -94,6 +95,23 @@ namespace SchedulingApp.Services
         private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
         {
             _contentFrame.DataContext = _viewModels[CurrentPage];
+            IListPageViewModel dataContext;
+
+            switch (CurrentPage)
+            {
+                case PagesEnum.ListPageType:
+                    dataContext = _contentFrame.DataContext as ListPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+                case PagesEnum.ImportantPageType:
+                    dataContext = _contentFrame.DataContext as ImportantPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+                case PagesEnum.TodayPageType:
+                    dataContext = _contentFrame.DataContext as TodayPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+            }
         }
 
         #endregion Private Methods
