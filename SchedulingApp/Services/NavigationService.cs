@@ -14,6 +14,7 @@ namespace SchedulingApp.Services
     /// </summary>
     internal class NavigationService : INavigationService
     {
+
         #region Private Fields
 
         /// <summary>
@@ -34,21 +35,12 @@ namespace SchedulingApp.Services
 
         #endregion Private Fields
 
-        #region Private Properties
-
-        /// <summary>
-        /// Предоставляет тип текущей страницы
-        /// </summary>
-        private Type _currentPageType => _contentFrame.Content.GetType();
-
-        #endregion Private Properties
-
         #region Public Properties
 
         /// <summary>
         /// Предоставляет текущую страницу
         /// </summary>
-        public PagesEnum CurrentPage => _pages.First(page => page.Value == _currentPageType).Key;
+        public PagesEnum CurrentPage { get; private set; }
 
         #endregion Public Properties
 
@@ -79,6 +71,10 @@ namespace SchedulingApp.Services
             };
         }
 
+        #endregion Public Constructors
+
+        #region Private Destructors
+
         /// <summary>
         /// Удаляет экземпляр <see cref="NavigationService"/>
         /// </summary>
@@ -87,7 +83,21 @@ namespace SchedulingApp.Services
             _contentFrame.Navigated -= ContentFrame_Navigated;
         }
 
-        #endregion Public Constructors
+        #endregion Private Destructors
+
+        #region Private Methods
+
+        /// <summary>
+        /// Обработка события перехода на страницу, целью подгрузки ViewModel страницы
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="e">Параметр</param>
+        private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            _contentFrame.DataContext = _viewModels[CurrentPage];
+        }
+
+        #endregion Private Methods
 
         #region Public Methods
 
@@ -118,20 +128,11 @@ namespace SchedulingApp.Services
         /// <param name="parameter">Параметр, передаваемый при навигации</param>
         public void NavigateTo(PagesEnum page, object parameter)
         {
+            CurrentPage = page;
             Type neededType = _pages[page];
             _contentFrame.Navigate(neededType, parameter);
         }
 
         #endregion Public Methods
-
-        /// <summary>
-        /// Обработка события перехода на страницу, целью подгрузки ViewModel страницы
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
-        {
-            _contentFrame.DataContext = _viewModels[CurrentPage];
-        }
     }
 }

@@ -6,9 +6,45 @@
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
+    xmlns:visualizer="using:SchedulingApp.CalendarVisualizer.Visualizers"
     d:DataContext="{d:DesignInstance viewmodel:ICalendarPageViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="{ThemeResource AppMainBackground}"
     mc:Ignorable="d">
 
-    <Grid />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!--  Шапка с элементами управления датами  -->
+        <Grid Grid.Row="0">
+
+            <!--  Меню переключения дат  -->
+            <StackPanel
+                Margin="10"
+                Padding="10,0"
+                HorizontalAlignment="Center"
+                BorderBrush="{StaticResource AppMainBorderBrush}"
+                BorderThickness="2"
+                CornerRadius="10"
+                Orientation="Horizontal"
+                Spacing="10">
+
+                <Button Command="{Binding PreviousMonthCommand}">
+                    <SymbolIcon Symbol="Back" />
+                </Button>
+                <TextBlock
+                    d:Text="24.02.2022"
+                    Style="{StaticResource DateTextStyle}"
+                    Text="{Binding DateMonth, Mode=OneWay}" />
+                <Button Command="{Binding NextMonthCommand}">
+                    <SymbolIcon Symbol="Forward" />
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!--  Таймлайн календаря  -->
+        <visualizer:VisualizerControl Grid.Row="1" DateMonth="{Binding DateMonth, Mode=TwoWay}" />
+    </Grid>
 </Page>

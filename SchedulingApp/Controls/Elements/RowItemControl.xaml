@@ -25,12 +25,13 @@
                 Visibility="{Binding IsCheckEnabled, Mode=OneWay}" />
 
             <!--  Поле для ввода текста  -->
-            <TextBox Style="{StaticResource TextBoxCustomStyle}"
+            <TextBox
                 VerticalAlignment="Center"
                 d:Text="Loren ipsum "
                 Background="Transparent"
                 BorderBrush="Transparent"
                 BorderThickness="0"
+                Style="{StaticResource TextBoxCustomStyle}"
                 Text="{Binding Text, Mode=TwoWay}" />
         </StackPanel>
     </Grid>

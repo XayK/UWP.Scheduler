@@ -1,9 +1,6 @@
 ﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Abstraction;
-using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Presenter.Entities.Base;
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
