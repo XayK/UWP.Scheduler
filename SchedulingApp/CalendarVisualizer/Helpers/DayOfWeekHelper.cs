@@ -7,6 +7,65 @@ namespace SchedulingApp.CalendarVisualizer.Helpers
     /// </summary>
     internal static class DayOfWeekHelper
     {
+
+        #region Private Fields
+
+        /// <summary>
+        /// Представляет контанту числа дней в неделе
+        /// </summary>
+        private const int DAYS_IN_WEEK = 7;
+
+        /// <summary>
+        /// Представляет контанту дня конца недели
+        /// </summary>
+        private const DayOfWeek END_OF_WEEK = DayOfWeek.Sunday;
+
+        #endregion Private Fields
+
+        #region Public Properties
+
+        /// <summary>
+        /// Представляет число дней в неделе
+        /// </summary>
+        public static int DaysInWeek => DAYS_IN_WEEK;
+
+        /// <summary>
+        /// Представляет день конца недели
+        /// </summary>
+        public static DayOfWeek EndOfWeek => END_OF_WEEK;
+
+        #endregion Public Properties
+
+        #region Public Methods
+
+        /// <summary>
+        /// Вычисляет кол-во прошедших недель в месяце у дата
+        /// </summary>
+        /// <param name="startVisualize">Дата типа <see cref="DateTime"/></param>
+        public static int GetWeekPassedOnMonth(DateTime startVisualize)
+        {
+            DateTime startMonth = new(startVisualize.Year,startVisualize.Month, 1);
+            int weeksPassed = 0;
+
+            for (DateTime day = startMonth; day < startVisualize; day += TimeSpan.FromDays(1))
+            {
+                if (day.DayOfWeek == EndOfWeek)
+                {
+                    weeksPassed++;
+                }
+            }
+
+            return weeksPassed;
+        }
+
+        /// <summary>
+        /// Вычисляет кол-во дней, оставшихся до конца неедли
+        /// </summary>
+        /// <param name="dateTime">Дата, для вычисления</param>
+        /// <returns>Возвращает время в <see cref="TimeSpan"/></returns>
+        public static TimeSpan LeftToEndOfWeek(DateTime dateTime) => TimeSpan.FromDays
+                    (DaysInWeek - GrigorianDayOfWeek(dateTime));
+
         /// <summary>
         /// Получение номера дня недели в григорианском представлении
         /// </summary>
@@ -34,5 +93,8 @@ namespace SchedulingApp.CalendarVisualizer.Helpers
                     throw new ArgumentOutOfRangeException(nameof(date.DayOfWeek));
             }
         }
+
+        #endregion Public Methods
+
     }
 }

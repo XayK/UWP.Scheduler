@@ -16,24 +16,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
     /// </summary>
     internal class ObjectsVisualizers
     {
-
         #region Private Fields
 
         /// <summary>
         /// Представляет холст, оперирующий визуализацией элементов
         /// </summary>
         private Canvas _canvasManipulation;
-
-        /// <summary>
-        /// Представляет или задает дату конца месяца
-        /// </summary>
-
-        private DateTime _endMonth;
-
-        /// <summary>
-        /// Представляет или задает дату начала месяца
-        /// </summary>
-        private DateTime _startMonth;
 
         #endregion Private Fields
 
@@ -65,7 +53,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет ширирну элемента на холсте
         /// </summary>
-        private double WidthStep => Width / DrawData.DaysInWeek;
+        private double WidthStep => Width / DayOfWeekHelper.DaysInWeek;
 
         #endregion Private Properties
 
@@ -94,7 +82,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <param name="e">Параметр</param>
         private void CanvasManipulation_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-
+            foreach(var control in _canvasManipulation.Children)
+            {
+                MissionTimelineControl missionControl = control as MissionTimelineControl;
+                UpdateMissionPosition(missionControl);
+            }
         }
 
         /// <summary>
@@ -189,22 +181,13 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             }
 
             SetVisualizeControl(out MissionTimelineControl visualizeControl);
-
             SetStartVisualizationTime(out DateTime startVisualize);
-            int startDayOfWeek = DayOfWeekHelper.GrigorianDayOfWeek(startVisualize);
-            int weeksPassed = SetWeekPassed(startVisualize);           
-
-            double left = WidthStep * startDayOfWeek;
-            double top = HeightStep * weeksPassed;
-
-            Canvas.SetLeft(visualizeControl, left);
-            Canvas.SetTop(visualizeControl, top);
-
             SetEndVisualizationTime(out DateTime endVisualize);
-            double hourLength = WidthStep / DrawData.HoursInDay;
+        
+            visualizeControl.StartDate = startVisualize;
+            visualizeControl.EndDate = endVisualize;
 
-            visualizeControl.Width = (endVisualize - startVisualize).TotalHours * hourLength;
-            visualizeControl.Height = HeightStep;
+            UpdateMissionPosition(visualizeControl);
 
             // #region SetPosition Functions
 
@@ -236,28 +219,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     startVisualize = (DateTime)startVisualizeDate;
                 }
             }
-
-            int SetWeekPassed(DateTime startVisualize)
-            {
-                int weeksPassed = 0;
-
-                for (DateTime day = StartMonth; day< startVisualize; day+= TimeSpan.FromDays(1))
-                {
-                    if (day.DayOfWeek == DrawData.EndOfWeek)
-                    {
-                        weeksPassed++;
-                    }
-                }
-
-                return weeksPassed;
-            }
+                       
 
             void SetEndVisualizationTime(out DateTime endVisualize)
             {
                 endVisualize = presenter.EndDateTime;
-                DateTime endOfCurrentWeek = startVisualize.Date + TimeSpan.FromDays
-                    (DrawData.DaysInWeek - DayOfWeekHelper.GrigorianDayOfWeek(startVisualize));
-                //endOfCurrentWeek += TimeSpan.FromDays(1);
+                DateTime endOfCurrentWeek = startVisualize.Date + DayOfWeekHelper.LeftToEndOfWeek(startVisualize);
 
                 if (endVisualize > endOfCurrentWeek)
                 {
@@ -267,6 +234,27 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             }
 
             // #endregion SetPosition Functions
+        }
+
+        /// <summary>
+        /// Обновление позиции контрола
+        /// </summary>
+        /// <param name="control">Контрол задачи</param>
+        private void UpdateMissionPosition(MissionTimelineControl control)
+        {
+            int startDayOfWeek = DayOfWeekHelper.GrigorianDayOfWeek(control.StartDate);
+            int weeksPassed = DayOfWeekHelper.GetWeekPassedOnMonth(control.StartDate);
+
+            double left = WidthStep * startDayOfWeek;
+            double top = HeightStep * weeksPassed;
+
+            Canvas.SetLeft(control, left);
+            Canvas.SetTop(control, top);
+
+            double hourLength = WidthStep / DrawData.HoursInDay;
+
+            control.Width = (control.EndDate - control.StartDate).TotalHours * hourLength;
+            control.Height = HeightStep;
         }
 
         #endregion Private Methods

@@ -59,7 +59,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет ширирну элемента на холсте
         /// </summary>
-        private double WidthStep => Width / DrawData.DaysInWeek;
+        private double WidthStep => Width / DayOfWeekHelper.DaysInWeek;
 
         #endregion Private Properties
 
@@ -73,7 +73,6 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         {
             _canvasBackground = canvasBackground;
 
-            _canvasBackground.SizeChanged += CanvasBackground_SizeChanged;
             _canvasBackground.Draw += CanvasBackground_Draw;
         }
 
@@ -114,21 +113,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
                 args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(),leftTopPoint, ColorHelper.ToColor(LINE_COLOR));
 
-                if(dayMonth.DayOfWeek == DrawData.EndOfWeek)
+                if(dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
                 {
                     weekCounter++;
                 }
             }
         }     
-
-        /// <summary>
-        /// Обработка события изменения размеров холста
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void CanvasBackground_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-        }
 
         #endregion Private Methods
 

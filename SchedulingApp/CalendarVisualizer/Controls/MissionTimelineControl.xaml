@@ -19,27 +19,28 @@
             CornerRadius="10" />
 
         <!--  Описание задачи  -->
-        <StackPanel
-            Padding="20"
+        <Viewbox
+            Margin="10"
             HorizontalAlignment="Left"
-            VerticalAlignment="Center"
-            Spacing="5">
+            VerticalAlignment="Center">
+            <StackPanel Spacing="5">
 
-            <!--  Заголовок  -->
-            <TextBlock
-                d:Text="Title"
-                Style="{StaticResource MissionTextStyle}"
-                Text="{Binding Title}" />
+                <!--  Заголовок  -->
+                <TextBlock
+                    d:Text="Title"
+                    Style="{StaticResource MissionTextStyle}"
+                    Text="{Binding Title}" />
 
-            <!--  Даты  -->
-            <TextBlock
-                d:Text="Start - 01.01.1999"
-                Style="{StaticResource MissionTextStyle}"
-                Text="{Binding StartDateTime}" />
-            <TextBlock
-                d:Text="End - 01.02.1999"
-                Style="{StaticResource MissionTextStyle}"
-                Text="{Binding EndDateTime}" />
-        </StackPanel>
+                <!--  Даты  -->
+                <TextBlock
+                    d:Text="Start - 01.01.1999"
+                    Style="{StaticResource MissionTextStyle}"
+                    Text="{Binding StartDateTime}" />
+                <TextBlock
+                    d:Text="End - 01.02.1999"
+                    Style="{StaticResource MissionTextStyle}"
+                    Text="{Binding EndDateTime}" />
+            </StackPanel>
+        </Viewbox>
     </Grid>
 </UserControl>
