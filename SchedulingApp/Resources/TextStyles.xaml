@@ -61,4 +61,16 @@
         <Setter Property="Foreground" Value="#3d3d3d" />
     </Style>
 
+    <!--  Стиль отображения даты в календаре  -->
+    <Style x:Key="DateTextStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="22" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+        <Setter Property="Foreground" Value="#3d3d3d" />
+    </Style>
+
 </ResourceDictionary>

@@ -15,19 +15,23 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         #region Private Fields
 
         /// <summary>
-        /// Представляет контанту ширины линий сетки
-        /// </summary>
-        private const int STROKE_GRID = 4;
-
-        /// <summary>
         /// Представляет константу отрисовки цвета линий разграничения дня
         /// </summary>
         private const string LINE_COLOR = "#BB7070";
 
         /// <summary>
+        /// Представляет контанту ширины линий сетки
+        /// </summary>
+        private const int STROKE_GRID = 4;
+        /// <summary>
         /// Представляет контрол холста, визуализующий фон элементов расписания
         /// </summary>
         private readonly CanvasControl _canvasBackground;
+
+        /// <summary>
+        /// Представляет данные о датах, необходмые для отрисовки таймлайна
+        /// </summary>
+        private readonly DrawData _drawData;
 
         #endregion Private Fields
 
@@ -36,7 +40,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет или задает дату конца месяца
         /// </summary>
-        private DateTime EndMonth => DrawData.EndMonth;
+        private DateTime EndMonth => _drawData.EndMonth;
 
         /// <summary>
         /// Представляет высоту холста
@@ -46,12 +50,13 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет высоту элемента на холсте
         /// </summary>
-        private double HeightStep => Height / DrawData.WeeksInMonth;
+        private double HeightStep => Height / _drawData.WeeksInMonth;
 
         /// <summary>
         /// Представляет или задает дату начала месяца
         /// </summary>
-        private DateTime StartMonth => DrawData.StartMonth;
+        private DateTime StartMonth => _drawData.StartMonth;
+
         /// <summary>
         /// Представляет ширину холста
         /// </summary>
@@ -69,9 +74,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Инициализирует экземпляр <see cref="BackgroundDrawer"/>
         /// </summary>
         /// <param name="canvasBackground">Контрол отрисовки фона календяря</param>
-        public BackgroundDrawer(CanvasControl canvasBackground)
+        /// <param name="drawData">Данные о датах для отрисовки</param>
+        public BackgroundDrawer(CanvasControl canvasBackground, DrawData drawData)
         {
             _canvasBackground = canvasBackground;
+            _drawData = drawData;
 
             _canvasBackground.Draw += CanvasBackground_Draw;
         }
@@ -118,9 +125,20 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     weekCounter++;
                 }
             }
-        }     
+        }
 
         #endregion Private Methods
 
+        #region Public Methods
+
+        /// <summary>
+        /// Вызов форсированной переотрисовки фона
+        /// </summary>
+        public void ForceRedraw()
+        {
+            _canvasBackground.Invalidate();
+        }
+
+        #endregion Public Methods
     }
 }

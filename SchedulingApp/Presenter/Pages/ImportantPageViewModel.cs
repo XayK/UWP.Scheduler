@@ -1,6 +1,12 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
+using SchedulingApp.Data.Models;
+using SchedulingApp.Data.Services;
+using SchedulingApp.Data.Storages;
+using SchedulingApp.Presenter.Entities;
 using SchedulingApp.Presenter.Pages.Base;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SchedulingApp.Presenter.Pages
 {
@@ -34,12 +40,24 @@ namespace SchedulingApp.Presenter.Pages
         /// Инициализирует экземпляр <see cref="ImportantPageViewModel"/>
         /// </summary>
         private ImportantPageViewModel() : base()
-        {
-        }
+        { }
 
         protected override void LoadMissions()
         {
-            //throw new NotImplementedException();
+            ///TODO: проверить
+            if (Missions.Any())
+            {
+                return;
+            }
+
+            MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
+            IEnumerable<Mission> missions = storage.GetAll().Where
+                (mission => mission.EndDateTime >= DateTime.Now && mission.StartDateTime <= DateTime.Now);
+
+            foreach (var mission in missions)
+            {
+                Missions.Add(new MissionViewModel(mission));
+            }
         }
 
         #endregion Private Constructors

@@ -11,6 +11,8 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
     /// </summary>
     public sealed partial class VisualizerControl : UserControl
     {
+        #region Private Fields
+
         /// <summary>
         /// Представляет сервис, отрисовки заднего фона
         /// </summary>
@@ -22,18 +24,67 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         private readonly ObjectsVisualizers _objectsVisualizers;
 
         /// <summary>
+        /// Представляет объект для данных о датах
+        /// </summary>
+        private readonly DrawData _drawData;
+
+        #endregion Private Fields
+
+        #region Public Fields
+
+        /// <summary>
+        /// Представляет свойство зависимоти, даты месяца в таймлайне
+        /// </summary>
+        public static readonly DependencyProperty DateMonthProperty
+                            = DependencyProperty.Register(nameof(DateMonth),
+                                          typeof(DateTime),
+                                          typeof(VisualizerControl),
+                                          new PropertyMetadata(DateTime.Now, DateMonthPropertyChanged));
+
+        /// <summary>
+        /// Обработка события изменения свойства даты месяца
+        /// </summary>
+        /// <param name="d">Объект зависиомти</param>
+        /// <param name="e">Параметр</param>
+        private static void DateMonthPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            VisualizerControl control = d as VisualizerControl;
+            control._drawData.SetDate(control.DateMonth);
+            control._backgroundDrawer.ForceRedraw();
+        }
+
+        #endregion Public Fields
+
+        #region Public Properties
+
+        /// <summary>
+        /// Представляет или заадет дату месяца в таймлайне
+        /// </summary>
+        public DateTime DateMonth
+        {
+            get { return (DateTime)GetValue(DateMonthProperty); }
+            set { SetValue(DateMonthProperty, value); }
+        }
+
+        #endregion Public Properties
+
+        #region Public Constructors
+
+        /// <summary>
         /// Инициализирует экземпляр <see cref="VisualizerControl"/>
         /// </summary>
         public VisualizerControl()
         {
             this.InitializeComponent();
 
-            DrawData.StartMonth = new DateTime(2022, 4, 1);
-            DrawData.EndMonth = new DateTime(2022, 4, 30);
-
-            _backgroundDrawer = new BackgroundDrawer(CanvasBackground);
-            _objectsVisualizers = new ObjectsVisualizers(CanvasManipulation);
+            _drawData = new(DateMonth);
+            _backgroundDrawer = new BackgroundDrawer(CanvasBackground, _drawData);
+            _objectsVisualizers = new ObjectsVisualizers(CanvasManipulation, _drawData);
         }
+
+        #endregion Public Constructors
+
+        #region Private Methods
 
         /// <summary>
         /// Обработка события загрузки контрола
@@ -44,5 +95,8 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         {
             CalendarPageViewModel.Instance.LoadMonth();
         }
+
+        #endregion Private Methods
+
     }
 }

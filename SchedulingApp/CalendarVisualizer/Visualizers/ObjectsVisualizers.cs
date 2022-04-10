@@ -21,7 +21,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет холст, оперирующий визуализацией элементов
         /// </summary>
-        private Canvas _canvasManipulation;
+        private readonly Canvas _canvasManipulation;
+
+        /// <summary>
+        /// Предоставляет данные для отрисовки
+        /// </summary>
+        private readonly DrawData _drawData;
 
         #endregion Private Fields
 
@@ -30,7 +35,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет или задает дату конца месяца
         /// </summary>
-        private DateTime EndMonth => DrawData.EndMonth;
+        private DateTime EndMonth => _drawData.EndMonth;
 
         /// <summary>
         /// Представляет высоту холста
@@ -40,12 +45,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет высоту элемента на холсте
         /// </summary>
-        private double HeightStep => Height / DrawData.WeeksInMonth;
+        private double HeightStep => Height / _drawData.WeeksInMonth;
 
         /// <summary>
         /// Представляет или задает дату начала месяца
         /// </summary>
-        private DateTime StartMonth => DrawData.StartMonth;
+        private DateTime StartMonth => _drawData.StartMonth;
         /// <summary>
         /// Представляет ширину холста
         /// </summary>
@@ -63,9 +68,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Инициализирует экземпляр <see cref="ObjectsVisualizers"/>
         /// </summary>
         /// <param name="canvasManipulation">Контрол, для визуализиции элементов календаря</param>
-        public ObjectsVisualizers(Canvas canvasManipulation)
+        /// <param name="drawData">Данные о датах для отрисовки</param>
+        public ObjectsVisualizers(Canvas canvasManipulation, DrawData drawData)
         {
             _canvasManipulation = canvasManipulation;
+            _drawData = drawData;
 
             _canvasManipulation.SizeChanged += CanvasManipulation_SizeChanged;
             CalendarPageViewModel.Instance.Missions.CollectionChanged += Missions_CollectionChanged;
@@ -140,6 +147,9 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     {
                         RemoveMissionFromCanvas(item);
                     }
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    _canvasManipulation.Children.Clear();
                     break;
             }
         }
@@ -251,7 +261,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             Canvas.SetLeft(control, left);
             Canvas.SetTop(control, top);
 
-            double hourLength = WidthStep / DrawData.HoursInDay;
+            double hourLength = WidthStep / _drawData.HoursInDay;
 
             control.Width = (control.EndDate - control.StartDate).TotalHours * hourLength;
             control.Height = HeightStep;
