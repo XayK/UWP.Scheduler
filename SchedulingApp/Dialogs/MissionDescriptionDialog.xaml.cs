@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 
 namespace SchedulingApp.Dialogs
 {
@@ -57,6 +58,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
         {
+            ///TODO: исправить работу
             if (SelectedDescription == null)
             {
                 return;
@@ -116,6 +118,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Rows_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ToggleSwitchButton.IsOn = SelectedDescription.IsCheckEnabled;
             Bindings.Update();
         }
 

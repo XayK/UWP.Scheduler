@@ -30,15 +30,14 @@
 
             <StackPanel Grid.Column="1" Spacing="5">
 
-
                 <!--  Включение возможности отметки прогресса в описании задачи  -->
                 <ToggleSwitch
                     x:Name="ToggleSwitchButton"
                     MinWidth="40"
                     HorizontalAlignment="Center"
-                    IsOn="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}"
-                    OffContent="Off"
-                    OnContent="On"
+                    IsOn="False"
+                    OffContent="Выкл"
+                    OnContent="Вкл"
                     Toggled="DesciptionToggle_Switched" />
 
                 <!--  Добавление нового описания задачи  -->
