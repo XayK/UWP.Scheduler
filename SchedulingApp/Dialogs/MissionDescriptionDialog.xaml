@@ -5,7 +5,7 @@
     xmlns:base="using:SchedulingApp.Dialogs.Base"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:elements="using:SchedulingApp.Controls.Elements"
-    xmlns:elementsPresenter="using:SchedulingApp.Presenter.Entities.Abstraction"
+    xmlns:elementsPresenter="using:SchedulingApp.Presenter.Entities.Elements"
     xmlns:local="using:SchedulingApp.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -60,7 +60,7 @@
                 SelectedItem="{x:Bind SelectedDescription, Mode=TwoWay}"
                 SelectionChanged="Rows_SelectionChanged">
                 <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="elementsPresenter:IRowItemViewModel">
+                    <DataTemplate x:DataType="elementsPresenter:RowItemViewModel">
                         <elements:RowItemControl />
                     </DataTemplate>
                 </ListView.ItemTemplate>

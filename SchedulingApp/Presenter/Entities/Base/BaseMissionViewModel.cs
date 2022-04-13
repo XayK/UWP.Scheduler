@@ -1,5 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
-using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
@@ -11,7 +11,7 @@ namespace SchedulingApp.Presenter.Entities.Base
     /// <summary>
     /// Базовый класс, для представления данных о задаче
     /// </summary>
-    internal abstract class BaseMissionViewModel : ObservableObject, IEntityViewModel<IMission>, IMissionViewModel
+    internal abstract class BaseMissionViewModel : ObservableObject, IEntityViewModel<Mission>
     {
         #region Private Fields
 
@@ -49,7 +49,7 @@ namespace SchedulingApp.Presenter.Entities.Base
         #region Public Properties
 
         /// <summary> <inheritdoc/> </summary>
-        public ObservableCollection<IRowItemViewModel> Descriptions { get; }
+        public ObservableCollection<RowItemViewModel> Descriptions { get; }
 
         /// <summary> <inheritdoc/> </summary>
         public DateTime EndDateTime
@@ -66,9 +66,9 @@ namespace SchedulingApp.Presenter.Entities.Base
         }
 
         /// <summary>
-        /// Предоставляет модель данных <see cref="IMission"/> представления
+        /// Предоставляет модель данных <see cref="Mission"/> представления
         /// </summary>
-        public abstract IMission Model { get; }
+        public abstract Mission Model { get; }
 
         /// <summary> <inheritdoc/> </summary>
         public DateTime StartDateTime
@@ -92,7 +92,7 @@ namespace SchedulingApp.Presenter.Entities.Base
         /// Инициализирует экземпляр <see cref="BaseMissionViewModel"/>
         /// </summary>
         /// <param name="mission">Модель данных</param>
-        protected BaseMissionViewModel(IMission mission)
+        protected BaseMissionViewModel(Mission mission)
         {
             if (string.IsNullOrEmpty(mission.Id))
             {
@@ -107,10 +107,10 @@ namespace SchedulingApp.Presenter.Entities.Base
             EndDateTime = mission.EndDateTime;
             Title = mission.Title;
 
-            Descriptions = new ObservableCollection<IRowItemViewModel>();
+            Descriptions = new ObservableCollection<RowItemViewModel>();
             foreach (var rowItem in mission.Descriptions)
             {
-                IRowItemViewModel rowPresenter = new RowItemViewModel(rowItem as RowItem);
+                var rowPresenter = new RowItemViewModel(rowItem as RowItem);
                 Descriptions.Add(rowPresenter);
             }
         }

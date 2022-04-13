@@ -7,7 +7,7 @@ namespace SchedulingApp.Presenter.Entities.Elements
     /// <summary>
     /// Представляет данные, для отображения строки описания задачи
     /// </summary>
-    internal class RowItemViewModel : BaseRowItemViewModel
+    public class RowItemViewModel : BaseRowItemViewModel
     {
         /// <summary>
         /// Инициализирует экземпляр <see cref="RowItemViewModel"/>

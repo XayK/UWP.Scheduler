@@ -1,7 +1,6 @@
 ﻿using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
-using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +20,12 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет описание действий в задаче
         /// </summary>
-        public ObservableCollection<IRowItemViewModel> Descriptions { get; }
+        public ObservableCollection<RowItemViewModel> Descriptions { get; }
 
         /// <summary>
         /// Предоставляет или задает выбранную строку в описании
         /// </summary>
-        public IRowItemViewModel SelectedDescription { get; set; }
+        public RowItemViewModel SelectedDescription { get; set; }
 
         /// <summary>
         /// Предоставляет данные модели
@@ -44,7 +43,7 @@ namespace SchedulingApp.Dialogs
         {
             this.InitializeComponent();
 
-            Descriptions = new ObservableCollection<IRowItemViewModel>();
+            Descriptions = new ObservableCollection<RowItemViewModel>();
         }
 
         #endregion Public Constructors
@@ -102,7 +101,7 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет данные из диалога в виде модели данных
         /// </summary>
-        /// <returns>Модель данных <see cref="IMission"/></returns>
+        /// <returns>Модель данных <see cref="Mission"/></returns>
         private ICollection<IRowItem> GetModelDate()
         {
             IEnumerable<IRowItem> decriptions = Descriptions.Select(x => x.Model);

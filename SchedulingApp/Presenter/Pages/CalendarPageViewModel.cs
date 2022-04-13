@@ -4,7 +4,6 @@ using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
 using SchedulingApp.Presenter.Entities;
-using SchedulingApp.Presenter.Pages.Abstraction;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,7 +15,7 @@ namespace SchedulingApp.Presenter.Pages
     /// <summary>
     /// Представляет данные для страницы календаря
     /// </summary>
-    public class CalendarPageViewModel : ObservableObject, ICalendarPageViewModel
+    public class CalendarPageViewModel : ObservableObject
     {
         #region Private Fields
 

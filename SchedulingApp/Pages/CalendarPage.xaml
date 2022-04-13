@@ -5,9 +5,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
+    xmlns:viewmodel="using:SchedulingApp.Presenter.Pages"
     xmlns:visualizer="using:SchedulingApp.CalendarVisualizer.Visualizers"
-    d:DataContext="{d:DesignInstance viewmodel:ICalendarPageViewModel}"
+    d:DataContext="{d:DesignInstance viewmodel:CalendarPageViewModel}"
     Background="{ThemeResource AppMainBackground}"
     mc:Ignorable="d">
 

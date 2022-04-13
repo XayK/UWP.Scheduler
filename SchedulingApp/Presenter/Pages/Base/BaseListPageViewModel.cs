@@ -79,7 +79,7 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         private async void CreateMission()
         {
-            IMission model = await DialogExecutor.ShowMissionCreation();
+            Mission model = await DialogExecutor.ShowMissionCreation();
 
             if (model == null)
             {
@@ -119,7 +119,7 @@ namespace SchedulingApp.Presenter.Pages.Base
                 return;
             }
 
-            IMission model = await DialogExecutor.EditMission(SelectedMission.Model);
+            Mission model = await DialogExecutor.EditMission(SelectedMission.Model);
 
             if (model == null)
             {
@@ -156,7 +156,7 @@ namespace SchedulingApp.Presenter.Pages.Base
 
             foreach (IRowItem item in model)
             {
-                IRowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
+                RowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
                 SelectedMission.Descriptions.Add(rowPresenter);
             }
 

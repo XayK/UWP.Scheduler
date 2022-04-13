@@ -164,12 +164,10 @@
     </Compile>
     <Compile Include="Presenter\Entities\Abstraction\IEntityViewModel.cs" />
     <Compile Include="Presenter\Entities\Abstraction\IMissionVIewModel.cs" />
-    <Compile Include="Presenter\Entities\Abstraction\IRowItemVIewModel.cs" />
     <Compile Include="Presenter\Entities\Base\BaseMissionViewModel.cs" />
     <Compile Include="Presenter\Entities\MissionViewModel.cs" />
     <Compile Include="Presenter\Entities\Elements\Base\BaseRowItemViewModel.cs" />
     <Compile Include="Presenter\Entities\Elements\RowItemViewModel.cs" />
-    <Compile Include="Presenter\Pages\Abstraction\ICalendarPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Abstraction\IListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\CalendarPageViewModel.cs" />

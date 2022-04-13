@@ -9,7 +9,7 @@ namespace SchedulingApp.Data.Models
     /// Преедсталвяет модель данных сущности - Задача.
     /// Является основным элементом данных 
     /// </summary>
-    public class Mission : IMission
+    public class Mission : IIdentifier
     {
         [Key]
         /// <summary>

@@ -50,9 +50,9 @@ namespace SchedulingApp.Dialogs
         public string MissionTitle { get; set; }
 
         /// <summary>
-        /// Предоставляет данные в ввиде модели <see cref="IMission"/>
+        /// Предоставляет данные в ввиде модели <see cref="Mission"/>
         /// </summary>
-        public IMission ModelData => GetModelDate();
+        public Mission ModelData => GetModelDate();
 
         #endregion Public Properties
 
@@ -82,10 +82,10 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет данные из диалога в виде модели данных
         /// </summary>
-        /// <returns>Модель данных <see cref="IMission"/></returns>
-        private IMission GetModelDate()
+        /// <returns>Модель данных <see cref="Mission"/></returns>
+        private Mission GetModelDate()
         {
-            IMission model = new Mission();
+            Mission model = new Mission();
 
             model.Title = MissionTitle;
             model.StartDateTime = StartDate + StartTime;
