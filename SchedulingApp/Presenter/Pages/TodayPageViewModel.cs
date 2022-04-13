@@ -43,13 +43,11 @@ namespace SchedulingApp.Presenter.Pages
         { }
         #endregion Private Constructors
 
-
         #region Protected Methods
 
         /// <summary> <inheritdoc/> </summary>
         protected override void LoadMissions()
         {
-            ///TODO: проверить
             if (Missions.Any())
             {
                 return;
@@ -57,7 +55,10 @@ namespace SchedulingApp.Presenter.Pages
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             IEnumerable<Mission> missions = storage.GetAll().Where
-                (mission => mission.IsImportant);
+                (mission => 
+                mission.StartDateTime.Date <= DateTime.Today 
+                &&
+                mission.EndDateTime.Date >= DateTime.Today);
 
             foreach (var mission in missions)
             {

@@ -106,6 +106,7 @@ namespace SchedulingApp.Presenter.Entities.Base
             StartDateTime = mission.StartDateTime;
             EndDateTime = mission.EndDateTime;
             Title = mission.Title;
+            IsImportant = mission.IsImportant;
 
             Descriptions = new ObservableCollection<RowItemViewModel>();
             foreach (var rowItem in mission.Descriptions)

@@ -132,7 +132,7 @@ namespace SchedulingApp.Presenter.Pages.Base
             SelectedMission.EndDateTime = model.EndDateTime;
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Update(SelectedMission.Model as Mission);
+            storage.Update(SelectedMission.Model);
         }
 
         /// <summary>
