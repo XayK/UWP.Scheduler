@@ -28,20 +28,28 @@
                 Orientation="Horizontal"
                 Spacing="10">
 
-                <Button Command="{Binding PreviousMonthCommand}">
+                <Button
+                    Width="50"
+                    Height="50"
+                    Command="{Binding PreviousMonthCommand}"
+                    CornerRadius="25">
                     <SymbolIcon Symbol="Back" />
                 </Button>
                 <Border
-                    Padding="10,0"
+                    Padding="20,0"
                     BorderBrush="{StaticResource AppMainBorderBrush}"
                     BorderThickness="2"
                     CornerRadius="10">
                     <TextBlock
                         d:Text="24.02.2022"
                         Style="{StaticResource DateTextStyle}"
-                        Text="{Binding DateMonth, Mode=OneWay}" />
+                        Text="{Binding DateMonth, Converter={StaticResource MonthOnlyConverter}, Mode=OneWay}" />
                 </Border>
-                <Button Command="{Binding NextMonthCommand}">
+                <Button
+                    Width="50"
+                    Height="50"
+                    Command="{Binding NextMonthCommand}"
+                    CornerRadius="25">
                     <SymbolIcon Symbol="Forward" />
                 </Button>
             </StackPanel>

@@ -8,9 +8,9 @@
     <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5" />
     <SolidColorBrush x:Key="AppPageBackground" Color="#FFF" />
     <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}" />
-    <LinearGradientBrush x:Key="AppGradientBrush" StartPoint="1,0" EndPoint="1,1">
-        <GradientStop Offset="0.75" Color="{ThemeResource SystemAccentColorLight3}" />
-        <GradientStop Offset="1" Color="#00FFFFFF" />
+    <LinearGradientBrush x:Key="AppGradientBrush" StartPoint="0.4,0.2" EndPoint="0.45,0.8">
+        <GradientStop Offset="0" Color="{ThemeResource SystemAccentColorLight1}" />
+        <GradientStop Offset="0.6" Color="{ThemeResource SystemAccentColorDark1}" />
     </LinearGradientBrush>
 
     <!--  Ресурсы визуализатора календаря  -->
@@ -21,6 +21,10 @@
     <LinearGradientBrush x:Key="AddButtonBackground" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#11924e" />
         <GradientStop Offset="1" Color="#20be6b" />
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="RemoveButtonBackground" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#e52030" />
+        <GradientStop Offset="1" Color="#ec3543" />
     </LinearGradientBrush>
     <SolidColorBrush x:Key="AltForeground" Color="#FFF" />
 

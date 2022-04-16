@@ -5,6 +5,7 @@ using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
+using SchedulingApp.Dialogs;
 using SchedulingApp.Helper;
 using SchedulingApp.Presenter.Entities;
 using SchedulingApp.Presenter.Entities.Abstraction;
@@ -96,9 +97,14 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// <summary>
         /// Вызод удаления выбранной задачи
         /// </summary>
-        private void DeleteSelectedMission()
+        private async void DeleteSelectedMission()
         {
             if (SelectedMission == null)
+            {
+                return;
+            }
+
+            if(await DialogExecutor.ConfirmationDialog() == false)
             {
                 return;
             }

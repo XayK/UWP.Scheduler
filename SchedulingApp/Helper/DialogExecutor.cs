@@ -94,5 +94,22 @@ namespace SchedulingApp.Helper
 
             return dialog.ModelData;
         }
+
+        /// <summary>
+        /// Делает запрос на диалог подтверждения
+        /// </summary>
+        /// <returns>Возвращает <see langword="true"/>, если получится успешно</returns>
+        public static async Task<bool> ConfirmationDialog()
+        {
+            ConfirmationDialog dialog = new ConfirmationDialog();
+            var result = await dialog.ShowAsync();
+
+            if (result != ContentDialogResult.Primary)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

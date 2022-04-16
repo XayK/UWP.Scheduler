@@ -19,6 +19,7 @@
                 <ResourceDictionary>
                     <converters:DateFormatConverter x:Key="DateFormatConverter" />
                     <converters:DateOnlyConverter x:Key="DateOnlyConverter" />
+                    <converters:MonthOnlyConverter x:Key="MonthOnlyConverter" />
                 </ResourceDictionary>
 
             </controls:XamlControlsResources.MergedDictionaries>

@@ -8,7 +8,6 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:tui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
     xmlns:viewmodelEntities="using:SchedulingApp.Presenter.Entities.Abstraction"
     d:DataContext="{d:DesignInstance viewmodel:IListPageViewModel}"
@@ -27,8 +26,7 @@
             Height="70"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            tui:Effects.Shadow="{StaticResource MenuShadow}"
-            Fill="{ThemeResource SystemAccentColorLight3}"
+            Fill="{ThemeResource AppGradientBrush}"
             RadiusX="20"
             RadiusY="20" />
         <StackPanel
@@ -47,11 +45,16 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Background="{StaticResource RemoveButtonBackground}"
                 BorderThickness="0"
                 Command="{Binding DeleteCommand}"
                 CornerRadius="20"
                 Style="{StaticResource ButtonCustomStyle}">
-                <SymbolIcon Symbol="Delete" />
+
+                <FontIcon
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Foreground="{StaticResource AltForeground}"
+                    Glyph="&#xF78A;" />
             </Button>
 
             <!--  Кнопка правки  -->
@@ -59,11 +62,15 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Background="{ThemeResource SystemAccentColorDark2}"
                 BorderThickness="0"
                 Command="{Binding EditCommand}"
                 CornerRadius="20"
                 Style="{StaticResource ButtonCustomStyle}">
-                <SymbolIcon Symbol="Edit" />
+                <FontIcon
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Foreground="{StaticResource AltForeground}"
+                    Glyph="&#xE70F;" />
             </Button>
 
             <!--  Кнопка работы с описанием  -->
@@ -71,17 +78,22 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Background="{ThemeResource SystemAccentColorDark2}"
                 BorderThickness="0"
                 Command="{Binding ShowDescriptionsCommand}"
                 CornerRadius="20"
                 Style="{StaticResource ButtonCustomStyle}">
-                <SymbolIcon Symbol="AllApps" />
+                <FontIcon
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Foreground="{StaticResource AltForeground}"
+                    Glyph="&#xE762;" />
             </Button>
 
             <!--  Кнопка добавить  -->
             <Button
                 Width="45"
                 Height="45"
+                Padding="0"
                 HorizontalAlignment="Center"
                 Background="{StaticResource AddButtonBackground}"
                 BorderThickness="0"
@@ -91,7 +103,7 @@
                 <FontIcon
                     FontFamily="{StaticResource SymbolThemeFontFamily}"
                     Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xE710;" />
+                    Glyph="&#xF8AA;" />
             </Button>
         </StackPanel>
 
@@ -120,6 +132,16 @@
                     </core:EventTriggerBehavior.Actions>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
+
+            <d:GridViewItem>
+                <controls:MissionThumbControl />
+            </d:GridViewItem>
+            <d:GridViewItem>
+                <controls:MissionThumbControl />
+            </d:GridViewItem>
+            <d:GridViewItem>
+                <controls:MissionThumbControl />
+            </d:GridViewItem>
         </GridView>
 
 

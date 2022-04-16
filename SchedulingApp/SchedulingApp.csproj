@@ -144,6 +144,7 @@
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\DateFormatConverter.cs" />
+    <Compile Include="Converters\MonthOnlyConverter.cs" />
     <Compile Include="Converters\DateOnlyConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
     <Compile Include="Dialogs\ConfirmationDialog.xaml.cs">

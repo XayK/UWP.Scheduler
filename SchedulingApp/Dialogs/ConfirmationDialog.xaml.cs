@@ -33,7 +33,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void ButtonNo_Click(object sender, RoutedEventArgs e)
         {
-            base.SetPrimaryResult();
+            base.SetNoneResult();
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void ButtonYes_Click(object sender, RoutedEventArgs e)
         {
-            base.SetNoneResult();
+            base.SetPrimaryResult();
         }
     }
 }
