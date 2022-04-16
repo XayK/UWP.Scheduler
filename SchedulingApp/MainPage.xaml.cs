@@ -47,7 +47,7 @@ namespace SchedulingApp
             {
                 _navigation.NavigateTo((PagesEnum)pageId);
             }
-            else if(tag == "Settings")
+            else if (tag == "Settings")
             {
                 SettingsDialog settingsDialog = new SettingsDialog();
                 await settingsDialog.ShowAsync();

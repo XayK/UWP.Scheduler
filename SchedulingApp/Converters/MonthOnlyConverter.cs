@@ -15,7 +15,7 @@ namespace SchedulingApp.Converters
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             DateTime dateTime = (DateTime)value;
-            string output = string.Format("{0} - {1}",dateTime.ToString("MMMM", CultureInfo.CurrentCulture), dateTime.ToString("yyyy", CultureInfo.CurrentCulture));
+            string output = string.Format("{0} - {1}", dateTime.ToString("MMMM", CultureInfo.CurrentCulture), dateTime.ToString("yyyy", CultureInfo.CurrentCulture));
 
             return output;
         }

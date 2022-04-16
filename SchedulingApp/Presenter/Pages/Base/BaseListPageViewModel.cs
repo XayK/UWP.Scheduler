@@ -5,7 +5,6 @@ using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
-using SchedulingApp.Dialogs;
 using SchedulingApp.Helper;
 using SchedulingApp.Presenter.Entities;
 using SchedulingApp.Presenter.Entities.Abstraction;
@@ -104,7 +103,7 @@ namespace SchedulingApp.Presenter.Pages.Base
                 return;
             }
 
-            if(await DialogExecutor.ConfirmationDialog() == false)
+            if (await DialogExecutor.ConfirmationDialog() == false)
             {
                 return;
             }

@@ -1,5 +1,4 @@
 ﻿using SchedulingApp.Dialogs.Base;
-using System;
 using Windows.ApplicationModel;
 using Windows.UI.Xaml;
 

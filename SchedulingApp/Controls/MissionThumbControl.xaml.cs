@@ -1,8 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Helpers;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 
 namespace SchedulingApp.Controls
 {
@@ -32,7 +29,7 @@ namespace SchedulingApp.Controls
         /// <param name="e">Параметр</param>
         private void Control_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            BorderBackground.Opacity=0.3;
+            BorderBackground.Opacity = 0.3;
         }
 
         /// <summary>

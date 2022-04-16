@@ -1,5 +1,5 @@
-﻿using SchedulingApp.Controls;
-using SchedulingApp.CalendarVisualizer.Helpers;
+﻿using SchedulingApp.CalendarVisualizer.Helpers;
+using SchedulingApp.Controls;
 using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Pages;
 using System;
@@ -153,7 +153,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     break;
             }
         }
-        
+
         /// <summary>
         /// Удаления задачи с холста
         /// </summary>
@@ -283,7 +283,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             foreach (MissionTimelineControl mission in missions)
             {
-                if(mission == currentMission)
+                if (mission == currentMission)
                 {
                     continue;
                 }
@@ -292,7 +292,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                 bool isStartDateIntersects = mission.StartDate <= currentMission.EndDate && mission.StartDate >= currentMission.StartDate;
                 bool isPresenterInMission = mission.StartDate <= currentMission.StartDate && mission.EndDate >= currentMission.EndDate;
 
-                if(isEndDateIntersects || isStartDateIntersects || isPresenterInMission)
+                if (isEndDateIntersects || isStartDateIntersects || isPresenterInMission)
                 {
                     counter++;
                     mission.NeigthboorsCounter++;

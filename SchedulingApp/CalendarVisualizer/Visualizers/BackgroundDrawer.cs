@@ -30,7 +30,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет константу отрисовки цвета линий разграничения дня
         /// </summary>
-        private readonly static string ACCENT_COLOR = GetAccentTransparencyColor();
+        private static readonly string ACCENT_COLOR = GetAccentTransparencyColor();
 
         /// <summary>
         /// Представляет контрол холста, визуализующий фон элементов расписания

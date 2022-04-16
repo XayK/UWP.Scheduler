@@ -55,8 +55,8 @@ namespace SchedulingApp.Presenter.Pages
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             IEnumerable<Mission> missions = storage.GetAll().Where
-                (mission => 
-                mission.StartDateTime.Date <= DateTime.Today 
+                (mission =>
+                mission.StartDateTime.Date <= DateTime.Today
                 &&
                 mission.EndDateTime.Date >= DateTime.Today);
 
