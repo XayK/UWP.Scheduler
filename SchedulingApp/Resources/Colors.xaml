@@ -18,7 +18,7 @@
 
     <!--  Ресурсы визуализатора календаря  -->
     <SolidColorBrush x:Key="MissonDefaultColor" Color="SteelBlue" />
-    <SolidColorBrush x:Key="MissonBackground" Color="White" />
+    <SolidColorBrush x:Key="MissonBackground" Color="#CCFFFFFF" />
 
     <!--  Ресурсы для кнопок  -->
     <LinearGradientBrush x:Key="AddButtonBackground" Opacity="0.8" StartPoint="0,0" EndPoint="1,1">

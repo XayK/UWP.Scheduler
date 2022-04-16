@@ -42,7 +42,9 @@
                     BorderThickness="2"
                     CornerRadius="10">
                     <TextBlock
+                        MinWidth="180"
                         d:Text="24.02.2022"
+                        HorizontalAlignment="Center"
                         Style="{StaticResource DateTextStyle}"
                         Text="{Binding DateMonth, Converter={StaticResource MonthOnlyConverter}, Mode=OneWay}" />
                 </Border>

@@ -11,11 +11,15 @@
     d:DesignWidth="200"
     mc:Ignorable="d">
 
-    <Grid CornerRadius="10" Margin="0,2">
+    <Grid Margin="0,2" CornerRadius="10">
         <Border
             Background="{StaticResource MissonBackground}"
             BorderBrush="{ThemeResource SystemAccentColorDark1}"
-            BorderThickness="5"
+            BorderThickness="0,5,0,0"
+            CornerRadius="0" />
+        <Border
+            BorderBrush="{StaticResource AppMainBorderBrush}"
+            BorderThickness="1,0,1,1"
             CornerRadius="10" />
 
         <!--  Описание задачи  -->
