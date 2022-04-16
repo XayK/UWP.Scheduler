@@ -146,6 +146,9 @@
     <Compile Include="Converters\DateFormatConverter.cs" />
     <Compile Include="Converters\DateOnlyConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
+    <Compile Include="Dialogs\ConfirmationDialog.xaml.cs">
+      <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MissionDescriptionDialog.xaml.cs">
       <DependentUpon>MissionDescriptionDialog.xaml</DependentUpon>
     </Compile>
@@ -212,6 +215,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MissionThumbControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\ConfirmationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

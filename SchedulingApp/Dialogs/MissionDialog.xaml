@@ -26,16 +26,19 @@
             VerticalAlignment="Bottom"
             Orientation="Horizontal"
             Spacing="20">
-            <Button Width="100" Click="Cancel_Click">
-                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Отменить" />
-            </Button>
+            <Button
+                Width="100"
+                Click="Cancel_Click"
+                Content="Отменить"
+                Style="{StaticResource ButtonCustomStyle}" />
+
             <Button
                 Width="100"
                 Background="{ThemeResource SystemAccentColor}"
                 Click="Save_Click"
-                Foreground="{ThemeResource SystemAltHighColor}">
-                <TextBlock Style="{StaticResource ButtonTextStyle}" Text="Сохранить" />
-            </Button>
+                Content="Сохранить"
+                Foreground="{ThemeResource SystemAltHighColor}"
+                Style="{StaticResource ButtonCustomStyle}" />
         </StackPanel>
 
         <!--  Запоняемые данные в диалоге  -->

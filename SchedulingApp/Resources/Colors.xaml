@@ -1,8 +1,12 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:tui="using:Microsoft.Toolkit.Uwp.UI">
 
     <!--  Основные ресурсы приложения  -->
     <SolidColorBrush x:Key="AppMainBorderBrush" Color="#A9A9A9" />
     <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5" />
+    <SolidColorBrush x:Key="AppPageBackground" Color="#FFF" />
     <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}" />
     <LinearGradientBrush x:Key="AppGradientBrush" StartPoint="1,0" EndPoint="1,1">
         <GradientStop Offset="0.75" Color="{ThemeResource SystemAccentColorLight3}" />
@@ -13,7 +17,14 @@
     <SolidColorBrush x:Key="MissonDefaultColor" Color="SteelBlue" />
     <SolidColorBrush x:Key="MissonBackground" Color="White" />
 
+    <!--  Ресурсы для кнопок  -->
+    <LinearGradientBrush x:Key="AddButtonBackground" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#11924e" />
+        <GradientStop Offset="1" Color="#20be6b" />
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="AltForeground" Color="#FFF" />
 
     <!--  Остальные ресурсы  -->
+    <tui:AttachedDropShadow x:Key="MenuShadow" Color="Black" />
 
 </ResourceDictionary>

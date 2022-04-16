@@ -103,7 +103,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            base.SetNoteResult();
+            base.SetNoneResult();
         }
 
         /// <summary>

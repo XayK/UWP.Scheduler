@@ -3,6 +3,10 @@ using Microsoft.Toolkit.Uwp.Helpers;
 using SchedulingApp.CalendarVisualizer.Helpers;
 using System;
 using System.Numerics;
+using Windows.Foundation;
+using Windows.UI.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Input;
 
 namespace SchedulingApp.CalendarVisualizer.Visualizers
 {
@@ -16,12 +20,22 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет константу отрисовки цвета линий разграничения дня
         /// </summary>
-        private const string LINE_COLOR = "#BB7070";
+        private readonly static string LINE_COLOR = Application.Current.Resources["SystemAccentColor"].ToString();
+
+        /// <summary>
+        /// Представляет константу отрисовки цвета недели, при нахождения на ней урока
+        /// </summary>
+        private const string POINTER_HOVER = "#30909090";
+
+        /// <summary>
+        /// Представляет константу цвета текста
+        /// </summary>
+        private const string TEXT_FOREGROUND = "#3D3D3D";
 
         /// <summary>
         /// Представляет контанту ширины линий сетки
         /// </summary>
-        private const int STROKE_GRID = 4;
+        private const int STROKE_GRID = 3;
         /// <summary>
         /// Представляет контрол холста, визуализующий фон элементов расписания
         /// </summary>
@@ -31,6 +45,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Представляет данные о датах, необходмые для отрисовки таймлайна
         /// </summary>
         private readonly DrawData _drawData;
+
+        /// <summary>
+        /// Представляет или задает последную отмеченную неделю.
+        /// При -1 не отображается
+        /// </summary>
+        private int _selectedWeek;
 
         #endregion Private Fields
 
@@ -78,13 +98,27 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         {
             _canvasBackground = canvasBackground;
             _drawData = drawData;
+            _selectedWeek = -1;
 
             _canvasBackground.Draw += CanvasBackground_Draw;
+            _canvasBackground.PointerMoved += CanvasBackground_PointerMoved;
         }
 
         #endregion Public Constructors
 
         #region Private Methods
+
+        /// <summary>
+        /// Обработка перемещния указателя на холсте
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="args">Параметр</param>
+        private void CanvasBackground_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            PointerPoint pointer = e.GetCurrentPoint(_canvasBackground);
+            _selectedWeek = (int)(pointer.Position.Y / HeightStep);
+            _canvasBackground.Invalidate();
+        }
 
         /// <summary>
         /// Отрисовка фона
@@ -98,6 +132,16 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             int weekCounter = 0;
 
+            if(_selectedWeek > -1)
+            {
+                float x = 0;
+                float width = (float)Width;
+                float y = (float)(_selectedWeek * HeightStep);
+                float height = (float)HeightStep;
+
+                args.DrawingSession.FillRectangle(x,y,width,height, ColorHelper.ToColor(POINTER_HOVER));
+            }
+
             for (DateTime dayMonth = StartMonth; dayMonth <= EndMonth; dayMonth += TimeSpan.FromDays(1))
             {
                 int dayInWeek = DayOfWeekHelper.GrigorianDayOfWeek(dayMonth);
@@ -107,17 +151,21 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                 float leftWidth = dayInWeek * widthStep;
                 float rightWidth = (dayInWeek + 1) * widthStep;
 
-                Vector2 leftTopPoint = new(leftWidth, topHeigth);
-                Vector2 leftBottomPoint = new(leftWidth, bottomHeigth);
-                Vector2 rightTopPoint = new(rightWidth, topHeigth);
-                Vector2 rightBottomPoint = new(rightWidth, bottomHeigth);
+                Rect rectanlge = new(leftWidth + 5, topHeigth + 5, widthStep - 5, heightStep - 5);
+                //Vector2 leftTopPoint = new(, );
+                //Vector2 leftBottomPoint = new(leftWidth + 2, bottomHeigth -2);
+                //Vector2 rightTopPoint = new(rightWidth - 2, topHeigth + 2);
+                //Vector2 rightBottomPoint = new(rightWidth - 2, bottomHeigth - 2);
 
-                args.DrawingSession.DrawLine(leftTopPoint, rightTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(leftBottomPoint, leftTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(leftBottomPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(rightTopPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                args.DrawingSession.DrawRoundedRectangle(rectanlge, 5, 5, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                //args.DrawingSession.DrawLine(leftTopPoint, rightTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                //args.DrawingSession.DrawLine(leftBottomPoint, leftTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                //args.DrawingSession.DrawLine(leftBottomPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                //args.DrawingSession.DrawLine(rightTopPoint, rightBottomPoint, );
 
-                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(), leftTopPoint, ColorHelper.ToColor(LINE_COLOR));
+                Vector2 textDatePoint = new(leftWidth  + 8, topHeigth + 8);
+                
+                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(), textDatePoint, ColorHelper.ToColor(TEXT_FOREGROUND));
 
                 if (dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
                 {

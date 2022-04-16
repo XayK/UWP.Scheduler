@@ -8,23 +8,38 @@
     xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tui="using:Microsoft.Toolkit.Uwp.UI"
     xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
     xmlns:viewmodelEntities="using:SchedulingApp.Presenter.Entities.Abstraction"
     d:DataContext="{d:DesignInstance viewmodel:IListPageViewModel}"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition Width="120" />
-        </Grid.ColumnDefinitions>
+    <Grid Background="{ThemeResource AppPageBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
 
         <!--  Элементы управления  -->
+        <Rectangle
+            Grid.Row="0"
+            Width="260"
+            Height="70"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            tui:Effects.Shadow="{StaticResource MenuShadow}"
+            Fill="{ThemeResource SystemAccentColorLight3}"
+            RadiusX="20"
+            RadiusY="20" />
         <StackPanel
-            Grid.Column="1"
-            Padding="20"
-            Orientation="Vertical"
+            x:Name="StackMenu"
+            Grid.Row="0"
+            Width="260"
+            Height="70"
+            Padding="20,0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal"
             Spacing="15">
 
             <!--  Кнопка удалить  -->
@@ -32,8 +47,10 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                BorderThickness="0"
                 Command="{Binding DeleteCommand}"
-                CornerRadius="20">
+                CornerRadius="20"
+                Style="{StaticResource ButtonCustomStyle}">
                 <SymbolIcon Symbol="Delete" />
             </Button>
 
@@ -42,8 +59,10 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                BorderThickness="0"
                 Command="{Binding EditCommand}"
-                CornerRadius="20">
+                CornerRadius="20"
+                Style="{StaticResource ButtonCustomStyle}">
                 <SymbolIcon Symbol="Edit" />
             </Button>
 
@@ -52,8 +71,10 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                BorderThickness="0"
                 Command="{Binding ShowDescriptionsCommand}"
-                CornerRadius="20">
+                CornerRadius="20"
+                Style="{StaticResource ButtonCustomStyle}">
                 <SymbolIcon Symbol="AllApps" />
             </Button>
 
@@ -62,17 +83,25 @@
                 Width="45"
                 Height="45"
                 HorizontalAlignment="Center"
+                Background="{StaticResource AddButtonBackground}"
+                BorderThickness="0"
                 Command="{Binding CreateCommand}"
-                CornerRadius="20">
-                <SymbolIcon Symbol="Add" />
+                CornerRadius="20"
+                Style="{StaticResource ButtonCustomStyle}">
+                <FontIcon
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Foreground="{StaticResource AltForeground}"
+                    Glyph="&#xE710;" />
             </Button>
         </StackPanel>
+
 
         <!--  Коллекция всех задач  -->
         <GridView
             x:Name="BasicGridView"
-            Grid.Column="0"
+            Grid.Row="1"
             Padding="20"
+            HorizontalAlignment="Center"
             AllowDrop="True"
             CanDrag="True"
             CanReorderItems="True"
