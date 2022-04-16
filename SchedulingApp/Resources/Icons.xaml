@@ -8,4 +8,9 @@
     <BitmapImage x:Key="TodayIcon" UriSource="ms-appx:///Assets/Icons/today_icon.png" />
     <BitmapImage x:Key="SettingsIcon" UriSource="ms-appx:///Assets/Icons/settings_icon.png" />
 
+    <BitmapImage x:Key="EditIcon" UriSource="ms-appx:///Assets/Icons/edit_icon.png" />
+    <BitmapImage x:Key="AddIcon" UriSource="ms-appx:///Assets/Icons/add_icon.png" />
+    <BitmapImage x:Key="CloseIcon" UriSource="ms-appx:///Assets/Icons/close_icon.png" />
+    <BitmapImage x:Key="ListDescriptionIcon" UriSource="ms-appx:///Assets/Icons/list_description_icon.png" />
+
 </ResourceDictionary>

@@ -76,7 +76,10 @@
                             </Grid.ColumnDefinitions>
 
                             <!--  Текст у ввода даты  -->
-                            <TextBlock Style="{StaticResource MissionTimeSetterDescriptionStyle}" Text="Конец" />
+                            <TextBlock
+                                x:Uid="end"
+                                Style="{StaticResource MissionTimeSetterDescriptionStyle}"
+                                Text="Конец" />
 
                             <!--  Выбор даты и времени  -->
                             <StackPanel

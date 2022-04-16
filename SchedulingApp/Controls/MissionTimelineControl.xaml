@@ -32,7 +32,10 @@
 
                 <!--  Заголовок  -->
                 <StackPanel Orientation="Horizontal" Spacing="5">
-                    <TextBlock Style="{StaticResource MissionTextStyle}" Text="Заголовок -" />
+                    <TextBlock
+                        x:Uid="Timeline_title"
+                        Style="{StaticResource MissionTextStyle}"
+                        Text="Заголовок -" />
                     <TextBlock
                         d:Text="Title"
                         Style="{StaticResource MissionTextStyle}"
@@ -42,7 +45,10 @@
                 <!--  Даты  -->
                 <!--  Начала  -->
                 <StackPanel Orientation="Horizontal" Spacing="5">
-                    <TextBlock Style="{StaticResource MissionTextStyle}" Text="Начало -" />
+                    <TextBlock
+                        x:Uid="Timeline_start"
+                        Style="{StaticResource MissionTextStyle}"
+                        Text="Начало -" />
                     <TextBlock
                         d:Text="01.01.1999"
                         Style="{StaticResource MissionTextStyle}"
@@ -50,7 +56,10 @@
                 </StackPanel>
                 <!--  Конца  -->
                 <StackPanel Orientation="Horizontal" Spacing="3">
-                    <TextBlock Style="{StaticResource MissionTextStyle}" Text="Конец -" />
+                    <TextBlock
+                        x:Uid="Timeline_end"
+                        Style="{StaticResource MissionTextStyle}"
+                        Text="Конец -" />
                     <TextBlock
                         d:Text="01.02.1999"
                         Style="{StaticResource MissionTextStyle}"

@@ -198,8 +198,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\add_icon.png" />
     <Content Include="Assets\Icons\calendar_icon.png" />
+    <Content Include="Assets\Icons\close_icon.png" />
+    <Content Include="Assets\Icons\edit_icon.png" />
     <Content Include="Assets\Icons\important_icon.png" />
+    <Content Include="Assets\Icons\list_description_icon.png" />
     <Content Include="Assets\Icons\list_icon.png" />
     <Content Include="Assets\Icons\settings_icon.png" />
     <Content Include="Assets\Icons\today_icon.png" />

@@ -31,7 +31,7 @@
     </LinearGradientBrush>
     <SolidColorBrush
         x:Key="ButtonThemeBackground"
-        Opacity="0.8"
+        Opacity="0.2"
         Color="{ThemeResource SystemAccentColorDark2}" />
 
     <!--  Остальные ресурсы  -->
