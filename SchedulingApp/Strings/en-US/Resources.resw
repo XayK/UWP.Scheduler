@@ -149,6 +149,10 @@
     <value>Edit</value>
     <comment>010</comment>
   </data>
+  <data name="edit_button.Text" xml:space="preserve">
+    <value>Edit</value>
+    <comment>018</comment>
+  </data>
   <data name="end.Text" xml:space="preserve">
     <value>End</value>
     <comment>003</comment>

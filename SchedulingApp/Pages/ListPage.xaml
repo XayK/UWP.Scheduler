@@ -32,13 +32,13 @@
 
             <!--  Кнопка удалить  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="50"
+                Height="50"
                 HorizontalAlignment="Center"
                 Background="{StaticResource RemoveButtonBackground}"
                 BorderThickness="0"
                 Command="{Binding DeleteCommand}"
-                CornerRadius="20"
+                CornerRadius="25"
                 Style="{StaticResource ButtonCustomStyle}">
 
                 <FontIcon
@@ -49,46 +49,62 @@
 
             <!--  Кнопка правки  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="50"
+                Height="50"
                 HorizontalAlignment="Center"
                 Background="{StaticResource ButtonThemeBackground}"
                 BorderThickness="0"
                 Command="{Binding EditCommand}"
-                CornerRadius="20"
+                CornerRadius="25"
                 Style="{StaticResource ButtonCustomStyle}">
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xE70F;" />
+                <Viewbox Height="30">
+                    <StackPanel>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Foreground="{StaticResource AltForeground}"
+                            Glyph="&#xE70F;" />
+                        <TextBlock
+                            x:Uid="edit_button"
+                            Style="{StaticResource IconButtonTextStyle}"
+                            Text="Правка" />
+                    </StackPanel>
+                </Viewbox>
             </Button>
 
             <!--  Кнопка работы с описанием  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="50"
+                Height="50"
                 HorizontalAlignment="Center"
                 Background="{StaticResource ButtonThemeBackground}"
                 BorderThickness="0"
                 Command="{Binding ShowDescriptionsCommand}"
-                CornerRadius="20"
+                CornerRadius="25"
                 Style="{StaticResource ButtonCustomStyle}">
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xE762;" />
+                <Viewbox Height="30">
+                    <StackPanel>
+                        <FontIcon
+                            FontFamily="{StaticResource SymbolThemeFontFamily}"
+                            Foreground="{StaticResource AltForeground}"
+                            Glyph="&#xE762;" />
+                        <TextBlock
+                            x:Uid="description"
+                            Style="{StaticResource IconButtonTextStyle}"
+                            Text="Описание" />
+                    </StackPanel>
+                </Viewbox>
             </Button>
 
             <!--  Кнопка добавить  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="50"
+                Height="50"
                 Padding="0"
                 HorizontalAlignment="Center"
                 Background="{StaticResource AddButtonBackground}"
                 BorderThickness="0"
                 Command="{Binding CreateCommand}"
-                CornerRadius="20"
+                CornerRadius="25"
                 Style="{StaticResource ButtonCustomStyle}">
                 <FontIcon
                     FontFamily="{StaticResource SymbolThemeFontFamily}"

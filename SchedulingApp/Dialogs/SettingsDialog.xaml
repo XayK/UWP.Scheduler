@@ -9,10 +9,9 @@
     mc:Ignorable="d">
     <base:DialogBase.Resources>
         <Thickness x:Key="ContentDialogPadding">0,0,0,0</Thickness>
-        <SolidColorBrush x:Key="ContentDialogBackground">Transparent</SolidColorBrush>
     </base:DialogBase.Resources>
 
-    <Grid Background="{StaticResource AppPageBackground}">
+    <Grid>
 
         <StackPanel
             Margin="20,45,20,0"

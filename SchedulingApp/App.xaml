@@ -23,6 +23,11 @@
                     <converters:MonthOnlyConverter x:Key="MonthOnlyConverter" />
                 </ResourceDictionary>
 
+                <!--  Переопределения цветов  -->
+                <ResourceDictionary>
+                    <x:String x:Key="ContentDialogBackground">#FFF</x:String>
+                </ResourceDictionary>
+
             </controls:XamlControlsResources.MergedDictionaries>
         </controls:XamlControlsResources>
     </Application.Resources>

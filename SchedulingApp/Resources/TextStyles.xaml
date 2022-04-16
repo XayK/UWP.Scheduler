@@ -55,6 +55,15 @@
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
+    <!--  Стиль текст в кнопоке c иконой  -->
+    <Style
+        x:Key="IconButtonTextStyle"
+        BasedOn="{StaticResource ToggleButtonTextStyle}"
+        TargetType="TextBlock">
+        <Setter Property="FontSize" Value="10" />
+        <Setter Property="Foreground" Value="{ThemeResource AltForeground}" />
+    </Style>
+
     <!--  Стиль текста в настройка  -->
     <Style x:Key="AppSettignsTextStyle" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center" />
