@@ -182,12 +182,15 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             string accent = Application.Current.Resources["SystemAccentColor"].ToString();
             string transparency = "60";
 
-            if (accent.Length == 9)
+            int hexWithAlphaLength = 9;
+            int fullHexLength = 7;
+
+            if (accent.Length == hexWithAlphaLength)
             {
                 accent = string.Format("#{0}{1}", transparency, accent.Substring(3));
             }
 
-            if (accent.Length == 7)
+            if (accent.Length == fullHexLength)
             {
                 accent = string.Format("#{0}{1}", transparency, accent.Substring(1));
             }
