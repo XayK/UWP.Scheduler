@@ -1,6 +1,6 @@
-﻿using SchedulingApp.Data.Models.Abstraction;
+﻿using SchedulingApp.Data.Models;
+using SchedulingApp.Presenter.Entities.Elements;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace SchedulingApp.Presenter.Entities.Abstraction
@@ -23,7 +23,7 @@ namespace SchedulingApp.Presenter.Entities.Abstraction
         /// <summary>
         /// Предоставляет или задает контент, представляющий описание сущности
         /// </summary>
-        public ObservableCollection<IRowItemViewModel> Descriptions { get; }
+        public ObservableCollection<RowItemViewModel> Descriptions { get; }
 
         /// <summary>
         /// Предоставляет или задает дату и время начала
@@ -36,8 +36,8 @@ namespace SchedulingApp.Presenter.Entities.Abstraction
         public DateTime EndDateTime { get; set; }
 
         /// <summary>
-        /// Предоставляет модель данных <see cref="IMission"/> представления
+        /// Предоставляет модель данных <see cref="Mission"/> представления
         /// </summary>
-        public IMission Model { get; }
+        public Mission Model { get; }
     }
 }

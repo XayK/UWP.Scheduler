@@ -1,8 +1,8 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using SchedulingApp.Data.Models;
+﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
 using SchedulingApp.Presenter.Entities;
+using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Presenter.Pages.Base;
 using System;
 using System.Collections.Generic;
@@ -14,16 +14,16 @@ namespace SchedulingApp.Presenter.Pages
     /// Представляет данные для страницы, отображающие элементы списком.
     /// (Используются задачи, которые должны выполнятся сегодня)
     /// </summary>
-    internal class TodayPageViewModel : BaseListPageViewModel
+    internal class TodayPageViewModel : BaseListPageViewModel, IListPageViewModel
     {
-        #region Private Properties
+        #region Private Fields
 
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="TodayPageViewModel"/>
         /// </summary>
         private static readonly Lazy<TodayPageViewModel> _instance = new Lazy<TodayPageViewModel>(() => new TodayPageViewModel());
 
-        #endregion Private Properties
+        #endregion Private Fields
 
         #region Public Properties
 
@@ -41,10 +41,13 @@ namespace SchedulingApp.Presenter.Pages
         /// </summary>
         private TodayPageViewModel() : base()
         { }
+        #endregion Private Constructors
 
+        #region Protected Methods
+
+        /// <summary> <inheritdoc/> </summary>
         protected override void LoadMissions()
         {
-            ///TODO: проверить
             if (Missions.Any())
             {
                 return;
@@ -52,7 +55,10 @@ namespace SchedulingApp.Presenter.Pages
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             IEnumerable<Mission> missions = storage.GetAll().Where
-                (mission => mission.IsImportant);
+                (mission =>
+                mission.StartDateTime.Date <= DateTime.Today
+                &&
+                mission.EndDateTime.Date >= DateTime.Today);
 
             foreach (var mission in missions)
             {
@@ -60,6 +66,19 @@ namespace SchedulingApp.Presenter.Pages
             }
         }
 
-        #endregion Private Constructors
+        #endregion Protected Methods
+
+        #region Public Methods
+
+        /// <summary>
+        /// Осуществляет перезагрузку всех данных
+        /// </summary>
+        public void ReloadMissions()
+        {
+            Missions.Clear();
+            LoadMissions();
+        }
+
+        #endregion Public Methods
     }
 }

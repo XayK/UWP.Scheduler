@@ -1,6 +1,8 @@
 ﻿using Microsoft.UI.Xaml.Controls;
+using SchedulingApp.Dialogs;
 using SchedulingApp.Services;
 using SchedulingApp.Services.Abstraction;
+using System;
 
 namespace SchedulingApp
 {
@@ -35,7 +37,7 @@ namespace SchedulingApp
         /// </summary>
         /// <param name="sender">Инициатор события</param>
         /// <param name="args">Аргуементы</param>
-        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        private async void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var navigationItem = (NavigationViewItem)sender.SelectedItem;
             string tag = navigationItem.Tag.ToString();
@@ -44,6 +46,11 @@ namespace SchedulingApp
             if (isParsed)
             {
                 _navigation.NavigateTo((PagesEnum)pageId);
+            }
+            else if (tag == "Settings")
+            {
+                SettingsDialog settingsDialog = new SettingsDialog();
+                await settingsDialog.ShowAsync();
             }
         }
     }

@@ -7,6 +7,8 @@ namespace SchedulingApp.Controls.Elements
     /// </summary>
     public sealed partial class RowItemControl : UserControl
     {
+        #region Public Constructors
+
         /// <summary>
         /// Инициализирует экземпляр <see cref="RowItemControl"/>
         /// </summary>
@@ -14,5 +16,7 @@ namespace SchedulingApp.Controls.Elements
         {
             this.InitializeComponent();
         }
+
+        #endregion Public Constructors
     }
 }

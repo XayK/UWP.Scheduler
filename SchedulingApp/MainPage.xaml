@@ -6,8 +6,11 @@
     xmlns:local="using:SchedulingApp"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xamlUI="using:Microsoft.UI.Xaml.Controls"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Background="{StaticResource AppNavigationViewBackground}"
     mc:Ignorable="d">
+    <Page.Resources>
+        <SolidColorBrush x:Key="NavigationViewExpandedPaneBackground" Color="{StaticResource AppNavigationViewBackground}" />
+    </Page.Resources>
 
     <Grid>
 
@@ -15,6 +18,7 @@
         <xamlUI:NavigationView
             IsBackButtonVisible="Collapsed"
             OpenPaneLength="240"
+            IsSettingsVisible="False"
             SelectionChanged="NavigationView_SelectionChanged">
 
             <!--  Меню навигации  -->
@@ -22,43 +26,71 @@
 
                 <!--  Выбор по календарю  -->
                 <xamlUI:NavigationViewItem Tag="0">
-                    <xamlUI:NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="CalendarDay" />
-                    </xamlUI:NavigationViewItem.Icon>
-                    <TextBlock Text="Календарь" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Source="{StaticResource CalendarIcon}" />
+                        <TextBlock x:Uid="calendar_page" Text="Календарь" />
+                    </StackPanel>
                 </xamlUI:NavigationViewItem>
 
                 <!--  Список всех задач  -->
                 <xamlUI:NavigationViewItem Tag="1">
-                    <xamlUI:NavigationViewItem.Icon>
-                        <SymbolIcon Symbol="List" />
-                    </xamlUI:NavigationViewItem.Icon>
-                    <TextBlock Text="Списком" />
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Source="{StaticResource ListIcon}" />
+                        <TextBlock x:Uid="list_page" Text="Списком" />
+                    </StackPanel>
 
                     <!--  Подменю списка  -->
                     <xamlUI:NavigationViewItem.MenuItems>
 
                         <!--  Важные задачи  -->
                         <xamlUI:NavigationViewItem Tag="2">
-                            <xamlUI:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="SolidStar" />
-                            </xamlUI:NavigationViewItem.Icon>
-                            <TextBlock Text="Важные" />
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Source="{StaticResource ImportantIcon}" />
+                                <TextBlock x:Uid="important_page" Text="Важные" />
+                            </StackPanel>
                         </xamlUI:NavigationViewItem>
 
                         <!--  Задачи на сегодня  -->
                         <xamlUI:NavigationViewItem Tag="3">
-                            <xamlUI:NavigationViewItem.Icon>
-                                <SymbolIcon Symbol="GoToToday" />
-                            </xamlUI:NavigationViewItem.Icon>
-                            <TextBlock Text="Сегодня" />
+                            <StackPanel Orientation="Horizontal" Spacing="10">
+                                <Image
+                                    Width="24"
+                                    Height="24"
+                                    Source="{StaticResource TodayIcon}" />
+                                <TextBlock x:Uid="today_page" Text="Сегодня" />
+                            </StackPanel>
                         </xamlUI:NavigationViewItem>
 
                     </xamlUI:NavigationViewItem.MenuItems>
                 </xamlUI:NavigationViewItem>
             </xamlUI:NavigationView.MenuItems>
 
-            <!--  Фрейм активной страницы  -->
+
+            <!--  Меню навигации  снизу-->
+            <xamlUI:NavigationView.FooterMenuItems>
+                
+                <!--  Выбор настроек  -->
+                <xamlUI:NavigationViewItem Tag="Settings">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Source="{StaticResource SettingsIcon}" />
+                        <TextBlock x:Uid="settings" Text="Настройки" />
+                    </StackPanel>
+                </xamlUI:NavigationViewItem>
+            </xamlUI:NavigationView.FooterMenuItems>
+
+                <!--  Фрейм активной страницы  -->
             <Frame x:Name="MainFrame" />
         </xamlUI:NavigationView>
     </Grid>

@@ -33,7 +33,7 @@ namespace SchedulingApp.Dialogs.Base
         /// <summary>
         /// Устанаваливает результат диалога как <see cref="ContentDialogResult.None"/>
         /// </summary>
-        protected void SetNoteResult()
+        protected void SetNoneResult()
         {
             _completionSource.TrySetResult(ContentDialogResult.None);
             Hide();

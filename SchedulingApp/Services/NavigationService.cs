@@ -1,9 +1,9 @@
 ﻿using SchedulingApp.Pages;
 using SchedulingApp.Presenter.Pages;
+using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Services.Abstraction;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -88,13 +88,32 @@ namespace SchedulingApp.Services
         #region Private Methods
 
         /// <summary>
-        /// Обработка события перехода на страницу, целью подгрузки ViewModel страницы
+        /// Обработка события завершения перехода на страницу.
+        /// После перехода будет подгружена соотвествуя <see cref="Frame"/>'у ViewModel,
+        /// найденная по словарю <see cref="_viewModels"/>
         /// </summary>
         /// <param name="sender">Инициатор события</param>
         /// <param name="e">Параметр</param>
         private void ContentFrame_Navigated(object sender, NavigationEventArgs e)
         {
             _contentFrame.DataContext = _viewModels[CurrentPage];
+            IListPageViewModel dataContext;
+
+            switch (CurrentPage)
+            {
+                case PagesEnum.ListPageType:
+                    dataContext = _contentFrame.DataContext as ListPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+                case PagesEnum.ImportantPageType:
+                    dataContext = _contentFrame.DataContext as ImportantPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+                case PagesEnum.TodayPageType:
+                    dataContext = _contentFrame.DataContext as TodayPageViewModel;
+                    dataContext.ReloadMissions();
+                    break;
+            }
         }
 
         #endregion Private Methods

@@ -7,7 +7,7 @@ namespace SchedulingApp.Presenter.Entities.Elements.Base
     /// <summary>
     /// Базовый класс, для представления данных строки в описании задачи
     /// </summary>
-    internal abstract class BaseRowItemViewModel : ObservableObject, IEntityViewModel<IRowItem>, IRowItemViewModel
+    public abstract class BaseRowItemViewModel : ObservableObject, IEntityViewModel<IRowItem>
     {
         #region Private Fields
 
@@ -31,7 +31,7 @@ namespace SchedulingApp.Presenter.Entities.Elements.Base
         #region Public Properties
 
         /// <summary> <inheritdoc/> </summary>
-        public bool IsChecked 
+        public bool IsChecked
         {
             get => _isChecked;
             set => SetProperty(ref _isChecked, value);

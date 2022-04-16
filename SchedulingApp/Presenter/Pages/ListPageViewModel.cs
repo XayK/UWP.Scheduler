@@ -1,16 +1,11 @@
-﻿using Microsoft.Toolkit.Mvvm.Input;
-using SchedulingApp.Data.Models;
-using SchedulingApp.Data.Models.Abstraction;
+﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Services;
 using SchedulingApp.Data.Storages;
-using SchedulingApp.Helper;
 using SchedulingApp.Presenter.Entities;
-using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Pages.Abstraction;
 using SchedulingApp.Presenter.Pages.Base;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace SchedulingApp.Presenter.Pages
@@ -20,14 +15,14 @@ namespace SchedulingApp.Presenter.Pages
     /// </summary>
     public class ListPageViewModel : BaseListPageViewModel, IListPageViewModel
     {
-        #region Private Properties
+        #region Private Fields
 
         /// <summary>
         /// Представляет реализацию синглтона для <see cref="ListPageViewModel"/>
         /// </summary>
         private static readonly Lazy<ListPageViewModel> _instance = new Lazy<ListPageViewModel>(() => new ListPageViewModel());
 
-        #endregion Private Properties
+        #endregion Private Fields
 
         #region Public Properties
 
@@ -45,24 +40,40 @@ namespace SchedulingApp.Presenter.Pages
         /// </summary>
         private ListPageViewModel() : base()
         { }
-
         #endregion Private Constructors
+
+        #region Protected Methods
 
         /// <summary> <inheritdoc/> </summary>
         protected override void LoadMissions()
         {
-            if(Missions.Any())
+            if (Missions.Any())
             {
                 return;
             }
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
             IEnumerable<Mission> missions = storage.GetAll();
-            
-            foreach(var mission in missions)
+
+            foreach (var mission in missions)
             {
                 Missions.Add(new MissionViewModel(mission));
             }
         }
+
+        #endregion Protected Methods
+
+        #region Public Methods
+
+        /// <summary>
+        /// Осуществляет перезагрузку всех данных
+        /// </summary>
+        public void ReloadMissions()
+        {
+            Missions.Clear();
+            LoadMissions();
+        }
+
+        #endregion Public Methods
     }
 }

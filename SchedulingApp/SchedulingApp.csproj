@@ -127,7 +127,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml.cs">
+    <Compile Include="Controls\MissionTimelineControl.xaml.cs">
       <DependentUpon>MissionTimelineControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CalendarVisualizer\Helpers\DayOfWeekHelper.cs" />
@@ -144,7 +144,15 @@
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\DateFormatConverter.cs" />
+    <Compile Include="Converters\MonthOnlyConverter.cs" />
+    <Compile Include="Converters\DateOnlyConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
+    <Compile Include="Dialogs\SettingsDialog.xaml.cs">
+      <DependentUpon>SettingsDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ConfirmationDialog.xaml.cs">
+      <DependentUpon>ConfirmationDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MissionDescriptionDialog.xaml.cs">
       <DependentUpon>MissionDescriptionDialog.xaml</DependentUpon>
     </Compile>
@@ -164,12 +172,10 @@
     </Compile>
     <Compile Include="Presenter\Entities\Abstraction\IEntityViewModel.cs" />
     <Compile Include="Presenter\Entities\Abstraction\IMissionVIewModel.cs" />
-    <Compile Include="Presenter\Entities\Abstraction\IRowItemVIewModel.cs" />
     <Compile Include="Presenter\Entities\Base\BaseMissionViewModel.cs" />
     <Compile Include="Presenter\Entities\MissionViewModel.cs" />
     <Compile Include="Presenter\Entities\Elements\Base\BaseRowItemViewModel.cs" />
     <Compile Include="Presenter\Entities\Elements\RowItemViewModel.cs" />
-    <Compile Include="Presenter\Pages\Abstraction\ICalendarPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Abstraction\IListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\Base\BaseListPageViewModel.cs" />
     <Compile Include="Presenter\Pages\CalendarPageViewModel.cs" />
@@ -186,6 +192,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\calendar_icon.png" />
+    <Content Include="Assets\Icons\important_icon.png" />
+    <Content Include="Assets\Icons\list_icon.png" />
+    <Content Include="Assets\Icons\settings_icon.png" />
+    <Content Include="Assets\Icons\today_icon.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -200,7 +211,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml">
+    <Page Include="Controls\MissionTimelineControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -213,6 +224,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\MissionThumbControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\SettingsDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ConfirmationDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -241,6 +260,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\ControlsStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

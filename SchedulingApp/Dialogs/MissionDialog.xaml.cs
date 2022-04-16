@@ -2,12 +2,8 @@
 using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
-using SchedulingApp.Presenter.Entities.Abstraction;
-using SchedulingApp.Presenter.Entities.Elements;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Windows.UI.Xaml;
 
 namespace SchedulingApp.Dialogs
@@ -27,7 +23,7 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет заголовок окна диалога
         /// </summary>
-        public string TitleDialog { get;}
+        public string TitleDialog { get; }
 
         /// <summary>
         /// Представляет или задает временя начала задачи
@@ -55,9 +51,9 @@ namespace SchedulingApp.Dialogs
         public string MissionTitle { get; set; }
 
         /// <summary>
-        /// Предоставляет данные в ввиде модели <see cref="IMission"/>
+        /// Предоставляет данные в ввиде модели <see cref="Mission"/>
         /// </summary>
-        public IMission ModelData => GetModelDate();
+        public Mission ModelData => GetModelDate();
 
         #endregion Public Properties
 
@@ -87,15 +83,18 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет данные из диалога в виде модели данных
         /// </summary>
-        /// <returns>Модель данных <see cref="IMission"/></returns>
-        private IMission GetModelDate()
+        /// <returns>Модель данных <see cref="Mission"/></returns>
+        private Mission GetModelDate()
         {
-            IMission model = new Mission();
+            Mission model = new Mission();
 
             model.Title = MissionTitle;
             model.StartDateTime = StartDate + StartTime;
             model.EndDateTime = EndDate + EndTime;
-            model.Descriptions = new Collection<IRowItem>();
+            model.Descriptions = new Collection<IRowItem>()
+            {
+                new RowItem()
+            };
             model.IsImportant = IsImportant;
 
             return model;
@@ -108,7 +107,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            base.SetNoteResult();
+            base.SetNoneResult();
         }
 
         /// <summary>

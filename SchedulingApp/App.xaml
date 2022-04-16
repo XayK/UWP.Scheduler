@@ -12,12 +12,15 @@
 
                 <!--  App Resources  -->
                 <ResourceDictionary Source="Resources/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Icons.xaml" />
                 <ResourceDictionary Source="Resources/ControlsStyles.xaml" />
                 <ResourceDictionary Source="Resources/TextStyles.xaml" />
 
                 <!--  Converters  -->
                 <ResourceDictionary>
                     <converters:DateFormatConverter x:Key="DateFormatConverter" />
+                    <converters:DateOnlyConverter x:Key="DateOnlyConverter" />
+                    <converters:MonthOnlyConverter x:Key="MonthOnlyConverter" />
                 </ResourceDictionary>
 
             </controls:XamlControlsResources.MergedDictionaries>

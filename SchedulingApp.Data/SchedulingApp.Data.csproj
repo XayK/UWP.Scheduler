@@ -132,7 +132,6 @@
   <ItemGroup>
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Models\Abstraction\IIdentifier.cs" />
-    <Compile Include="Models\Abstraction\IMission.cs" />
     <Compile Include="Models\Elements\Absctraction\IRowItem.cs" />
     <Compile Include="Models\Elements\RowItem.cs" />
     <Compile Include="Models\Mission.cs" />

@@ -12,7 +12,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <xaml:CanvasControl x:Name="CanvasBackground" />
+        <xaml:CanvasControl Padding="5" x:Name="CanvasBackground" />
         <Canvas x:Name="CanvasManipulation" />
     </Grid>
 </UserControl>

@@ -44,7 +44,7 @@ namespace SchedulingApp.CalendarVisualizer.Helpers
         /// <param name="startVisualize">Дата типа <see cref="DateTime"/></param>
         public static int GetWeekPassedOnMonth(DateTime startVisualize)
         {
-            DateTime startMonth = new(startVisualize.Year,startVisualize.Month, 1);
+            DateTime startMonth = new(startVisualize.Year, startVisualize.Month, 1);
             int weeksPassed = 0;
 
             for (DateTime day = startMonth; day < startVisualize; day += TimeSpan.FromDays(1))

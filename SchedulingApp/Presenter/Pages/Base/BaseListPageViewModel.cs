@@ -11,7 +11,6 @@ using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Specialized;
 using System.Windows.Input;
 
 namespace SchedulingApp.Presenter.Pages.Base
@@ -80,32 +79,37 @@ namespace SchedulingApp.Presenter.Pages.Base
         /// </summary>
         private async void CreateMission()
         {
-            IMission model = await DialogExecutor.ShowMissionCreation();
+            Mission model = await DialogExecutor.ShowMissionCreation();
 
             if (model == null)
             {
                 return;
             }
 
-            IMissionViewModel presenter = new MissionViewModel(model as Mission);
+            IMissionViewModel presenter = new MissionViewModel(model);
             Missions.Add(presenter);
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Insert(presenter.Model as Mission);
-        } 
+            storage.Insert(presenter.Model);
+        }
 
         /// <summary>
         /// Вызод удаления выбранной задачи
         /// </summary>
-        private void DeleteSelectedMission()
+        private async void DeleteSelectedMission()
         {
             if (SelectedMission == null)
             {
                 return;
             }
-                       
+
+            if (await DialogExecutor.ConfirmationDialog() == false)
+            {
+                return;
+            }
+
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Remove(SelectedMission.Model.Id); 
+            storage.Remove(SelectedMission.Model.Id);
 
             Missions.Remove(SelectedMission);
         }
@@ -120,7 +124,7 @@ namespace SchedulingApp.Presenter.Pages.Base
                 return;
             }
 
-            IMission model = await DialogExecutor.EditMission(SelectedMission.Model);
+            Mission model = await DialogExecutor.EditMission(SelectedMission.Model);
 
             if (model == null)
             {
@@ -133,7 +137,7 @@ namespace SchedulingApp.Presenter.Pages.Base
             SelectedMission.EndDateTime = model.EndDateTime;
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Update(SelectedMission.Model as Mission);
+            storage.Update(SelectedMission.Model);
         }
 
         /// <summary>
@@ -157,7 +161,7 @@ namespace SchedulingApp.Presenter.Pages.Base
 
             foreach (IRowItem item in model)
             {
-                IRowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
+                RowItemViewModel rowPresenter = new RowItemViewModel(item as RowItem);
                 SelectedMission.Descriptions.Add(rowPresenter);
             }
 

@@ -1,5 +1,6 @@
 ﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Base;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,12 +11,12 @@ namespace SchedulingApp.Presenter.Entities
     /// <summary>
     /// Предоставляет данные, для отображения задачи
     /// </summary>
-    internal class MissionViewModel : BaseMissionViewModel
+    internal class MissionViewModel : BaseMissionViewModel, IMissionViewModel
     {
         #region Public Properties
 
         /// <summary> <inheritdoc/> </summary>
-        public override IMission Model => GetModelData();
+        public override Mission Model => GetModelData();
 
         #endregion Public Properties
 
@@ -36,10 +37,10 @@ namespace SchedulingApp.Presenter.Entities
         /// <summary>
         /// Возврщает модель данных
         /// </summary>
-        /// <returns>Возвращает <see cref="IMission"/></returns>
-        private IMission GetModelData()
+        /// <returns>Возвращает <see cref="Mission"/></returns>
+        private Mission GetModelData()
         {
-            IMission model = new Mission()
+            Mission model = new Mission()
             {
                 StartDateTime = StartDateTime,
                 EndDateTime = EndDateTime,

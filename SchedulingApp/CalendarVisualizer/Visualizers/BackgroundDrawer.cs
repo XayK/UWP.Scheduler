@@ -3,7 +3,10 @@ using Microsoft.Toolkit.Uwp.Helpers;
 using SchedulingApp.CalendarVisualizer.Helpers;
 using System;
 using System.Numerics;
+using Windows.Foundation;
+using Windows.UI.Input;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Input;
 
 namespace SchedulingApp.CalendarVisualizer.Visualizers
 {
@@ -15,14 +18,20 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         #region Private Fields
 
         /// <summary>
-        /// Представляет константу отрисовки цвета линий разграничения дня
+        /// Представляет константу отрисовки цвета недели, при нахождения на ней урока
         /// </summary>
-        private const string LINE_COLOR = "#BB7070";
+        private const string POINTER_HOVER = "#30909090";
 
         /// <summary>
-        /// Представляет контанту ширины линий сетки
+        /// Представляет константу цвета текста
         /// </summary>
-        private const int STROKE_GRID = 4;
+        private const string TEXT_FOREGROUND = "#3D3D3D";
+
+        /// <summary>
+        /// Представляет константу отрисовки цвета линий разграничения дня
+        /// </summary>
+        private static readonly string ACCENT_COLOR = GetAccentTransparencyColor();
+
         /// <summary>
         /// Представляет контрол холста, визуализующий фон элементов расписания
         /// </summary>
@@ -32,6 +41,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Представляет данные о датах, необходмые для отрисовки таймлайна
         /// </summary>
         private readonly DrawData _drawData;
+
+        /// <summary>
+        /// Представляет или задает последную отмеченную неделю.
+        /// При -1 не отображается
+        /// </summary>
+        private int _selectedWeek;
 
         #endregion Private Fields
 
@@ -61,6 +76,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Представляет ширину холста
         /// </summary>
         private double Width => _canvasBackground.ActualWidth;
+
         /// <summary>
         /// Представляет ширирну элемента на холсте
         /// </summary>
@@ -79,8 +95,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         {
             _canvasBackground = canvasBackground;
             _drawData = drawData;
+            _selectedWeek = -1;
 
             _canvasBackground.Draw += CanvasBackground_Draw;
+            _canvasBackground.PointerMoved += CanvasBackground_PointerMoved;
+            _canvasBackground.PointerExited += CanvasBackground_PointerExited;
         }
 
         #endregion Public Constructors
@@ -99,32 +118,84 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             int weekCounter = 0;
 
-            for(DateTime dayMonth = StartMonth; dayMonth <= EndMonth; dayMonth += TimeSpan.FromDays(1))
+            for (DateTime dayMonth = StartMonth; dayMonth <= EndMonth; dayMonth += TimeSpan.FromDays(1))
             {
                 int dayInWeek = DayOfWeekHelper.GrigorianDayOfWeek(dayMonth);
 
                 float topHeigth = weekCounter * heightStep;
-                float bottomHeigth = (weekCounter + 1) * heightStep;
                 float leftWidth = dayInWeek * widthStep;
-                float rightWidth = (dayInWeek + 1) * widthStep;
 
-                Vector2 leftTopPoint = new(leftWidth, topHeigth);
-                Vector2 leftBottomPoint = new(leftWidth, bottomHeigth);
-                Vector2 rightTopPoint = new(rightWidth, topHeigth);
-                Vector2 rightBottomPoint = new(rightWidth, bottomHeigth);
+                Rect rectanlge = new(leftWidth + 5, topHeigth + 5, widthStep - 10, heightStep - 10);
 
-                args.DrawingSession.DrawLine(leftTopPoint, rightTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(leftBottomPoint, leftTopPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(leftBottomPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
-                args.DrawingSession.DrawLine(rightTopPoint, rightBottomPoint, ColorHelper.ToColor(LINE_COLOR), STROKE_GRID);
+                args.DrawingSession.FillRoundedRectangle(rectanlge, 5, 5, ColorHelper.ToColor(ACCENT_COLOR));
 
-                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(),leftTopPoint, ColorHelper.ToColor(LINE_COLOR));
+                Vector2 textDatePoint = new(leftWidth + 12, topHeigth + 8);
 
-                if(dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
+                args.DrawingSession.DrawText(dayMonth.Date.Day.ToString(), textDatePoint, ColorHelper.ToColor(TEXT_FOREGROUND));
+
+                if (dayMonth.DayOfWeek == DayOfWeekHelper.EndOfWeek)
                 {
                     weekCounter++;
                 }
             }
+
+            if (_selectedWeek > -1)
+            {
+                float x = 0;
+                float width = (float)Width;
+                float y = (float)(_selectedWeek * HeightStep);
+                float height = (float)HeightStep;
+
+                args.DrawingSession.FillRectangle(x, y, width, height, ColorHelper.ToColor(POINTER_HOVER));
+            }
+        }
+
+        /// <summary>
+        /// Обработка перемещния указателя за пределы холста
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="e">Параметр</param>
+        private void CanvasBackground_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            _selectedWeek = -1;
+            _canvasBackground.Invalidate();
+        }
+
+        /// <summary>
+        /// Обработка перемещния указателя на холсте
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="e">Параметр</param>
+        private void CanvasBackground_PointerMoved(object sender, PointerRoutedEventArgs e)
+        {
+            PointerPoint pointer = e.GetCurrentPoint(_canvasBackground);
+            _selectedWeek = (int)(pointer.Position.Y / HeightStep);
+            _canvasBackground.Invalidate();
+        }
+
+        /// <summary>
+        /// Получает полупрозрачный цвет Accent
+        /// </summary>
+        /// <returns>Возвращает hex цвета</returns>
+        private static string GetAccentTransparencyColor()
+        {
+            string accent = Application.Current.Resources["SystemAccentColor"].ToString();
+            string transparency = "60";
+
+            int hexWithAlphaLength = 9;
+            int fullHexLength = 7;
+
+            if (accent.Length == hexWithAlphaLength)
+            {
+                accent = string.Format("#{0}{1}", transparency, accent.Substring(3));
+            }
+
+            if (accent.Length == fullHexLength)
+            {
+                accent = string.Format("#{0}{1}", transparency, accent.Substring(1));
+            }
+
+            return accent;
         }
 
         #endregion Private Methods
@@ -140,5 +211,6 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         }
 
         #endregion Public Methods
+
     }
 }

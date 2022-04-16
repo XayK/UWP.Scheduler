@@ -51,6 +51,7 @@ namespace SchedulingApp.Data.Context
         public DatabaseContext()
         {
             _connection = new LiteDatabase(ConnectionString, DatabaseMapper);
+            _connection.BeginTrans();
         }
 
         #endregion Public Constructors
@@ -62,6 +63,7 @@ namespace SchedulingApp.Data.Context
         /// </summary>
         public void Dispose()
         {
+            _connection.Commit();
             _connection.Dispose();
         }
 

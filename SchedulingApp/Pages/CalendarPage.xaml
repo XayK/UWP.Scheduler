@@ -5,10 +5,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="using:SchedulingApp.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodel="using:SchedulingApp.Presenter.Pages.Abstraction"
+    xmlns:viewmodel="using:SchedulingApp.Presenter.Pages"
     xmlns:visualizer="using:SchedulingApp.CalendarVisualizer.Visualizers"
-    d:DataContext="{d:DesignInstance viewmodel:ICalendarPageViewModel}"
-    Background="{ThemeResource AppMainBackground}"
+    d:DataContext="{d:DesignInstance viewmodel:CalendarPageViewModel}"
+    Background="{ThemeResource AppPageBackground}"
     mc:Ignorable="d">
 
     <Grid>
@@ -25,21 +25,36 @@
                 Margin="10"
                 Padding="10,0"
                 HorizontalAlignment="Center"
-                BorderBrush="{StaticResource AppMainBorderBrush}"
-                BorderThickness="2"
-                CornerRadius="10"
                 Orientation="Horizontal"
                 Spacing="10">
 
-                <Button Command="{Binding PreviousMonthCommand}">
-                    <SymbolIcon Symbol="Back" />
+                <Button
+                    Width="50"
+                    Height="50"
+                    BorderThickness="0"
+                    Command="{Binding PreviousMonthCommand}"
+                    CornerRadius="25">
+                    <SymbolIcon Foreground="{StaticResource AppMainBorderBrush}" Symbol="Back" />
                 </Button>
-                <TextBlock
-                    d:Text="24.02.2022"
-                    Style="{StaticResource DateTextStyle}"
-                    Text="{Binding DateMonth, Mode=OneWay}" />
-                <Button Command="{Binding NextMonthCommand}">
-                    <SymbolIcon Symbol="Forward" />
+                <Border
+                    Padding="20,0"
+                    BorderBrush="{StaticResource AppMainBorderBrush}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <TextBlock
+                        MinWidth="180"
+                        d:Text="24.02.2022"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource DateTextStyle}"
+                        Text="{Binding DateMonth, Converter={StaticResource MonthOnlyConverter}, Mode=OneWay}" />
+                </Border>
+                <Button
+                    Width="50"
+                    Height="50"
+                    BorderThickness="0"
+                    Command="{Binding NextMonthCommand}"
+                    CornerRadius="25">
+                    <SymbolIcon Foreground="{StaticResource AppMainBorderBrush}" Symbol="Forward" />
                 </Button>
             </StackPanel>
         </Grid>

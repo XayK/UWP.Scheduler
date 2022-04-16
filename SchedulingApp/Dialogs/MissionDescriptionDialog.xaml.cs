@@ -1,7 +1,6 @@
 ﻿using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
-using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -21,12 +20,12 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет описание действий в задаче
         /// </summary>
-        public ObservableCollection<IRowItemViewModel> Descriptions { get; }
+        public ObservableCollection<RowItemViewModel> Descriptions { get; }
 
         /// <summary>
         /// Предоставляет или задает выбранную строку в описании
         /// </summary>
-        public IRowItemViewModel SelectedDescription  { get; set; }
+        public RowItemViewModel SelectedDescription { get; set; }
 
         /// <summary>
         /// Предоставляет данные модели
@@ -44,27 +43,28 @@ namespace SchedulingApp.Dialogs
         {
             this.InitializeComponent();
 
-            Descriptions = new ObservableCollection<IRowItemViewModel>();
+            Descriptions = new ObservableCollection<RowItemViewModel>();
         }
 
         #endregion Public Constructors
 
         #region Private Methods
 
-        /// <summary>
-        /// Обработка изменения состояния переключателя описания задачи
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
-        {
-            if (SelectedDescription == null)
-            {
-                return;
-            }
+        ///// <summary>
+        ///// Обработка изменения состояния переключателя описания задачи
+        ///// </summary>
+        ///// <param name="sender">Инициатор события</param>
+        ///// <param name="e">Параметр</param>
+        //private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
+        //{
+        //    ///TODO: исправить работу
+        //    if (SelectedDescription == null)
+        //    {
+        //        return;
+        //    }
 
-            SelectedDescription.IsCheckEnabled = !SelectedDescription.IsCheckEnabled;
-        }
+        //    SelectedDescription.IsCheckEnabled = !SelectedDescription.IsCheckEnabled;
+        //}
 
         /// <summary>
         /// Обработка клика кнопки добавления новой строки описания
@@ -86,7 +86,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            base.SetNoteResult();
+            base.SetNoneResult();
         }
 
         /// <summary>
@@ -102,12 +102,12 @@ namespace SchedulingApp.Dialogs
         /// <summary>
         /// Предоставляет данные из диалога в виде модели данных
         /// </summary>
-        /// <returns>Модель данных <see cref="IMission"/></returns>
+        /// <returns>Модель данных <see cref="Mission"/></returns>
         private ICollection<IRowItem> GetModelDate()
         {
             IEnumerable<IRowItem> decriptions = Descriptions.Select(x => x.Model);
 
-            return new Collection<IRowItem> (decriptions.ToList());
+            return new Collection<IRowItem>(decriptions.ToList());
         }
 
         /// <summary>
@@ -117,6 +117,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Rows_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //ToggleSwitchButton.IsOn = SelectedDescription.IsCheckEnabled;
             Bindings.Update();
         }
 
