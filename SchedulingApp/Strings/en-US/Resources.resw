@@ -169,6 +169,10 @@
     <value>Save</value>
     <comment>005</comment>
   </data>
+  <data name="settings.Text" xml:space="preserve">
+    <value>Settings</value>
+    <comment>016</comment>
+  </data>
   <data name="start.Text" xml:space="preserve">
     <value>Start</value>
     <comment>002</comment>

@@ -21,14 +21,18 @@
     <SolidColorBrush x:Key="MissonBackground" Color="White" />
 
     <!--  Ресурсы для кнопок  -->
-    <LinearGradientBrush x:Key="AddButtonBackground" StartPoint="0,0" EndPoint="1,1">
+    <LinearGradientBrush x:Key="AddButtonBackground" Opacity="0.8" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#11924e" />
         <GradientStop Offset="1" Color="#20be6b" />
     </LinearGradientBrush>
-    <LinearGradientBrush x:Key="RemoveButtonBackground" StartPoint="0,0" EndPoint="1,1">
+    <LinearGradientBrush x:Key="RemoveButtonBackground" Opacity="0.8" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#e52030" />
         <GradientStop Offset="1" Color="#ec3543" />
     </LinearGradientBrush>
+    <SolidColorBrush
+        x:Key="ButtonThemeBackground"
+        Opacity="0.8"
+        Color="{ThemeResource SystemAccentColorDark2}" />
 
     <!--  Остальные ресурсы  -->
     <media:RadialGradientBrush

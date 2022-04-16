@@ -18,6 +18,7 @@
         <xamlUI:NavigationView
             IsBackButtonVisible="Collapsed"
             OpenPaneLength="240"
+            IsSettingsVisible="False"
             SelectionChanged="NavigationView_SelectionChanged">
 
             <!--  Меню навигации  -->
@@ -73,7 +74,23 @@
                 </xamlUI:NavigationViewItem>
             </xamlUI:NavigationView.MenuItems>
 
-            <!--  Фрейм активной страницы  -->
+
+            <!--  Меню навигации  снизу-->
+            <xamlUI:NavigationView.FooterMenuItems>
+                
+                <!--  Выбор настроек  -->
+                <xamlUI:NavigationViewItem Tag="Settings">
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <Image
+                            Width="24"
+                            Height="24"
+                            Source="{StaticResource SettingsIcon}" />
+                        <TextBlock x:Uid="settings" Text="Настройки" />
+                    </StackPanel>
+                </xamlUI:NavigationViewItem>
+            </xamlUI:NavigationView.FooterMenuItems>
+
+                <!--  Фрейм активной страницы  -->
             <Frame x:Name="MainFrame" />
         </xamlUI:NavigationView>
     </Grid>

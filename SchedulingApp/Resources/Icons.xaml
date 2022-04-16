@@ -6,5 +6,6 @@
     <BitmapImage x:Key="ImportantIcon" UriSource="ms-appx:///Assets/Icons/important_icon.png" />
     <BitmapImage x:Key="ListIcon" UriSource="ms-appx:///Assets/Icons/list_icon.png" />
     <BitmapImage x:Key="TodayIcon" UriSource="ms-appx:///Assets/Icons/today_icon.png" />
+    <BitmapImage x:Key="SettingsIcon" UriSource="ms-appx:///Assets/Icons/settings_icon.png" />
 
 </ResourceDictionary>
