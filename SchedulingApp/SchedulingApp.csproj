@@ -127,7 +127,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml.cs">
+    <Compile Include="Controls\MissionTimelineControl.xaml.cs">
       <DependentUpon>MissionTimelineControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="CalendarVisualizer\Helpers\DayOfWeekHelper.cs" />
@@ -144,6 +144,7 @@
       <DependentUpon>MissionThumbControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\DateFormatConverter.cs" />
+    <Compile Include="Converters\DateOnlyConverter.cs" />
     <Compile Include="Dialogs\Base\DialogBase.cs" />
     <Compile Include="Dialogs\MissionDescriptionDialog.xaml.cs">
       <DependentUpon>MissionDescriptionDialog.xaml</DependentUpon>
@@ -198,7 +199,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CalendarVisualizer\Controls\MissionTimelineControl.xaml">
+    <Page Include="Controls\MissionTimelineControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

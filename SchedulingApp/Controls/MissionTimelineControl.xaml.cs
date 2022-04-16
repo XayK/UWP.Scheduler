@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
 
-namespace SchedulingApp.CalendarVisualizer.Controls
+namespace SchedulingApp.Controls
 {
     /// <summary>
     /// Представляет колнтрол задачи, для отображения на календаре
@@ -19,6 +19,16 @@ namespace SchedulingApp.CalendarVisualizer.Controls
         /// Представляет или задает дату начала визуализации задачи
         /// </summary>
         public DateTime StartDate { get; set; }
+
+        /// <summary>
+        /// Представляет или задает позицию  смещения
+        /// </summary>
+        public int OffsetPosition { get; set; }
+
+        /// <summary>
+        /// Представляет или задает кол-во соседей у контрола
+        /// </summary>
+        public int NeigthboorsCounter { get; set; }
 
         #endregion Public Properties
 

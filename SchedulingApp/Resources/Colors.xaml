@@ -4,10 +4,15 @@
     <SolidColorBrush x:Key="AppMainBorderBrush" Color="#A9A9A9" />
     <SolidColorBrush x:Key="AppMainBackground" Color="#F5F5F5" />
     <StaticResource x:Key="AppControlsBackground" ResourceKey="{ThemeResource SystemAccentColorLight3}" />
+    <LinearGradientBrush x:Key="AppGradientBrush" StartPoint="1,0" EndPoint="1,1">
+        <GradientStop Offset="0.75" Color="{ThemeResource SystemAccentColorLight3}" />
+        <GradientStop Offset="1" Color="#00FFFFFF" />
+    </LinearGradientBrush>
 
     <!--  Ресурсы визуализатора календаря  -->
     <SolidColorBrush x:Key="MissonDefaultColor" Color="SteelBlue" />
     <SolidColorBrush x:Key="MissonBackground" Color="White" />
+
 
     <!--  Остальные ресурсы  -->
 

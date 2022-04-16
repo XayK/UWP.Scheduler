@@ -51,21 +51,21 @@ namespace SchedulingApp.Dialogs
 
         #region Private Methods
 
-        /// <summary>
-        /// Обработка изменения состояния переключателя описания задачи
-        /// </summary>
-        /// <param name="sender">Инициатор события</param>
-        /// <param name="e">Параметр</param>
-        private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
-        {
-            ///TODO: исправить работу
-            if (SelectedDescription == null)
-            {
-                return;
-            }
+        ///// <summary>
+        ///// Обработка изменения состояния переключателя описания задачи
+        ///// </summary>
+        ///// <param name="sender">Инициатор события</param>
+        ///// <param name="e">Параметр</param>
+        //private void DesciptionToggle_Switched(object sender, RoutedEventArgs e)
+        //{
+        //    ///TODO: исправить работу
+        //    if (SelectedDescription == null)
+        //    {
+        //        return;
+        //    }
 
-            SelectedDescription.IsCheckEnabled = !SelectedDescription.IsCheckEnabled;
-        }
+        //    SelectedDescription.IsCheckEnabled = !SelectedDescription.IsCheckEnabled;
+        //}
 
         /// <summary>
         /// Обработка клика кнопки добавления новой строки описания
@@ -118,7 +118,7 @@ namespace SchedulingApp.Dialogs
         /// <param name="e">Параметр</param>
         private void Rows_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ToggleSwitchButton.IsOn = SelectedDescription.IsCheckEnabled;
+            //ToggleSwitchButton.IsOn = SelectedDescription.IsCheckEnabled;
             Bindings.Update();
         }
 

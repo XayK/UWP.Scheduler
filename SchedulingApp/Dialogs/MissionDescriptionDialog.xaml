@@ -28,17 +28,16 @@
                 Style="{StaticResource MissionTimeSetterDescriptionStyle}"
                 Text="Описание" />
 
-            <StackPanel Grid.Column="1" Spacing="5">
+            <StackPanel Grid.Column="1" Spacing="25">
 
                 <!--  Включение возможности отметки прогресса в описании задачи  -->
-                <ToggleSwitch
+                <ToggleButton
                     x:Name="ToggleSwitchButton"
                     MinWidth="40"
                     HorizontalAlignment="Center"
-                    IsOn="False"
-                    OffContent="Выкл"
-                    OnContent="Вкл"
-                    Toggled="DesciptionToggle_Switched" />
+                    IsChecked="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}">
+                    <SymbolIcon Symbol="Accept" />
+                </ToggleButton>
 
                 <!--  Добавление нового описания задачи  -->
                 <Button

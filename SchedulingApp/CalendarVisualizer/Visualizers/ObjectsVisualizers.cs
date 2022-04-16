@@ -1,4 +1,4 @@
-﻿using SchedulingApp.CalendarVisualizer.Controls;
+﻿using SchedulingApp.Controls;
 using SchedulingApp.CalendarVisualizer.Helpers;
 using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Pages;
@@ -153,6 +153,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     break;
             }
         }
+        
         /// <summary>
         /// Удаления задачи с холста
         /// </summary>
@@ -196,11 +197,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             visualizeControl.StartDate = startVisualize;
             visualizeControl.EndDate = endVisualize;
+            visualizeControl.OffsetPosition = visualizeControl.NeigthboorsCounter = GetNeigthboorCounter(visualizeControl);
 
             UpdateMissionPosition(visualizeControl);
 
             // #region SetPosition Functions
-
             void SetVisualizeControl(out MissionTimelineControl visualizeControl)
             {
                 if (startVisualizeDate != null)
@@ -230,7 +231,6 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                 }
             }
 
-
             void SetEndVisualizationTime(out DateTime endVisualize)
             {
                 endVisualize = presenter.EndDateTime;
@@ -242,7 +242,6 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                     SetPossition(visualizeControl, endVisualize + TimeSpan.FromMinutes(1));
                 }
             }
-
             // #endregion SetPosition Functions
         }
 
@@ -255,8 +254,10 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             int startDayOfWeek = DayOfWeekHelper.GrigorianDayOfWeek(control.StartDate);
             int weeksPassed = DayOfWeekHelper.GetWeekPassedOnMonth(control.StartDate);
 
+            double offsetTop = control.OffsetPosition == 0 ? 0 : (HeightStep / (double)(control.NeigthboorsCounter + 1));
+
             double left = WidthStep * startDayOfWeek;
-            double top = HeightStep * weeksPassed;
+            double top = HeightStep * weeksPassed + offsetTop;
 
             Canvas.SetLeft(control, left);
             Canvas.SetTop(control, top);
@@ -264,7 +265,42 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
             double hourLength = WidthStep / _drawData.HoursInDay;
 
             control.Width = (control.EndDate - control.StartDate).TotalHours * hourLength;
-            control.Height = HeightStep;
+            control.Height = control.NeigthboorsCounter == 0 ? HeightStep : (HeightStep / (double)(control.NeigthboorsCounter + 1));
+        }
+
+        /// <summary>
+        /// Вычисляет кол-во пересечений у одной задачи с другими
+        /// </summary>
+        /// <param name="currentMission">Контрол задачи</param>
+        /// <returns>Кол-во пересечений/соседей</returns>
+        private int GetNeigthboorCounter(MissionTimelineControl currentMission)
+        {
+            List<MissionTimelineControl> missions = _canvasManipulation.Children.Select
+                (mission => mission as MissionTimelineControl)
+                .ToList();
+
+            int counter = 0;
+
+            foreach (MissionTimelineControl mission in missions)
+            {
+                if(mission == currentMission)
+                {
+                    continue;
+                }
+
+                bool isEndDateIntersects = mission.EndDate <= currentMission.EndDate && mission.EndDate >= currentMission.StartDate;
+                bool isStartDateIntersects = mission.StartDate <= currentMission.EndDate && mission.StartDate >= currentMission.StartDate;
+                bool isPresenterInMission = mission.StartDate <= currentMission.StartDate && mission.EndDate >= currentMission.EndDate;
+
+                if(isEndDateIntersects || isStartDateIntersects || isPresenterInMission)
+                {
+                    counter++;
+                    mission.NeigthboorsCounter++;
+                    UpdateMissionPosition(mission);
+                }
+            }
+
+            return counter;
         }
 
         #endregion Private Methods
