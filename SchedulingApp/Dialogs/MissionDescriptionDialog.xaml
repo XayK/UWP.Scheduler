@@ -9,15 +9,63 @@
     xmlns:local="using:SchedulingApp.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <base:DialogBase.Resources>
+        <Thickness x:Key="ContentDialogPadding">0,0,0,0</Thickness>
+        <SolidColorBrush x:Key="ContentDialogBackground">Transparent</SolidColorBrush>
+    </base:DialogBase.Resources>
 
-    <StackPanel Spacing="30">
+    <Grid Background="{StaticResource AppPageBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.5*" />
+        </Grid.RowDefinitions>
+
+        <!--  Кнопки управлением описания  -->
+        <StackPanel
+            Grid.Row="0"
+            Padding="20,10"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal"
+            Spacing="25">
+
+            <!--  Включение возможности отметки прогресса в описании задачи  -->
+            <ToggleButton
+                x:Name="ToggleSwitchButton"
+                Width="40"
+                Height="40"
+                Padding="0"
+                HorizontalAlignment="Center"
+                CornerRadius="20"
+                IsChecked="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}">
+                <SymbolIcon Symbol="Accept" />
+            </ToggleButton>
+
+            <!--  Добавление нового описания задачи  -->
+            <Button
+                Width="40"
+                Height="40"
+                HorizontalAlignment="Center"
+                Background="{StaticResource AddButtonBackground}"
+                Click="NewDescription_Click"
+                CornerRadius="20"
+                Style="{StaticResource ButtonCustomStyle}">
+
+                <FontIcon
+                    FontFamily="{StaticResource SymbolThemeFontFamily}"
+                    Foreground="{StaticResource AltForeground}"
+                    Glyph="&#xF8AA;" />
+            </Button>
+        </StackPanel>
 
         <!--  Ввод описания задачи  -->
-        <Grid MinHeight="50">
+        <Grid
+            Grid.Row="1"
+            MinHeight="50"
+            Padding="20,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100" />
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition MinWidth="200" />
+                <ColumnDefinition />
             </Grid.ColumnDefinitions>
 
             <!--  Текст у ввода даты  -->
@@ -27,28 +75,6 @@
                 VerticalAlignment="Top"
                 Style="{StaticResource MissionTimeSetterDescriptionStyle}"
                 Text="Описание" />
-
-            <StackPanel Grid.Column="1" Spacing="25">
-
-                <!--  Включение возможности отметки прогресса в описании задачи  -->
-                <ToggleButton
-                    x:Name="ToggleSwitchButton"
-                    MinWidth="40"
-                    HorizontalAlignment="Center"
-                    IsChecked="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}">
-                    <SymbolIcon Symbol="Accept" />
-                </ToggleButton>
-
-                <!--  Добавление нового описания задачи  -->
-                <Button
-                    Width="50"
-                    Height="30"
-                    HorizontalAlignment="Center"
-                    Click="NewDescription_Click"
-                    CornerRadius="15">
-                    <SymbolIcon Symbol="Add" />
-                </Button>
-            </StackPanel>
 
             <!--  Описание задачи (список задач по строкам)  -->
             <ListView
@@ -73,25 +99,32 @@
             </ListView>
         </Grid>
 
-        <!--  Кнопки сохранения или отмены диалога  -->
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Orientation="Horizontal"
-            Spacing="20">
-            <Button
-                Width="100"
-                Click="Cancel_Click"
-                Content="Отменить"
-                Style="{StaticResource ButtonCustomStyle}" />
+        <Grid
+            Grid.Row="2"
+            Padding="5,10"
+            Background="{StaticResource AppMainBackground}"
+            BorderBrush="{StaticResource AppMainBorderBrush}"
+            BorderThickness="0,1,0,0">
+            <!--  Кнопки сохранения или отмены диалога  -->
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Orientation="Horizontal"
+                Spacing="20">
+                <Button
+                    Width="100"
+                    Click="Cancel_Click"
+                    Content="Отменить"
+                    Style="{StaticResource ButtonCustomStyle}" />
 
-            <Button
-                Width="100"
-                Background="{ThemeResource SystemAccentColor}"
-                Click="Save_Click"
-                Content="Сохнарить"
-                Foreground="{ThemeResource SystemAltHighColor}"
-                Style="{StaticResource ButtonCustomStyle}" />
-        </StackPanel>
-    </StackPanel>
+                <Button
+                    Width="100"
+                    Background="{ThemeResource SystemAccentColor}"
+                    Click="Save_Click"
+                    Content="Сохнарить"
+                    Foreground="{ThemeResource SystemAltHighColor}"
+                    Style="{StaticResource ButtonCustomStyle}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
 </base:DialogBase>

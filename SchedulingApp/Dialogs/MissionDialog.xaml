@@ -8,91 +8,113 @@
     xmlns:local="using:SchedulingApp.Dialogs"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+    <base:DialogBase.Resources>
+        <Thickness x:Key="ContentDialogPadding">0,0,0,0</Thickness>
+    </base:DialogBase.Resources>
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="0.3*" />
+        </Grid.RowDefinitions>
 
-        <!--  Заголовок диалога  -->
-        <TextBlock
-            Margin="10"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            d:Text="Заголовок"
-            Style="{StaticResource HeaderTextBlockStyle}"
-            Text="{x:Bind TitleDialog, Mode=OneTime}" />
+        <!--  Контент диалога  -->
+        <Grid Grid.Row="0" Padding="10">
+            <StackPanel>
+
+                <!--  Заголовок диалога  -->
+                <TextBlock
+                    Margin="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    d:Text="Заголовок"
+                    Style="{StaticResource HeaderTextBlockStyle}"
+                    Text="{x:Bind TitleDialog, Mode=OneTime}" />
+
+                <!--  Запоняемые данные в диалоге  -->
+                <StackPanel
+                    Padding="5"
+                    Spacing="10">
+
+                    <!--  Ввод название задачи  -->
+                    <TextBox PlaceholderText="Название" Text="{x:Bind MissionTitle, Mode=TwoWay}" />
+
+                    <!--  Флаг важной задачи  -->
+                    <CheckBox
+                        Margin="100,0,0,0"
+                        Content="Важная задача"
+                        IsChecked="{x:Bind IsImportant, Mode=TwoWay}" />
+
+                    <!--  Ввод даты и времени начала  -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Текст у ввода даты  -->
+                        <TextBlock Style="{StaticResource MissionTimeSetterDescriptionStyle}" Text="Начало" />
+
+                        <!--  Выбор даты и времени  -->
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Vertical"
+                            Spacing="5">
+                            <DatePicker Date="{x:Bind StartDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
+                            <TimePicker Time="{x:Bind StartTime, Mode=TwoWay}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <!--  Ввод даты и времени конца  -->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <!--  Текст у ввода даты  -->
+                        <TextBlock Style="{StaticResource MissionTimeSetterDescriptionStyle}" Text="Конец" />
+
+                        <!--  Выбор даты и времени  -->
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Vertical"
+                            Spacing="5">
+                            <DatePicker Date="{x:Bind EndDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
+                            <TimePicker Time="{x:Bind EndTime, Mode=TwoWay}" />
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
 
         <!--  Кнопки сохранения или отмены диалога  -->
-        <StackPanel
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Orientation="Horizontal"
-            Spacing="20">
-            <Button
-                Width="100"
-                Click="Cancel_Click"
-                Content="Отменить"
-                Style="{StaticResource ButtonCustomStyle}" />
+        <Grid
+            Grid.Row="1"
+            Padding="5,10"
+            Background="{StaticResource AppPageBackground}"
+            BorderBrush="{StaticResource AppMainBorderBrush}"
+            BorderThickness="0,1,0,0">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Orientation="Horizontal"
+                Spacing="20">
+                <Button
+                    Width="100"
+                    Click="Cancel_Click"
+                    Content="Отменить"
+                    Background="{StaticResource AppMainBackground}"
+                    Style="{StaticResource ButtonCustomStyle}" />
 
-            <Button
-                Width="100"
-                Background="{ThemeResource SystemAccentColor}"
-                Click="Save_Click"
-                Content="Сохранить"
-                Foreground="{ThemeResource SystemAltHighColor}"
-                Style="{StaticResource ButtonCustomStyle}" />
-        </StackPanel>
-
-        <!--  Запоняемые данные в диалоге  -->
-        <StackPanel
-            Margin="0,50"
-            Padding="5"
-            Spacing="10">
-
-            <!--  Ввод название задачи  -->
-            <TextBox PlaceholderText="Название" Text="{x:Bind MissionTitle, Mode=TwoWay}" />
-
-            <!--  Флаг важной задачи  -->
-            <CheckBox
-                Margin="100,0,0,0"
-                Content="Важная задача"
-                IsChecked="{x:Bind IsImportant, Mode=TwoWay}" />
-
-            <!--  Ввод даты и времени начала  -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!--  Текст у ввода даты  -->
-                <TextBlock Style="{StaticResource MissionTimeSetterDescriptionStyle}" Text="Начало" />
-
-                <!--  Выбор даты и времени  -->
-                <Viewbox Grid.Column="1">
-                    <StackPanel Orientation="Vertical" Spacing="5">
-                        <DatePicker Date="{x:Bind StartDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
-                        <TimePicker Time="{x:Bind StartTime, Mode=TwoWay}" />
-                    </StackPanel>
-                </Viewbox>
-            </Grid>
-
-            <!--  Ввод даты и времени конца  -->
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-                <!--  Текст у ввода даты  -->
-                <TextBlock Style="{StaticResource MissionTimeSetterDescriptionStyle}" Text="Конец" />
-
-                <!--  Выбор даты и времени  -->
-                <Viewbox Grid.Column="1">
-                    <StackPanel Orientation="Vertical" Spacing="5">
-                        <DatePicker Date="{x:Bind EndDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
-                        <TimePicker Time="{x:Bind EndTime, Mode=TwoWay}" />
-                    </StackPanel>
-                </Viewbox>
-            </Grid>
-        </StackPanel>
+                <Button
+                    Width="100"
+                    Background="{ThemeResource SystemAccentColor}"
+                    Click="Save_Click"
+                    Content="Сохранить"
+                    Foreground="{ThemeResource SystemAltHighColor}"
+                    Style="{StaticResource ButtonCustomStyle}" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </base:DialogBase>
