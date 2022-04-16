@@ -88,7 +88,9 @@ namespace SchedulingApp.Services
         #region Private Methods
 
         /// <summary>
-        /// Обработка события перехода на страницу, целью подгрузки ViewModel страницы
+        /// Обработка события завершения перехода на страницу.
+        /// После перехода будет подгружена соотвествуя <see cref="Frame"/>'у ViewModel,
+        /// найденная по словарю <see cref="_viewModels"/>
         /// </summary>
         /// <param name="sender">Инициатор события</param>
         /// <param name="e">Параметр</param>
