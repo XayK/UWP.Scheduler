@@ -87,11 +87,11 @@ namespace SchedulingApp.Presenter.Pages.Base
                 return;
             }
 
-            IMissionViewModel presenter = new MissionViewModel(model as Mission);
+            IMissionViewModel presenter = new MissionViewModel(model);
             Missions.Add(presenter);
 
             MissionStorage storage = DatabaseLocatorService.Instance.MissionsStorage;
-            storage.Insert(presenter.Model as Mission);
+            storage.Insert(presenter.Model);
         }
 
         /// <summary>

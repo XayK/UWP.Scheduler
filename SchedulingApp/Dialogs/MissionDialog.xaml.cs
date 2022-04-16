@@ -1,5 +1,6 @@
 ﻿using SchedulingApp.Data.Models;
 using SchedulingApp.Data.Models.Abstraction;
+using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs.Base;
 using System;
 using System.Collections.ObjectModel;
@@ -90,7 +91,10 @@ namespace SchedulingApp.Dialogs
             model.Title = MissionTitle;
             model.StartDateTime = StartDate + StartTime;
             model.EndDateTime = EndDate + EndTime;
-            model.Descriptions = new Collection<IRowItem>();
+            model.Descriptions = new Collection<IRowItem>()
+            {
+                new RowItem()
+            };
             model.IsImportant = IsImportant;
 
             return model;

@@ -70,6 +70,7 @@
 
             <!--  Текст у ввода даты  -->
             <TextBlock
+                x:Uid="description"
                 Grid.Column="0"
                 Margin="0,5,0,0"
                 VerticalAlignment="Top"
@@ -113,12 +114,14 @@
                 Spacing="20">
                 <Button
                     Width="100"
+                    x:Uid="Cancel"
                     Click="Cancel_Click"
                     Content="Отменить"
                     Style="{StaticResource ButtonCustomStyle}" />
 
                 <Button
                     Width="100"
+                    x:Uid="Save"
                     Background="{ThemeResource SystemAccentColor}"
                     Click="Save_Click"
                     Content="Сохнарить"

@@ -2,11 +2,12 @@
 using SchedulingApp.Data.Models.Abstraction;
 using SchedulingApp.Data.Models.Elements;
 using SchedulingApp.Dialogs;
-using SchedulingApp.Presenter.Entities.Abstraction;
 using SchedulingApp.Presenter.Entities.Elements;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Resources;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace SchedulingApp.Helper
@@ -25,8 +26,9 @@ namespace SchedulingApp.Helper
         /// </returns>
         public static async Task<Mission> ShowMissionCreation()
         {
-            ///TODO: переводы
-            MissionDialog dialog = new("Создание");
+            var resourceLoader = ResourceLoader.GetForCurrentView();
+            string title = resourceLoader.GetString("creation");
+            MissionDialog dialog = new(title);
             var result = await dialog.ShowAsync();
 
             if (result != ContentDialogResult.Primary)
@@ -47,8 +49,9 @@ namespace SchedulingApp.Helper
         /// </returns>
         public static async Task<Mission> EditMission(Mission model)
         {
-            ///TODO: переводы
-            MissionDialog dialog = new("Правка")
+            var resourceLoader = ResourceLoader.GetForCurrentView();
+            string title = resourceLoader.GetString("edit");
+            MissionDialog dialog = new(title)
             {
                 MissionTitle = model.Title,
                 StartDate = model.StartDateTime.Date,

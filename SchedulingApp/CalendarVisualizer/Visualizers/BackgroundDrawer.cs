@@ -102,6 +102,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
             _canvasBackground.Draw += CanvasBackground_Draw;
             _canvasBackground.PointerMoved += CanvasBackground_PointerMoved;
+            _canvasBackground.PointerExited += CanvasBackground_PointerExited;
         }
 
         #endregion Public Constructors
@@ -112,11 +113,22 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Обработка перемещния указателя на холсте
         /// </summary>
         /// <param name="sender">Инициатор события</param>
-        /// <param name="args">Параметр</param>
+        /// <param name="e">Параметр</param>
         private void CanvasBackground_PointerMoved(object sender, PointerRoutedEventArgs e)
         {
             PointerPoint pointer = e.GetCurrentPoint(_canvasBackground);
             _selectedWeek = (int)(pointer.Position.Y / HeightStep);
+            _canvasBackground.Invalidate();
+        }
+
+        /// <summary>
+        /// Обработка перемещния указателя за пределы холста
+        /// </summary>
+        /// <param name="sender">Инициатор события</param>
+        /// <param name="e">Параметр</param>
+        private void CanvasBackground_PointerExited(object sender, PointerRoutedEventArgs e)
+        {
+            _selectedWeek = -1; 
             _canvasBackground.Invalidate();
         }
 

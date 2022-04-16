@@ -1,4 +1,5 @@
 ﻿using SchedulingApp.Dialogs.Base;
+using Windows.ApplicationModel.Resources;
 using Windows.UI.Xaml;
 
 namespace SchedulingApp.Dialogs
@@ -8,10 +9,14 @@ namespace SchedulingApp.Dialogs
     /// </summary>
     internal sealed partial class ConfirmationDialog : DialogBase
     {
+        #region Public Properties
+
         /// <summary>
         /// Представляет или задает текст на странице диалога
         /// </summary>
         public string DialogText { get; set; }
+
+        #endregion Public Properties
 
         #region Public Constructors
 
@@ -21,10 +26,14 @@ namespace SchedulingApp.Dialogs
         public ConfirmationDialog()
         {
             this.InitializeComponent();
-            DialogText = "Want to delete ?";
+
+            var resourceLoader = ResourceLoader.GetForCurrentView();
+            DialogText = resourceLoader.GetString("confirmation_delete_content");
         }
 
         #endregion Public Constructors
+
+        #region Private Methods
 
         /// <summary>
         /// Обработка клика по кнопка отказа
@@ -45,5 +54,7 @@ namespace SchedulingApp.Dialogs
         {
             base.SetPrimaryResult();
         }
+
+        #endregion Private Methods
     }
 }

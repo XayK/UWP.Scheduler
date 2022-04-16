@@ -12,8 +12,7 @@
         <SolidColorBrush x:Key="ContentDialogBackground">Transparent</SolidColorBrush>
     </base:DialogBase.Resources>
 
-    <Grid
-        Background="{StaticResource AppPageBackground}">
+    <Grid Background="{StaticResource AppPageBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="0.5*" />
@@ -24,11 +23,15 @@
             Margin="20,0"
             VerticalAlignment="Center"
             Spacing="10">
-            <TextBlock Style="{StaticResource BaseTextBlockStyle}" Text="Are you sure?" />
             <TextBlock
-                d:Text="Want to delete?"
-                FontWeight="Normal"
-                Style="{StaticResource BaseTextBlockStyle}"
+                x:Uid="confirmation_title"
+                FontSize="22"
+                FontWeight="SemiBold"
+                Style="{StaticResource MainTextBlockStyle}"
+                Text="Are you sure?" />
+            <TextBlock
+                d:Text="Want to delete"
+                Style="{StaticResource MainTextBlockStyle}"
                 Text="{x:Bind DialogText}" />
         </StackPanel>
 
@@ -43,12 +46,14 @@
                 Orientation="Horizontal"
                 Spacing="15">
                 <Button
-                    MinWidth="50"
+                    x:Uid="Cancel"
+                    MinWidth="80"
                     Click="ButtonNo_Click"
-                    Content="No"
+                    Content="Cancel"
                     Style="{StaticResource ButtonCustomStyle}" />
                 <Button
-                    MinWidth="50"
+                    x:Uid="confirm"
+                    MinWidth="80"
                     Background="{ThemeResource SystemAccentColor}"
                     Click="ButtonYes_Click"
                     Content="Yes"

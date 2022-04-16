@@ -14,13 +14,13 @@
     <Grid CornerRadius="10" Margin="0,2">
         <Border
             Background="{StaticResource MissonBackground}"
-            BorderBrush="{StaticResource MissonDefaultColor}"
+            BorderBrush="{ThemeResource SystemAccentColorDark1}"
             BorderThickness="5"
             CornerRadius="10" />
 
         <!--  Описание задачи  -->
         <Viewbox
-            MaxHeight="60"
+            Height="60"
             Margin="15"
             HorizontalAlignment="Left"
             VerticalAlignment="Center">

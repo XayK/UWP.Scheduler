@@ -20,23 +20,13 @@
         </Grid.RowDefinitions>
 
         <!--  Элементы управления  -->
-        <Rectangle
-            Grid.Row="0"
-            Width="260"
-            Height="70"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Fill="{ThemeResource AppGradientBrush}"
-            RadiusX="20"
-            RadiusY="20" />
         <StackPanel
             x:Name="StackMenu"
             Grid.Row="0"
-            Width="260"
-            Height="70"
-            Padding="20,0"
+            Padding="20,10"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
+            CornerRadius="25"
             Orientation="Horizontal"
             Spacing="15">
 

@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <BitmapImage x:Key="AppIcon" UriSource="ms-appx:///Assets/StoreLogo.png" />
+
+    <BitmapImage x:Key="CalendarIcon" UriSource="ms-appx:///Assets/Icons/calendar_icon.png" />
+    <BitmapImage x:Key="ImportantIcon" UriSource="ms-appx:///Assets/Icons/important_icon.png" />
+    <BitmapImage x:Key="ListIcon" UriSource="ms-appx:///Assets/Icons/list_icon.png" />
+    <BitmapImage x:Key="TodayIcon" UriSource="ms-appx:///Assets/Icons/today_icon.png" />
+
+</ResourceDictionary>

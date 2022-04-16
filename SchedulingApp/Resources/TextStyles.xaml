@@ -24,6 +24,18 @@
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
+    <!--  Стиль у задач в списке  -->
+    <Style x:Key="ThumbTextStyle" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="#F1F1F1" />
+        <Setter Property="TextAlignment" Value="Left" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="19" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
     <!--  Стиль текст блока у кнопок  -->
     <Style x:Key="ButtonTextStyle" TargetType="TextBlock">
         <Setter Property="TextAlignment" Value="Center" />
@@ -32,6 +44,16 @@
         <Setter Property="FontSize" Value="12" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
         <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
+    <!--  Стиль текста в настройка  -->
+    <Style x:Key="AppSettignsTextStyle" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="WrapWholeWords" />
     </Style>
 
     <!--  Остальные стили  -->
