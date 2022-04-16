@@ -110,6 +110,7 @@
             ItemsSource="{Binding Missions}"
             SelectedItem="{Binding SelectedMission, Mode=TwoWay}"
             SelectionMode="Single">
+
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="viewmodelEntities:IMissionViewModel">
                     <controls:MissionThumbControl />

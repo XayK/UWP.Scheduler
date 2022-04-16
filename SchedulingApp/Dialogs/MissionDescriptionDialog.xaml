@@ -21,6 +21,16 @@
             <RowDefinition Height="0.5*" />
         </Grid.RowDefinitions>
 
+        <!--  Текст у ввода даты  -->
+        <TextBlock
+            x:Uid="description"
+            Grid.Row="0"
+            Margin="40,5"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Style="{StaticResource MissionTimeSetterDescriptionStyle}"
+            Text="Описание" />
+
         <!--  Кнопки управлением описания  -->
         <StackPanel
             Grid.Row="0"
@@ -34,11 +44,20 @@
                 x:Name="ToggleSwitchButton"
                 Width="40"
                 Height="40"
-                Padding="0"
+                Padding="5"
                 HorizontalAlignment="Center"
+                BorderThickness="0"
                 CornerRadius="20"
                 IsChecked="{x:Bind SelectedDescription.IsCheckEnabled, Mode=TwoWay}">
-                <SymbolIcon Symbol="Accept" />
+                <Viewbox>
+                    <StackPanel>
+                        <SymbolIcon Symbol="Accept" />
+                        <TextBlock
+                            x:Uid="list_button"
+                            Style="{StaticResource ToggleButtonTextStyle}"
+                            Text="Список" />
+                    </StackPanel>
+                </Viewbox>
             </ToggleButton>
 
             <!--  Добавление нового описания задачи  -->
@@ -62,20 +81,8 @@
         <Grid
             Grid.Row="1"
             MinHeight="50"
-            Padding="20,20">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
+            Padding="20">
 
-            <!--  Текст у ввода даты  -->
-            <TextBlock
-                x:Uid="description"
-                Grid.Column="0"
-                Margin="0,5,0,0"
-                VerticalAlignment="Top"
-                Style="{StaticResource MissionTimeSetterDescriptionStyle}"
-                Text="Описание" />
 
             <!--  Описание задачи (список задач по строкам)  -->
             <ListView
@@ -113,15 +120,15 @@
                 Orientation="Horizontal"
                 Spacing="20">
                 <Button
-                    Width="100"
                     x:Uid="Cancel"
+                    Width="100"
                     Click="Cancel_Click"
                     Content="Отменить"
                     Style="{StaticResource ButtonCustomStyle}" />
 
                 <Button
-                    Width="100"
                     x:Uid="Save"
+                    Width="100"
                     Background="{ThemeResource SystemAccentColor}"
                     Click="Save_Click"
                     Content="Сохнарить"

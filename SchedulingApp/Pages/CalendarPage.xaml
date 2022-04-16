@@ -31,9 +31,10 @@
                 <Button
                     Width="50"
                     Height="50"
+                    BorderThickness="0"
                     Command="{Binding PreviousMonthCommand}"
                     CornerRadius="25">
-                    <SymbolIcon Symbol="Back" />
+                    <SymbolIcon Foreground="{StaticResource AppMainBorderBrush}" Symbol="Back" />
                 </Button>
                 <Border
                     Padding="20,0"
@@ -48,9 +49,10 @@
                 <Button
                     Width="50"
                     Height="50"
+                    BorderThickness="0"
                     Command="{Binding NextMonthCommand}"
                     CornerRadius="25">
-                    <SymbolIcon Symbol="Forward" />
+                    <SymbolIcon Foreground="{StaticResource AppMainBorderBrush}" Symbol="Forward" />
                 </Button>
             </StackPanel>
         </Grid>

@@ -161,6 +161,10 @@
     <value>Importants tasks</value>
     <comment>012</comment>
   </data>
+  <data name="list_button.Text" xml:space="preserve">
+    <value>List</value>
+    <comment>017</comment>
+  </data>
   <data name="list_page.Text" xml:space="preserve">
     <value>All by list</value>
     <comment>014</comment>

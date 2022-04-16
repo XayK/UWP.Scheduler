@@ -27,7 +27,7 @@
     <!--  Стиль у задач в списке  -->
     <Style x:Key="ThumbTextStyle" TargetType="TextBlock">
         <Setter Property="VerticalAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="#F1F1F1" />
+        <Setter Property="Foreground" Value="#3d3d3d" />
         <Setter Property="TextAlignment" Value="Left" />
         <Setter Property="FontFamily" Value="Segoe UI" />
         <Setter Property="FontWeight" Value="Normal" />
@@ -43,6 +43,15 @@
         <Setter Property="FontWeight" Value="Normal" />
         <Setter Property="FontSize" Value="12" />
         <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="TextWrapping" Value="NoWrap" />
+    </Style>
+
+    <!--  Стиль текст в переключаемой кнопоке  -->
+    <Style x:Key="ToggleButtonTextStyle" TargetType="TextBlock">
+        <Setter Property="TextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="Segoe UI" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="14" />
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 

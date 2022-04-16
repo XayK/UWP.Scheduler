@@ -8,22 +8,38 @@
     xmlns:viewmodel="using:SchedulingApp.Presenter.Entities.Abstraction"
     d:DataContext="{d:DesignInstance viewmodel:IMissionViewModel}"
     d:DesignHeight="140"
-    d:DesignWidth="140"
+    d:DesignWidth="240"
     mc:Ignorable="d">
 
-    <Grid Width="200" Height="100">
+    <Grid
+        Height="100"
+        MinWidth="200" 
+            PointerEntered="Control_PointerEntered"
+            PointerExited="Control_PointerExited"
+        CornerRadius="5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
 
         <!--  Фон контрола  -->
-        <Border Background="{ThemeResource MisssionBackground}" CornerRadius="5" />
+        <Border
+            x:Name="BorderBackground"
+            Grid.ColumnSpan="2"
+            Background="{ThemeResource SystemAccentColor}"
+            Opacity="0.1" />
 
         <!--  Контент контрола  -->
-        <StackPanel Padding="20,20,10,20" HorizontalAlignment="Left">
+        <StackPanel
+            Grid.Column="0"
+            Padding="20,20,10,20"
+            HorizontalAlignment="Left">
             <TextBlock
                 HorizontalAlignment="Left"
                 d:Text="Title"
                 FontWeight="SemiBold"
                 Style="{StaticResource ThumbTextStyle}"
-                Text="{Binding Title}"/>
+                Text="{Binding Title}" />
             <TextBlock
                 d:Text="Start - 01.01.1000"
                 FontSize="14"
@@ -35,5 +51,7 @@
                 Style="{StaticResource ThumbTextStyle}"
                 Text="{Binding EndDateTime}" />
         </StackPanel>
+
+        <!--<Grid Grid.Column="1" Background="{ThemeResource SystemAccentColorDark1}" />-->
     </Grid>
 </UserControl>
