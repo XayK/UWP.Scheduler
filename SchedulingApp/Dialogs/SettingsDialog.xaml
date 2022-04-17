@@ -14,7 +14,7 @@
     <Grid>
 
         <StackPanel
-            Margin="20,45,20,0"
+            Margin="20,45,20,25"
             VerticalAlignment="Top"
             Spacing="5">
 

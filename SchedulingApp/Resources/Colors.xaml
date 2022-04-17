@@ -16,6 +16,9 @@
         <GradientStop Offset="0.6" Color="{ThemeResource SystemAccentColorDark1}" />
     </LinearGradientBrush>
 
+    <!--  Ресурсы цветов задач  -->
+    <SolidColorBrush x:Key="MissionListBackground" Color="#ffeb00" />
+
     <!--  Ресурсы визуализатора календаря  -->
     <SolidColorBrush x:Key="MissonDefaultColor" Color="SteelBlue" />
     <SolidColorBrush x:Key="MissonBackground" Color="#CCFFFFFF" />

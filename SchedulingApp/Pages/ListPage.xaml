@@ -51,10 +51,9 @@
                 Width="40"
                 Height="40"
                 HorizontalAlignment="Center"
-                BorderThickness="0"
                 Command="{Binding EditCommand}"
                 CornerRadius="20"
-                Style="{StaticResource ButtonCustomStyle}">
+                Style="{StaticResource ButtonTransparentStyle}">
                 <Image Source="{StaticResource EditIcon}" />
             </Button>
 
@@ -63,10 +62,9 @@
                 Width="40"
                 Height="40"
                 HorizontalAlignment="Center"
-                BorderThickness="0"
                 Command="{Binding ShowDescriptionsCommand}"
                 CornerRadius="20"
-                Style="{StaticResource ButtonCustomStyle}">
+                Style="{StaticResource ButtonTransparentStyle}">
                 <Image Source="{StaticResource ListDescriptionIcon}" />
             </Button>
 
@@ -106,10 +104,16 @@
                     <controls:MissionThumbControl />
                 </DataTemplate>
             </GridView.ItemTemplate>
+
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="DoubleTapped">
                     <core:EventTriggerBehavior.Actions>
                         <core:InvokeCommandAction Command="{Binding ShowDescriptionsCommand}" />
+                    </core:EventTriggerBehavior.Actions>
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="RightTapped">
+                    <core:EventTriggerBehavior.Actions>
+                        <core:InvokeCommandAction Command="{Binding EditCommand}" />
                     </core:EventTriggerBehavior.Actions>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>

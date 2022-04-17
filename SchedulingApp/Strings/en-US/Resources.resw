@@ -201,6 +201,10 @@
     <value>Title -</value>
     <comment>020</comment>
   </data>
+  <data name="title.PlaceholderText" xml:space="preserve">
+    <value>Title</value>
+    <comment>023</comment>
+  </data>
   <data name="today_page.Text" xml:space="preserve">
     <value>Today tasks</value>
     <comment>013</comment>

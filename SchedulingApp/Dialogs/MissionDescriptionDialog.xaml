@@ -39,7 +39,7 @@
             Spacing="25">
 
             <!--  Включение возможности отметки прогресса в описании задачи  -->
-            <ToggleButton
+            <ToggleButton Style="{StaticResource ToggleButtonCustomStyle}"
                 x:Name="ToggleSwitchButton"
                 Width="40"
                 Height="40"

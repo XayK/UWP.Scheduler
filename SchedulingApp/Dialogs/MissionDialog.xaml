@@ -36,7 +36,10 @@
                     <StackPanel Padding="5" Spacing="10">
 
                         <!--  Ввод название задачи  -->
-                        <TextBox PlaceholderText="Название" Text="{x:Bind MissionTitle, Mode=TwoWay}" />
+                        <TextBox
+                            x:Uid="title"
+                            PlaceholderText="Название"
+                            Text="{x:Bind MissionTitle, Mode=TwoWay}" />
 
                         <!--  Флаг важной задачи  -->
                         <CheckBox

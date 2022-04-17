@@ -13,4 +13,6 @@
     <BitmapImage x:Key="CloseIcon" UriSource="ms-appx:///Assets/Icons/close_icon.png" />
     <BitmapImage x:Key="ListDescriptionIcon" UriSource="ms-appx:///Assets/Icons/list_description_icon.png" />
 
+    <BitmapImage x:Key="ImportantMark" UriSource="ms-appx:///Assets/Icons/important_mark.png" />
+
 </ResourceDictionary>

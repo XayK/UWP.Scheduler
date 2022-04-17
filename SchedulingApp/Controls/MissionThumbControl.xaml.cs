@@ -29,7 +29,7 @@ namespace SchedulingApp.Controls
         /// <param name="e">Параметр</param>
         private void Control_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
-            BorderBackground.Opacity = 0.2;
+            BorderBackground.Opacity = 0;
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace SchedulingApp.Controls
         /// <param name="e">Параметр</param>
         private void Control_PointerExited(object sender, PointerRoutedEventArgs e)
         {
-            BorderBackground.Opacity = 0.1;
+            BorderBackground.Opacity = 1;
         }
 
         #endregion Private Methods

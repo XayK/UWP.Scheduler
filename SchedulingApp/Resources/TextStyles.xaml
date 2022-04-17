@@ -89,6 +89,12 @@
         <Setter Property="TextWrapping" Value="NoWrap" />
     </Style>
 
+    <!--  Стиль текст блока при создании элемента  -->
+    <Style
+        x:Key="TimelineDescriptionStyle"
+        BasedOn="{StaticResource MissionTimeSetterDescriptionStyle}"
+        TargetType="TextBlock" />
+
     <!--  Стиль текста на таймлайне месяца  -->
     <Style x:Key="MissionTextStyle" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="Segoe UI" />
