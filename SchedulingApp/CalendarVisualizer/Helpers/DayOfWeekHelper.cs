@@ -46,8 +46,8 @@ namespace SchedulingApp.CalendarVisualizer.Helpers
         {
             DateTime startMonth = new(startVisualize.Year, startVisualize.Month, 1);
             int weeksPassed = 0;
-
-            for (DateTime day = startMonth; day < startVisualize; day += TimeSpan.FromDays(1))
+            DateTime day;
+            for (day = startMonth; day < startVisualize.Date; day += TimeSpan.FromDays(1))
             {
                 if (day.DayOfWeek == EndOfWeek)
                 {

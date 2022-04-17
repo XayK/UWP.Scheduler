@@ -43,7 +43,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         private double Height => _canvasManipulation.ActualHeight;
 
         /// <summary>
-        /// Представляет высоту элемента на холсте
+        /// Представляет высоту элемента (дня) на холсте
         /// </summary>
         private double HeightStep => Height / _drawData.WeeksInMonth;
 
@@ -51,14 +51,21 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Представляет или задает дату начала месяца
         /// </summary>
         private DateTime StartMonth => _drawData.StartMonth;
+
         /// <summary>
         /// Представляет ширину холста
         /// </summary>
         private double Width => _canvasManipulation.ActualWidth;
+
         /// <summary>
-        /// Представляет ширирну элемента на холсте
+        /// Представляет ширирну элемента (дня) на холсте
         /// </summary>
         private double WidthStep => Width / DayOfWeekHelper.DaysInWeek;
+
+        /// <summary>
+        /// Представляет ширирну минуты на холсте
+        /// </summary>
+        private double MinuteWidth => WidthStep / (_drawData.HoursInDay * _drawData.MinutsInHour);
 
         #endregion Private Properties
 
@@ -252,11 +259,12 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         private void UpdateMissionPosition(MissionTimelineControl control)
         {
             int startDayOfWeek = DayOfWeekHelper.GrigorianDayOfWeek(control.StartDate);
+            int startHourInDay = (int)control.StartDate.TimeOfDay.TotalMinutes;
             int weeksPassed = DayOfWeekHelper.GetWeekPassedOnMonth(control.StartDate);
 
             double offsetTop = control.OffsetPosition == 0 ? 0 : (HeightStep / (double)(control.NeigthboorsCounter + 1));
 
-            double left = WidthStep * startDayOfWeek;
+            double left = WidthStep * startDayOfWeek + MinuteWidth * startHourInDay;
             double top = HeightStep * weeksPassed + offsetTop;
 
             Canvas.SetLeft(control, left);

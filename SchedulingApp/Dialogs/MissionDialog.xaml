@@ -66,8 +66,8 @@
                                 Grid.Column="1"
                                 Orientation="Vertical"
                                 Spacing="5">
-                                <DatePicker Date="{x:Bind StartDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
-                                <TimePicker Time="{x:Bind StartTime, Mode=TwoWay}" />
+                                <DatePicker Date="{x:Bind StartDate, Converter={StaticResource DateFormatConverter}, Mode=OneWay}" DateChanged="StartDate_Changed" />
+                                <TimePicker Time="{x:Bind StartTime, Mode=OneWay}" TimeChanged="StartTime_Changed" />
                             </StackPanel>
                         </Grid>
 
@@ -89,8 +89,8 @@
                                 Grid.Column="1"
                                 Orientation="Vertical"
                                 Spacing="5">
-                                <DatePicker Date="{x:Bind EndDate, Converter={StaticResource DateFormatConverter}, Mode=TwoWay}" />
-                                <TimePicker Time="{x:Bind EndTime, Mode=TwoWay}" />
+                                <DatePicker Date="{x:Bind EndDate, Converter={StaticResource DateFormatConverter}, Mode=OneWay}" DateChanged="EndDate_Changed" />
+                                <TimePicker Time="{x:Bind EndTime, Mode=OneWay}" TimeChanged="EndTime_Changed" />
                             </StackPanel>
                         </Grid>
                     </StackPanel>
