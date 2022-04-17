@@ -1,5 +1,13 @@
-﻿using Microsoft.Toolkit.Uwp.Helpers;
+﻿#if !DEBUG
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+#endif
+
+using Microsoft.Toolkit.Uwp.Helpers;
+
 using System;
+
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.ViewManagement;
@@ -20,6 +28,10 @@ namespace SchedulingApp
         /// </summary>
         public App()
         {
+#if !DEBUG
+            AppCenter.Start("d1d80726-bcde-417b-b4e4-9999367387bf",
+                   typeof(Analytics), typeof(Crashes));
+#endif
             this.InitializeComponent();
             this.Suspending += OnSuspending;
         }
