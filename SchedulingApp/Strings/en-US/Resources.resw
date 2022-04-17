@@ -149,6 +149,10 @@
     <value>Edit</value>
     <comment>010</comment>
   </data>
+  <data name="edit_button.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Edit</value>
+    <comment>018</comment>
+  </data>
   <data name="end.Text" xml:space="preserve">
     <value>End</value>
     <comment>003</comment>
@@ -165,6 +169,10 @@
     <value>List</value>
     <comment>017</comment>
   </data>
+  <data name="list_description_button.ToolTipService.ToolTip" xml:space="preserve">
+    <value>Description</value>
+    <comment>019</comment>
+  </data>
   <data name="list_page.Text" xml:space="preserve">
     <value>All by list</value>
     <comment>014</comment>
@@ -180,6 +188,22 @@
   <data name="start.Text" xml:space="preserve">
     <value>Start</value>
     <comment>002</comment>
+  </data>
+  <data name="Timeline_end.Text" xml:space="preserve">
+    <value>End -</value>
+    <comment>022</comment>
+  </data>
+  <data name="Timeline_start.Text" xml:space="preserve">
+    <value>Start -</value>
+    <comment>021</comment>
+  </data>
+  <data name="Timeline_title.Text" xml:space="preserve">
+    <value>Title -</value>
+    <comment>020</comment>
+  </data>
+  <data name="title.PlaceholderText" xml:space="preserve">
+    <value>Title</value>
+    <comment>023</comment>
   </data>
   <data name="today_page.Text" xml:space="preserve">
     <value>Today tasks</value>

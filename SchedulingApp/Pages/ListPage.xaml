@@ -32,68 +32,56 @@
 
             <!--  Кнопка удалить  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="40"
+                Height="40"
+                Padding="0"
                 HorizontalAlignment="Center"
-                Background="{StaticResource RemoveButtonBackground}"
                 BorderThickness="0"
                 Command="{Binding DeleteCommand}"
-                CornerRadius="20"
                 Style="{StaticResource ButtonCustomStyle}">
-
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xF78A;" />
+                <Image
+                    Width="40"
+                    Height="40"
+                    Source="{StaticResource CloseIcon}" />
             </Button>
 
             <!--  Кнопка правки  -->
             <Button
-                Width="45"
-                Height="45"
+                x:Uid="edit_button"
+                Width="40"
+                Height="40"
                 HorizontalAlignment="Center"
-                Background="{StaticResource ButtonThemeBackground}"
-                BorderThickness="0"
                 Command="{Binding EditCommand}"
                 CornerRadius="20"
-                Style="{StaticResource ButtonCustomStyle}">
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xE70F;" />
+                Style="{StaticResource ButtonTransparentStyle}">
+                <Image Source="{StaticResource EditIcon}" />
             </Button>
 
             <!--  Кнопка работы с описанием  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="40"
+                Height="40"
                 HorizontalAlignment="Center"
-                Background="{StaticResource ButtonThemeBackground}"
-                BorderThickness="0"
                 Command="{Binding ShowDescriptionsCommand}"
                 CornerRadius="20"
-                Style="{StaticResource ButtonCustomStyle}">
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xE762;" />
+                Style="{StaticResource ButtonTransparentStyle}">
+                <Image Source="{StaticResource ListDescriptionIcon}" />
             </Button>
 
             <!--  Кнопка добавить  -->
             <Button
-                Width="45"
-                Height="45"
+                Width="40"
+                Height="40"
                 Padding="0"
                 HorizontalAlignment="Center"
-                Background="{StaticResource AddButtonBackground}"
                 BorderThickness="0"
                 Command="{Binding CreateCommand}"
                 CornerRadius="20"
                 Style="{StaticResource ButtonCustomStyle}">
-                <FontIcon
-                    FontFamily="{StaticResource SymbolThemeFontFamily}"
-                    Foreground="{StaticResource AltForeground}"
-                    Glyph="&#xF8AA;" />
+                <Image
+                    Width="40"
+                    Height="40"
+                    Source="{StaticResource AddIcon}" />
             </Button>
         </StackPanel>
 
@@ -116,10 +104,16 @@
                     <controls:MissionThumbControl />
                 </DataTemplate>
             </GridView.ItemTemplate>
+
             <interactivity:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="DoubleTapped">
                     <core:EventTriggerBehavior.Actions>
                         <core:InvokeCommandAction Command="{Binding ShowDescriptionsCommand}" />
+                    </core:EventTriggerBehavior.Actions>
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="RightTapped">
+                    <core:EventTriggerBehavior.Actions>
+                        <core:InvokeCommandAction Command="{Binding EditCommand}" />
                     </core:EventTriggerBehavior.Actions>
                 </core:EventTriggerBehavior>
             </interactivity:Interaction.Behaviors>
