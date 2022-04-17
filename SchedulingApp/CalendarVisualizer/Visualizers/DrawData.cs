@@ -15,6 +15,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         private const int HOURS_IN_DAY = 24;
 
         /// <summary>
+        /// Представляет контанту кол-ва минут в часу
+        /// </summary>
+        private const int MINUTES_IN_HOUR = 60;
+
+        /// <summary>
         /// Представляет контанту числа максимального кол-ва дней в неделе
         /// </summary>
         private const int WEEKS_IN_MONTH = 6;
@@ -32,6 +37,11 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// Представляет кол-ва часов в дне
         /// </summary>
         public double HoursInDay => HOURS_IN_DAY;
+
+        /// <summary>
+        /// Представляет кол-ва минут в часе
+        /// </summary>
+        public double MinutsInHour => MINUTES_IN_HOUR;
 
         /// <summary>
         /// Представляет или задает дату начала месяца

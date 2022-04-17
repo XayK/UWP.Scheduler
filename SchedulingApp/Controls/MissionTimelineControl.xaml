@@ -58,11 +58,11 @@
 
             <!--  Характеристики задачи  -->
             <ScrollViewer>
-                <Viewbox
-                    Height="60"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-                    <StackPanel Spacing="5">
+                <Viewbox StretchDirection="UpOnly"  Height="80">
+                    <StackPanel
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Spacing="5">
 
                         <!--  Заголовок  -->
                         <StackPanel Orientation="Horizontal" Spacing="5">
