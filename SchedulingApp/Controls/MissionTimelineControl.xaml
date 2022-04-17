@@ -26,63 +26,21 @@
             CornerRadius="10" />
 
         <!--  Описание задачи  -->
-        <ScrollViewer Margin="10">
-            <Viewbox
-                Height="60"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center">
-                <StackPanel Spacing="5">
-
-                    <!--  Заголовок  -->
-                    <StackPanel Orientation="Horizontal" Spacing="5">
-                        <TextBlock
-                            x:Uid="Timeline_title"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="Заголовок -" />
-                        <TextBlock
-                            d:Text="Title"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="{Binding Title}" />
-                    </StackPanel>
-
-                    <!--  Даты  -->
-                    <!--  Начала  -->
-                    <StackPanel Orientation="Horizontal" Spacing="5">
-                        <TextBlock
-                            x:Uid="Timeline_start"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="Начало -" />
-                        <TextBlock
-                            d:Text="01.01.1999"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="{Binding StartDateTime, Converter={StaticResource DateOnlyConverter}}" />
-                    </StackPanel>
-                    <!--  Конца  -->
-                    <StackPanel Orientation="Horizontal" Spacing="3">
-                        <TextBlock
-                            x:Uid="Timeline_end"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="Конец -" />
-                        <TextBlock
-                            d:Text="01.02.1999"
-                            Style="{StaticResource MissionTextStyle}"
-                            Text="{Binding EndDateTime, Converter={StaticResource DateOnlyConverter}}" />
-                    </StackPanel>
-                </StackPanel>
-            </Viewbox>
-        </ScrollViewer>
-
-        <!--  Описание задачи  -->
         <Button
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
+            HorizontalContentAlignment="Left"
             Background="Transparent"
             CornerRadius="10">
 
+            <!--  Список задач  -->
             <Button.Flyout>
                 <Flyout>
                     <StackPanel Spacing="5">
-                        <TextBlock Style="{StaticResource TimelineDescriptionStyle}" x:Uid="description" Text="Описание" />
+                        <TextBlock
+                            x:Uid="description"
+                            Style="{StaticResource TimelineDescriptionStyle}"
+                            Text="Описание" />
                         <ListView
                             ItemsSource="{Binding Descriptions, Mode=OneWay}"
                             ScrollViewer.HorizontalScrollMode="Disabled"
@@ -96,6 +54,54 @@
                     </StackPanel>
                 </Flyout>
             </Button.Flyout>
+
+
+            <!--  Характеристики задачи  -->
+            <ScrollViewer>
+                <Viewbox
+                    Height="60"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center">
+                    <StackPanel Spacing="5">
+
+                        <!--  Заголовок  -->
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock
+                                x:Uid="Timeline_title"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="Заголовок -" />
+                            <TextBlock
+                                d:Text="Title"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="{Binding Title}" />
+                        </StackPanel>
+
+                        <!--  Даты  -->
+                        <!--  Начала  -->
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock
+                                x:Uid="Timeline_start"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="Начало -" />
+                            <TextBlock
+                                d:Text="01.01.1999"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="{Binding StartDateTime, Converter={StaticResource DateOnlyConverter}}" />
+                        </StackPanel>
+                        <!--  Конца  -->
+                        <StackPanel Orientation="Horizontal" Spacing="3">
+                            <TextBlock
+                                x:Uid="Timeline_end"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="Конец -" />
+                            <TextBlock
+                                d:Text="01.02.1999"
+                                Style="{StaticResource MissionTextStyle}"
+                                Text="{Binding EndDateTime, Converter={StaticResource DateOnlyConverter}}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Viewbox>
+            </ScrollViewer>
         </Button>
     </Grid>
 </UserControl>

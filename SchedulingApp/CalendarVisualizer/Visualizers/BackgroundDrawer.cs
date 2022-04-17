@@ -30,7 +30,7 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Представляет константу отрисовки цвета линий разграничения дня
         /// </summary>
-        private static readonly string ACCENT_COLOR = GetAccentTransparencyColor();
+        private static readonly string ACCENT_COLOR = GetAccentTransparencyColor("SystemAccentColor");
 
         /// <summary>
         /// Представляет контрол холста, визуализующий фон элементов расписания
@@ -127,7 +127,9 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
 
                 Rect rectanlge = new(leftWidth + 5, topHeigth + 5, widthStep - 10, heightStep - 10);
 
-                args.DrawingSession.FillRoundedRectangle(rectanlge, 5, 5, ColorHelper.ToColor(ACCENT_COLOR));
+                string fillColor = weekCounter == _selectedWeek ? GetAccentTransparencyColor("SystemAccentColorDark2") : ACCENT_COLOR;
+
+                args.DrawingSession.FillRoundedRectangle(rectanlge, 5, 5, ColorHelper.ToColor(fillColor));
 
                 Vector2 textDatePoint = new(leftWidth + 12, topHeigth + 8);
 
@@ -139,15 +141,15 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
                 }
             }
 
-            if (_selectedWeek > -1)
-            {
-                float x = 0;
-                float width = (float)Width;
-                float y = (float)(_selectedWeek * HeightStep);
-                float height = (float)HeightStep;
+            //if (_selectedWeek > -1)
+            //{
+            //    float x = 0;
+            //    float width = (float)Width;
+            //    float y = (float)(_selectedWeek * HeightStep);
+            //    float height = (float)HeightStep;
 
-                args.DrawingSession.FillRectangle(x, y, width, height, ColorHelper.ToColor(POINTER_HOVER));
-            }
+            //    args.DrawingSession.FillRectangle(x, y, width, height, ColorHelper.ToColor(POINTER_HOVER));
+            //}
         }
 
         /// <summary>
@@ -176,10 +178,22 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         /// <summary>
         /// Получает полупрозрачный цвет Accent
         /// </summary>
+        /// <param name="resourceKey">Ключ рерурса цвета accent</param>
         /// <returns>Возвращает hex цвета</returns>
-        private static string GetAccentTransparencyColor()
+        private static string GetAccentTransparencyColor(string resourceKey)
         {
-            string accent = Application.Current.Resources["SystemAccentColor"].ToString();
+            string accent;
+
+            try
+            {
+                accent = Application.Current.Resources[resourceKey].ToString();
+            }
+            catch
+            {
+                ///Базовый цвет в случае ошибки
+                return "#000";
+            }
+
             string transparency = "60";
 
             int hexWithAlphaLength = 9;
