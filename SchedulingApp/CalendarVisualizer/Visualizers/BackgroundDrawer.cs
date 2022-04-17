@@ -18,11 +18,6 @@ namespace SchedulingApp.CalendarVisualizer.Visualizers
         #region Private Fields
 
         /// <summary>
-        /// Представляет константу отрисовки цвета недели, при нахождения на ней урока
-        /// </summary>
-        private const string POINTER_HOVER = "#30909090";
-
-        /// <summary>
         /// Представляет константу цвета текста
         /// </summary>
         private const string TEXT_FOREGROUND = "#3D3D3D";
